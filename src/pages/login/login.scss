@@ -1,0 +1,32 @@
+page-login
+{
+    ion-img{
+        object-fit: cover;
+        background: white;
+        width: 100px;
+        height: 100px; 
+    }
+
+    p.centerPadding{
+        text-align: center;
+        margin-top:80px;
+    }
+
+    .center{
+        text-align: center;
+    }
+
+    .blue{
+        color:#673ab7;
+    }
+    
+    ion-item.padding{
+        padding: 25px 10px 14px 16px !important;
+    }
+    
+    button.color{
+        background-color:#673ab7 !important;
+        color: white !important;
+    }
+}
+
