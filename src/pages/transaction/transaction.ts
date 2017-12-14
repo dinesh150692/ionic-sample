@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, } from '@angular/core';
 import { IonicPage, NavController , NavParams} from 'ionic-angular';
 /**
  * Generated class for the TransactionPage page.
@@ -13,13 +13,13 @@ import { IonicPage, NavController , NavParams} from 'ionic-angular';
   templateUrl: 'transaction.html',
 })
 export class TransactionPage {
+  
   transactionsList: any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.fetchTransactionsList();
   }
 
   ionViewDidLoad() {
-    console.log(this.transactionsList);
     console.log('ionViewDidLoad TransactionPage');
   }
   fetchTransactionsList() {
@@ -32,5 +32,4 @@ export class TransactionPage {
       { 'mobileNumber':'9999999999','amount': 122, 'date': '2016-09-13T23:30:52.123Z'}
     ];
   }
-  
 }

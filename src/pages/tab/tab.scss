@@ -1,0 +1,21 @@
+page-tab {
+    .tabbar.show-tabbar
+    {
+        background-color: #673ab7;
+        color: white
+    }
+    .tabs-ios .tab-button[aria-selected=true] .tab-button-icon,
+    .tabs-md .tab-button[aria-selected=true] .tab-button-icon{
+        color: white;
+        //border-top: 5px solid white;
+    }
+    .tabs-md .tab-button-text, .tabs-md .tab-button-icon,
+    .tabs-ios .tab-button-text, .tabs-ios .tab-button-icon{
+        border-color: #673ab7;
+        color: white;
+    }
+    .tabs-md .tab-button-icon,
+    .tabs-ios .tab-button-icon{
+        color: darkgrey;
+    }
+}

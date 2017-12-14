@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { TransactionPage } from '../transaction/transaction';
+import { TabPage } from '../tab/tab';
 /**
  * Generated class for the LoginPage page.
  *
@@ -19,16 +19,16 @@ export class LoginPage {
   mobile_no: string = '9999999999';
   merchant_id: string ='CCDAY';
   showOTP: boolean = false;
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
   login() {
-    this.navCtrl.push('TransactionPage');
+    this.navCtrl.setRoot(TabPage);
   }
 
 }

@@ -28,5 +28,14 @@ page-login
         background-color:#673ab7 !important;
         color: white !important;
     }
+    ion-item ion-label{
+        font-size: 12px;
+        font-weight: bold;
+    }
+    #align.item-md.item-block .item-inner,
+    #align.item-wp.item-block .item-inner {
+        margin-left:23px;
+    }
+    
 }
 

@@ -2,12 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, LoadingController, Nav } from 'ionic-angular';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ListPage } from '../pages/list/list';
-import { LoginPage } from '../pages/login/login';
+import { TransactionPage } from '../pages/transaction/transaction';
+import { ReportsPage } from '../pages/reports/reports';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { LoginPage } from '../pages/login/login';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage: any = LoginPage;
+  rootPage: any;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -31,9 +31,8 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage },
-      { title: 'Login', component: LoginPage }
+      {title: 'Transactions', component: TransactionPage},
+      {title: 'Reports', component: ReportsPage},
     ];
   }
 
