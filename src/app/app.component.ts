@@ -1,13 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, LoadingController, Nav } from 'ionic-angular';
+import { LoginPage } from '../pages/login/login';
 
-import { TransactionPage } from '../pages/transaction/transaction';
-import { ReportsPage } from '../pages/reports/reports';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoginPage } from '../pages/login/login';
 
 
 @Component({
@@ -15,10 +13,7 @@ import { LoginPage } from '../pages/login/login';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
-  // make HelloIonicPage the root (or first) page
-  rootPage: any;
-  pages: Array<{title: string, component: any}>;
+  rootPage: any = LoginPage;
 
   constructor(
     public platform: Platform,
@@ -28,39 +23,25 @@ export class MyApp {
     public loadingCtrl: LoadingController
   ) {
     this.initializeApp();
-
-    // set our app's pages
-    this.pages = [
-      {title: 'Transactions', component: TransactionPage},
-      {title: 'Reports', component: ReportsPage},
-    ];
   }
 
   initializeApp() {
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      spinner: 'hide',
+      content: `<div class="cssload-container">
+      <div class="cssload-whirlpool"></div>
+  </div>`
     });
   
     loading.present();
   
     setTimeout(() => {
+      //this.rootPage = 'LoginPage';
       loading.dismiss();
-      this.rootPage = LoginPage;
       this.platform.ready().then(() => {
-        
-        
-        // Okay, so the platform is ready and our plugins are available.
-        // Here you can do any higher level native things you might need.
         this.statusBar.styleDefault();
         this.splashScreen.hide();
       });
-    }, 2000);
-  }
-
-  openPage(page) {
-    // close the menu when clicking a link from the menu
-    this.menu.close();
-    // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);
+    },2000);
   }
 }

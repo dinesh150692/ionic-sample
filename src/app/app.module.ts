@@ -5,20 +5,18 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { DatePicker } from '@ionic-native/date-picker';
+ 
 import { LoginPage } from '../pages/login/login';
-import { ReportsPage } from '../pages/reports/reports';
-import { TabPage } from '../pages/tab/tab';
-import { TransactionPage } from '../pages/transaction/transaction';
+import { MenuPage } from '../pages/menu/menu';
 
 import { PipesModule } from '../pipes/pipes.module';
+
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
-    TransactionPage,
-    ReportsPage,
-    TabPage,
+    MenuPage,
   ],
   imports: [
     BrowserModule,
@@ -29,14 +27,14 @@ import { PipesModule } from '../pipes/pipes.module';
   entryComponents: [
     MyApp,
     LoginPage,
-    TransactionPage,
-    ReportsPage,
-    TabPage,
+    MenuPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    DatePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
+
 export class AppModule {}

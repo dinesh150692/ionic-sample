@@ -16,8 +16,13 @@
 <ion-content padding>
 
 </ion-content> -->
-
-<ion-tabs color="light" selectedIndex="0" #myTabs>
+<!-- 
+<ion-tabs  selectedIndex="2" #myTabs>
   <ion-tab tabIcon="swap" tabTitle="Transaction" [root]="tab1Root"></ion-tab>
   <ion-tab tabIcon="document" tabTitle="Reports" [root]="tab2Root"></ion-tab>
-<ion-tabs>
+  <ion-tab tabIcon="log-out" tabTitle="Logout" [root]="tab3Root"></ion-tab>
+<ion-tabs> -->
+<ion-tabs color="phonepe" [selectedIndex]="myIndex">
+  <ion-tab [root]="tab1Root" tabTitle="Transactions" tabIcon="swap"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Reports" tabIcon="document"></ion-tab>
+</ion-tabs>
