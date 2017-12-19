@@ -5,7 +5,6 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { DatePicker } from '@ionic-native/date-picker';
  
 import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
@@ -32,7 +31,6 @@ import { PipesModule } from '../pipes/pipes.module';
   providers: [
     StatusBar,
     SplashScreen,
-    DatePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

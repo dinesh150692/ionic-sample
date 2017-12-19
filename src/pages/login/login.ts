@@ -4,7 +4,6 @@ import { MenuPage } from '../menu/menu';
 /**
  * Generated class for the LoginPage page.
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
@@ -29,6 +28,23 @@ export class LoginPage {
 
   login() {
     this.navCtrl.setRoot(MenuPage);
+  }
+  ionViewWillEnter() {
+    let tabs = document.querySelectorAll('.tabbar');
+    if ( tabs !== null ) {
+      Object.keys(tabs).map((key) => {
+        tabs[ key ].style.transform = 'translateY(56px)';
+      });
+    } // end if
+  }
+
+  ionViewDidLeave() {
+    let tabs = document.querySelectorAll('.tabbar');
+    if ( tabs !== null ) {
+      Object.keys(tabs).map((key) => {
+        tabs[ key ].style.transform = 'translateY(0)';
+      });
+    } // end if
   }
 
 }

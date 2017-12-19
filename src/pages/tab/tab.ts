@@ -18,6 +18,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class TabPage {
   tab1Root = 'TransactionPage';
   tab2Root = 'ReportsPage';
+  tab3Root = 'LogoutPage';
   myIndex: number;
  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
