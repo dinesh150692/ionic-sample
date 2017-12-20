@@ -1,10 +1,14 @@
-.ios, .md {
+.ios, .md, .wp {
     page-reports {
         .scroll-content {
             background-color: map-get($colors, snowwhite);
         }
         ion-card-header {
             font-weight: bold;
+        }
+
+        ion-card {
+            margin: 10px 0px 15px 9px;
         }
     }   
 }

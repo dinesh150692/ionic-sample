@@ -35,6 +35,7 @@ export class ReportsPage {
     this.startDate = this.getDateFormat(this.dayCount);
     this.endDate = this.getDateFormat(0);
   }
+  
   ionViewDidLoad() {
     this.loadingPage = true;
     this.labels = ["January", "February", "March", "April", "May", "June", "July"];
@@ -91,7 +92,7 @@ export class ReportsPage {
           {
             label: "Stock B",
             fill: true,
-            lineTension: 0.1,
+            //lineTension: 0.1,
             backgroundColor: "rgba(167,105,0,0.4)",
             borderColor: "rgb(167, 105, 0)",
             borderCapStyle: 'butt',
