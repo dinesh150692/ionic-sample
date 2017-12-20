@@ -26,6 +26,7 @@ export class ReportsPage {
   endDate: any;
   dayCount: any = 10;
   startDate: any;
+  loader: any;
   
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -36,29 +37,22 @@ export class ReportsPage {
   }
   ionViewDidLoad() {
     this.loadingPage = true;
-    let loading = this.loadingCtrl.create({
-      spinner: 'hide',
-      content: `
-      <div class="cssload-container">
-        <div class="cssload-whirlpool"></div>
-      </div>`,
-      duration: 5000,
-    });
-  
-    loading.onDidDismiss(() => {
-      this.labels = ["January", "February", "March", "April", "May", "June", "July"];
-      this.data = [65, 59, 80, 81, 56, 55, 40];
-      this.labels1 = ["January", "February", "March", "April", "May", "June", "July"];
-      this.data1 = [65, 59, 80, 81, 56, 55, 40];
-      this.chartData();
-      this.loadingPage = false;
-      console.log('Dismissed loading');
-    });
-    loading.present();
+    this.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    this.data = [65, 59, 80, 81, 56, 55, 40];
+    this.labels1 = ["January", "February", "March", "April", "May", "June", "July"];
+    this.data1 = [65, 59, 80, 81, 56, 55, 40];
+    this.fetchLoader();
+    this.chartData();
     console.log('ionViewDidLoad ReportPage');
   }
   
   chartData(){
+    if(this.lineChart){
+      this.lineChart.destroy();
+    }
+    if(this.lineChart1){
+      this.lineChart1.destroy(); 
+    }
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
       data: {
@@ -66,10 +60,10 @@ export class ReportsPage {
         datasets: [
           {
             label: "My First dataset",
-            fill: false,
+            fill: true,
             lineTension: 0.1,
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
+            backgroundColor: "rgba(75,192, 192,0.4)",
+            borderColor: "rgb(75,192,192)",
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
@@ -77,11 +71,11 @@ export class ReportsPage {
             pointBorderColor: "rgba(75,192,192,1)",
             pointBackgroundColor: "#fff",
             pointBorderWidth: 1,
-            pointHoverRadius: 5,
+            pointHoverRadius: 8,
             pointHoverBackgroundColor: "rgba(75,192,192,1)",
             pointHoverBorderColor: "rgba(220,220,220,1)",
             pointHoverBorderWidth: 2,
-            pointRadius: 1,
+            pointRadius: 4,
             pointHitRadius: 10,
             data: this.data,
             spanGaps: false,
@@ -95,23 +89,23 @@ export class ReportsPage {
         labels: this.labels1,
         datasets: [
           {
-            label: "My First dataset",
-            fill: false,
+            label: "Stock B",
+            fill: true,
             lineTension: 0.1,
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
+            backgroundColor: "rgba(167,105,0,0.4)",
+            borderColor: "rgb(167, 105, 0)",
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(75,192,192,1)",
-            pointBackgroundColor: "#fff",
+            pointBorderColor: "white",
+            pointBackgroundColor: "black",
             pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverRadius: 8,
+            pointHoverBackgroundColor: "brown",
+            pointHoverBorderColor: "yellow",
             pointHoverBorderWidth: 2,
-            pointRadius: 1,
+            pointRadius: 4,
             pointHitRadius: 10,
             data: this.data1,
             spanGaps: false,
@@ -119,6 +113,10 @@ export class ReportsPage {
         ]
       }
     });
+    setTimeout(()=> {
+      this.loadingPage = false;
+      this.loader.dismiss();
+    },300); 
   }
   
   fetchFilter() {
@@ -152,6 +150,7 @@ export class ReportsPage {
           handler: data => {
             if (data) {
               console.log(data);
+              this.fetchLoader();
               this.fetchNewData();
             }
           }
@@ -161,31 +160,25 @@ export class ReportsPage {
     alert.present();
   }
   
-  fetchNewData(){
+  fetchLoader(){
     this.loadingPage = true;
     console.log(this.loadingPage);
-    let loading = this.loadingCtrl.create({
+    this.loader = this.loadingCtrl.create({
       spinner: 'hide',
       content: `
         <div class="cssload-container">
           <div class="cssload-whirlpool"></div>
         </div>
       `,
-      duration: 5000,
     });
-  
-    loading.onDidDismiss(() => {
-      this.labels = ['A', 'B', 'C', 'D', 'E'];
-      this.data = [10, 20, 30, 40, 10];
-      this.lineChart.destroy();
-      this.lineChart1.destroy();  
-    
-      this.chartData();
-      this.loadingPage = false;
-      console.log('Dismissed loading');
-    });
-  
-    loading.present();
+    this.loader.present();
+  }
+
+  fetchNewData(){
+    this.labels = ['A', 'B', 'C', 'D', 'E'];
+    this.data = [10, 20, 30, 40, 10]; 
+    this.chartData();
+    console.log('Dismissed loader');
   }
 
   getDateFormat(count){
