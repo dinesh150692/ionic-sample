@@ -12,28 +12,28 @@
       </button>
     </ion-buttons> -->
     <ion-title>Reports</ion-title>
-   <ion-buttons color="snowwhite" right>
-    <button ion-button icon-only (click)="fetchFilter()">
-      <ion-icon name="funnel" ></ion-icon>
-    </button>
-   </ion-buttons>
-    </ion-navbar>
+    <ion-buttons color="snowwhite" right>
+      <button ion-button icon-only (click)="fetchFilter()">
+        <ion-icon name="funnel" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
 </ion-header>
 <ion-content [hidden]="loadingPage" no-padding>
-    <ion-card>
-      <ion-card-header text-center>
-        Line Chart
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #lineCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-card-header text-center>
-        Line Chart
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #lineCanvas1></canvas>
-      </ion-card-content>
-    </ion-card>
+  <ion-card>
+    <ion-card-header text-center>
+      Line Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #lineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header text-center>
+      Line Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #lineCanvas1></canvas>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

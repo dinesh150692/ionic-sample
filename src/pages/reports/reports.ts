@@ -28,22 +28,22 @@ export class ReportsPage {
   startDate: any;
   loader: any;
   
-  constructor(public navCtrl: NavController, 
+  constructor(
+    public navCtrl: NavController, 
     public navParams: NavParams, 
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController) {
-    this.startDate = this.getDateFormat(this.dayCount);
-    this.endDate = this.getDateFormat(0);
+      this.startDate = this.getDateFormat(this.dayCount);
+      this.endDate = this.getDateFormat(0);
   }
   
   ionViewDidLoad() {
     this.loadingPage = true;
-    this.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    this.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
     this.data = [65, 59, 80, 81, 56, 55, 40];
-    this.labels1 = ["January", "February", "March", "April", "May", "June", "July"];
+    this.labels1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
     this.data1 = [65, 59, 80, 81, 56, 55, 40];
     this.fetchLoader();
-    this.chartData();
     console.log('ionViewDidLoad ReportPage');
   }
   
@@ -115,9 +115,9 @@ export class ReportsPage {
       }
     });
     setTimeout(()=> {
-      this.loadingPage = false;
       this.loader.dismiss();
-    },300); 
+      this.loadingPage = false;
+    },500); 
   }
   
   fetchFilter() {
@@ -150,9 +150,7 @@ export class ReportsPage {
           text: 'Filter',
           handler: data => {
             if (data) {
-              console.log(data);
-              this.fetchLoader();
-              this.fetchNewData();
+            this.fetchNewData(data);
             }
           }
         }
@@ -173,13 +171,13 @@ export class ReportsPage {
       `,
     });
     this.loader.present();
+    this.chartData();
   }
 
-  fetchNewData(){
+  fetchNewData(data: any){
     this.labels = ['A', 'B', 'C', 'D', 'E'];
     this.data = [10, 20, 30, 40, 10]; 
-    this.chartData();
-    console.log('Dismissed loader');
+    this.fetchLoader();
   }
 
   getDateFormat(count){

@@ -12,7 +12,9 @@ import { MenuPage } from '../menu/menu';
   selector: 'page-login',
   templateUrl: 'login.html',
 })
+
 export class LoginPage {
+  
   logo: any = 'assets/phonepe_icon.png';
   otp: string = '1234';
   mobile_no: string = '9999999999';
@@ -29,6 +31,7 @@ export class LoginPage {
   login() {
     this.navCtrl.setRoot(MenuPage);
   }
+
   ionViewWillEnter() {
     let tabs = document.querySelectorAll('.tabbar');
     if ( tabs !== null ) {

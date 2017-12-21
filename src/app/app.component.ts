@@ -24,8 +24,7 @@ export class MyApp {
     public loadingCtrl: LoadingController,
     public zone: NgZone,
     public alertCtrl: AlertController,
-    public app: App
-  )
+    public app: App)
   {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

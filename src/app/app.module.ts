@@ -19,7 +19,11 @@ import { PipesModule } from '../pipes/pipes.module';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp), 
+    IonicModule.forRoot(MyApp,{
+      scrollPadding: false,
+      scrollAssist: true,
+      autoFocusAssist: true
+    }), 
     PipesModule,   
   ],
   bootstrap: [IonicApp],
