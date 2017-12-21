@@ -8,7 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
  
 import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
-
+import { RegisterPage } from '../pages/register/register';
 import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
@@ -16,6 +16,7 @@ import { PipesModule } from '../pipes/pipes.module';
     MyApp,
     LoginPage,
     MenuPage,
+    RegisterPage,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +32,7 @@ import { PipesModule } from '../pipes/pipes.module';
     MyApp,
     LoginPage,
     MenuPage,
+    RegisterPage,
   ],
   providers: [
     StatusBar,
