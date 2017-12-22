@@ -47,14 +47,14 @@ export class BusinessDetailsPage {
         this.filePath.resolveNativePath(uri)
         .then(filePath => {
           this.base64Image = filePath;
-          this.showToast("File is sucessfully selected");
+          this.showToast("File is sucessfully selected", "toast-success");
         })
         .catch(err => {
-          this.showToast("Error in file selection");  
+          this.showToast("Error in file selection", "toast-failure");  
         });
       })
     .catch(e => {
-      this.showToast("Error in file selection");
+      this.showToast("Error in file selection", "toast-failure");
       console.log(e)
     });
   }
@@ -62,22 +62,22 @@ export class BusinessDetailsPage {
   captureImage(){
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
       this.base64Image = imageData;
-      this.showToast(this.base64Image);
-      this.showToast('Image captured sucessfully');
+      this.showToast('Image captured sucessfully', "toast-success");
       this.fileName = imageData.substr(imageData.lastIndexOf('/') + 1);
       //var fileExtension = filename.substr(filename.lastIndexOf('/') + 1);
     }, (err) => {
-      this.showToast("Error Capturing,Try Again");
+      this.showToast("Error Capturing,Try Again", "toast-failure");
     });
   }
 
-  showToast(text) {
+  showToast(text, cssClass) {
     let toast = this.toastCtrl.create({
       message: text,
       duration: 3000,
       position: 'bottom',
       showCloseButton: true,
-      closeButtonText: 'Ok'
+      closeButtonText: 'Ok',
+      cssClass: cssClass
     });
     toast.present();
   }

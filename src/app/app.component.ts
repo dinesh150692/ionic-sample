@@ -45,8 +45,7 @@ export class MyApp {
         this.disconnectSubscription = this.network.onDisconnect().subscribe(() => {
           this.toast = this.toastCtrl.create({
             message: "Could not connect to internet",
-            showCloseButton: true,
-            closeButtonText: '',
+            duration: 5000,
             cssClass: "toast-failure"
           });
           this.toast.present();
