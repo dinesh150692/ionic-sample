@@ -1,0 +1,56 @@
+<!--
+  Generated template for the BusinessDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="phonepe">
+    <ion-title>Business Details</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-item class="padding">
+    <ion-label stacked>Business Type</ion-label>
+    <ion-select [(ngModel)]="business_type">
+      <ion-option value="f">Female</ion-option>
+      <ion-option value="m">Male</ion-option>
+    </ion-select>
+    <ion-icon name="build" item-left></ion-icon>
+  </ion-item>  
+  <ion-item class="padding">
+    <ion-label stacked>Category</ion-label>
+    <ion-select [(ngModel)]="business_category">
+      <ion-option value="f">Female</ion-option>
+      <ion-option value="m">Male</ion-option>
+    </ion-select>
+    <ion-icon name="briefcase" item-left></ion-icon>
+  </ion-item>
+  <ion-item class="padding">
+    <ion-label stacked>Sub-Category</ion-label>
+    <ion-select [(ngModel)]="business_sub_category">
+      <ion-option value="f">Female</ion-option>
+      <ion-option value="m">Male</ion-option>
+    </ion-select>
+    <ion-icon name="briefcase" item-left></ion-icon>
+  </ion-item> 
+  <ion-item class="padding">
+    <ion-label stacked>Documents</ion-label>
+    <ion-input type="text" [ngModel]="fileName"></ion-input>
+    <ion-icon name="document" item-left></ion-icon>
+    <button ion-button clear color="dark" type="button" item-right (click)="captureImage()"> 
+      <ion-icon name="camera"></ion-icon> 
+    </button>
+    <button ion-button clear color="dark" hideWhen="ios" type="button" item-right (click)="selectFile()"> 
+      <ion-icon name="attach"></ion-icon> 
+    </button>
+  </ion-item> 
+  <ion-item id="noLine">
+    <button id="noStyle" ion-button full large color="phonepe" type="button" (click)="getFurtherDetails()">
+      Continue
+    </button>
+  </ion-item> 
+  <ion-item  *ngIf="base64Image">
+    <ion-img [src]="base64Image"></ion-img>
+  </ion-item>
+</ion-content>

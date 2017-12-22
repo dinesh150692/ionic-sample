@@ -5,10 +5,13 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
- 
+import { FileChooser } from '@ionic-native/file-chooser';
+import { Camera } from '@ionic-native/camera';
+
 import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
 import { RegisterPage } from '../pages/register/register';
+import { BusinessDetailsPage } from '../pages/business-details/business-details';
 import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
@@ -17,6 +20,7 @@ import { PipesModule } from '../pipes/pipes.module';
     LoginPage,
     MenuPage,
     RegisterPage,
+    BusinessDetailsPage,
   ],
   imports: [
     BrowserModule,
@@ -33,10 +37,13 @@ import { PipesModule } from '../pipes/pipes.module';
     LoginPage,
     MenuPage,
     RegisterPage,
+    BusinessDetailsPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    FileChooser,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

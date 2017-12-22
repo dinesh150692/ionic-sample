@@ -3,13 +3,12 @@ page-login
     ion-img{
         object-fit: cover;
         background: white;
-        width: 100px;
-        height: 100px; 
+        width: 70px;
+        height: 70px; 
     }
 
     p.centerPadding{
         text-align: center;
-        margin-top: 5px;
     }
 
     .center{
@@ -21,7 +20,7 @@ page-login
     }
     
     ion-item.padding{
-        padding: 10px 10px 10px 16px !important;
+        padding: 5px 10px 10px 10px !important;
     }
     
     button.color{
@@ -36,6 +35,5 @@ page-login
     #align.item-wp.item-block .item-inner {
         margin-left:23px;
     }
-
 }
 

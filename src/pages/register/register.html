@@ -36,11 +36,10 @@
         <ion-icon *ngIf="showPassword" name="eye-off"> </ion-icon>
       </button>
     </ion-item>
-      
     <div margin-top text-center>
-        <label class="dark_grey" >By Clicking continue you are accepting to PhonePe's </label>
-        <label tappable class="phonepe" (click)="openTermsAndCondition()">Terms & Conditions</label>
-      </div> 
+      <label class="dark_grey" >By Clicking continue you are accepting to PhonePe's </label>
+      <label tappable class="phonepe" (click)="openTermsAndCondition()">Terms & Conditions</label>
+    </div> 
     <ion-item id="noLine">
       <button id="noStyle" ion-button full large color="phonepe" type="button" (click)="getFurtherDetails()">
         Continue

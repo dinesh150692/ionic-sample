@@ -93,7 +93,7 @@ export class LoginPage {
   fetchResetPassword(data){
     let alert = this.alertCtrl.create({
       title: 'Reset Password',
-      message: "Verification code sent to Email/Mobile: " + data.email,
+      message: "Verification code sent to: " + data.email,
       inputs: [
         {
           name: 'code',

@@ -29,9 +29,9 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      //platform.resume.subscribe((e) => this.showPause(e));
+      //platform.pause.subscribe((e) => this.showResume(e));
       platform.registerBackButtonAction(() => this.handleHardwareBackButtonPress());
-      platform.resume.subscribe((e) => this.showPause(e));
-      platform.pause.subscribe((e) => this.showResume(e));
       statusBar.styleDefault();
       splashScreen.hide();
       this.zone.run(() =>  {
