@@ -103,7 +103,7 @@ export class LoginPage {
         {
           name: 'password',
           placeholder: 'Enter new password',
-          type:"text",
+          type:"password",
         },
       ],
       buttons: [
@@ -118,7 +118,7 @@ export class LoginPage {
           handler: data => {
             if (data) {
               alert.dismiss().then(() => {
-                this.showToast('Password Reset Successfull, Login Now...');
+                this.showToast('Password Reset Successful, Login Now...');
               });
               return false;
             }
@@ -133,7 +133,8 @@ export class LoginPage {
     let toast = this.toastCtrl.create({
       message: text,
       duration: 3000,
-      position: 'bottom'
+      position: 'bottom',
+      cssClass: "toast-success"
     });
     toast.present();
   }

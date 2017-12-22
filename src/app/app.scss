@@ -118,3 +118,17 @@
 .alert-md .alert-message{
     padding-top: 5px;
 }
+
+.toast-success {
+    > div{
+        background-color: rgb(112, 151, 54) !important;
+        color: black !important;
+    }
+}
+
+.toast-failure {
+    > div{
+        background-color: red !important;
+        color: white !important;;
+    }
+}

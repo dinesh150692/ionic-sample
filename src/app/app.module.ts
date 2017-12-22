@@ -8,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Camera } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
+import { Network } from '@ionic-native/network';
 
 import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
@@ -46,6 +47,7 @@ import { PipesModule } from '../pipes/pipes.module';
     FileChooser,
     Camera,
     FilePath,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
