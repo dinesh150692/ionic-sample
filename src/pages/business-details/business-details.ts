@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FilePath } from '@ionic-native/file-path';
 
 /**
  * Generated class for the BusinessDetailsPage page.
@@ -25,10 +26,11 @@ export class BusinessDetailsPage {
     public navParams: NavParams, 
     public fileChooser: FileChooser, 
     public toastCtrl:ToastController,
-    public camera: Camera) {
+    public camera: Camera,
+    public filePath: FilePath) {
       this.cameraOptions = {
         quality: 100,
-        destinationType: this.camera.DestinationType.FILE_URI,
+        destinationType: this.camera.DestinationType.NATIVE_URI,
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE
       }
@@ -40,30 +42,44 @@ export class BusinessDetailsPage {
 
   selectFile(){
     this.fileChooser.open()
-  .then(uri => {
-      this.fileName = uri.substr(uri.lastIndexOf('/') + 1);
-      this.showToast(uri);
-  })
-  .catch(e => console.log(e));
+      .then(uri => {
+        this.fileName = uri.substr(uri.lastIndexOf('/') + 1);
+        this.filePath.resolveNativePath(uri)
+        .then(filePath => {
+          this.base64Image = filePath;
+          this.showToast("File is sucessfully selected");
+        })
+        .catch(err => {
+          this.showToast("Error in file selection");  
+        });
+      })
+    .catch(e => {
+      this.showToast("Error in file selection");
+      console.log(e)
+    });
   }
 
   captureImage(){
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
-      this.showToast('image captured sucessfully');
-      //this.base64Image = 'data:image/jpeg;base64,' + imageData;
       this.base64Image = imageData;
+      this.showToast(this.base64Image);
+      this.showToast('Image captured sucessfully');
       this.fileName = imageData.substr(imageData.lastIndexOf('/') + 1);
       //var fileExtension = filename.substr(filename.lastIndexOf('/') + 1);
-     }, (err) => {
+    }, (err) => {
       this.showToast("Error Capturing,Try Again");
     });
   }
+
   showToast(text) {
     let toast = this.toastCtrl.create({
       message: text,
       duration: 3000,
-      position: 'bottom'
+      position: 'bottom',
+      showCloseButton: true,
+      closeButtonText: 'Ok'
     });
     toast.present();
   }
+
 }

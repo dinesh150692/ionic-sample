@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Camera } from '@ionic-native/camera';
+import { FilePath } from '@ionic-native/file-path';
 
 import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
@@ -44,6 +45,7 @@ import { PipesModule } from '../pipes/pipes.module';
     SplashScreen,
     FileChooser,
     Camera,
+    FilePath,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

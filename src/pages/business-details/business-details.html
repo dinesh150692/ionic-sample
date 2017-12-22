@@ -37,7 +37,10 @@
   <ion-item class="padding">
     <ion-label stacked>Documents</ion-label>
     <ion-input type="text" [ngModel]="fileName"></ion-input>
-    <ion-icon name="document" item-left></ion-icon>
+    <ion-icon *ngIf="!base64Image" name="document" item-left></ion-icon>
+    <ion-thumbnail *ngIf="base64Image" item-start>
+      <img [src]="base64Image" alt="No Image Available">
+    </ion-thumbnail>
     <button ion-button clear color="dark" type="button" item-right (click)="captureImage()"> 
       <ion-icon name="camera"></ion-icon> 
     </button>
@@ -50,7 +53,4 @@
       Continue
     </button>
   </ion-item> 
-  <ion-item  *ngIf="base64Image">
-    <ion-img [src]="base64Image"></ion-img>
-  </ion-item>
 </ion-content>
