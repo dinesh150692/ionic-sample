@@ -36,10 +36,11 @@ export class ReportsPage {
     public alertCtrl: AlertController) {
       this.startDate = this.getDateFormat(this.dayCount);
       this.endDate = this.getDateFormat(0);
+      this.loadingPage = true;
   }
   
   ionViewDidLoad() {
-    this.loadingPage = true;
+    
     this.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
     this.data = [65, 59, 80, 81, 56, 55, 40];
     this.labels1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
