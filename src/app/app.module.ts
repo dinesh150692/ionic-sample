@@ -15,6 +15,7 @@ import { MenuPage } from '../pages/menu/menu';
 import { RegisterPage } from '../pages/register/register';
 import { BusinessDetailsPage } from '../pages/business-details/business-details';
 import { PipesModule } from '../pipes/pipes.module';
+import { SuccessPage } from '../pages/success/success';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PipesModule } from '../pipes/pipes.module';
     MenuPage,
     RegisterPage,
     BusinessDetailsPage,
+    SuccessPage,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { PipesModule } from '../pipes/pipes.module';
     MenuPage,
     RegisterPage,
     BusinessDetailsPage,
+    SuccessPage,
   ],
   providers: [
     StatusBar,

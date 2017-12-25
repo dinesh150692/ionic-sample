@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
+import { SuccessPage } from '../success/success';
 
 /**
  * Generated class for the BusinessDetailsPage page.
@@ -103,5 +104,9 @@ export class BusinessDetailsPage {
         tabs[ key ].style.display = 'inline';
       });
     } // end if
+  }
+
+  goToSuccess(){
+    this.navCtrl.setRoot(SuccessPage);
   }
 }
