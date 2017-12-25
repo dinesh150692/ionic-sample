@@ -10,16 +10,14 @@
       <ion-icon name="menu"></ion-icon>
     </button>     -->
     <ion-title class="font">Transactions</ion-title>
-    <br><ion-title class="font">
+    <ion-title  hideWhen="ios" class="font">
       <span class="headersmall">Merchant Name</span>    
       </ion-title>
   </ion-navbar>
-  <!-- <ion-toolbar color="phonepe">
-    
-  </ion-toolbar> -->
+  <ion-toolbar color="phonepe" showWhen="ios">
+    <span class="headersmall">Merchant Name</span>    
+  </ion-toolbar>
 </ion-header>
-
-
 <ion-content no-padding>
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content

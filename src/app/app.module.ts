@@ -10,12 +10,14 @@ import { Camera } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
 import { Network } from '@ionic-native/network';
 
+import { PipesModule } from '../pipes/pipes.module';
+
 import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
 import { RegisterPage } from '../pages/register/register';
 import { BusinessDetailsPage } from '../pages/business-details/business-details';
-import { PipesModule } from '../pipes/pipes.module';
 import { SuccessPage } from '../pages/success/success';
+
 
 @NgModule({
   declarations: [
