@@ -116,7 +116,9 @@
     flex-wrap: wrap;
     border-top: 0.55px solid #dbdbdf;  
 }
-
+.alert-ios .alert-button{
+    color: #673ab7;
+}
 .alert-md .alert-button {
     margin: 0;
     border-radius: 0;
