@@ -33,36 +33,23 @@ export class MyApp {
   { 
     this.networkCount = 0;
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       //platform.resume.subscribe((e) => this.showPause(e));
       //platform.pause.subscribe((e) => this.showResume(e));
       platform.registerBackButtonAction(() => this.handleHardwareBackButtonPress());
       statusBar.styleDefault();
       splashScreen.hide();
       this.zone.run(() =>  {
-        this.initializeApp();        
         this.disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-          this.toast = this.toastCtrl.create({
-            message: "Could not connect to internet",
-            duration: 5000,
-            cssClass: "toast-failure"
-          });
-          this.toast.present();
-          });
-         // watch network for a connection
+          this.showToast("Could not connect to internet", 5000, "toast-failure");
+        });
         this.connectSubscription = this.network.onConnect().subscribe(() => {
           this.networkCount += this.networkCount + 1;
           this.toast.dismiss();
           if(this.networkCount > 1){
-            this.toast = this.toastCtrl.create({
-              message: "Connected to a Network",
-              duration: 2000,
-              cssClass: "toast-success"
-            });
-            this.toast.present();
+            this.showToast("Connected to a Network", 2000, "toast-success");
           }
         });
+        this.initializeApp();        
       });
     });
   }
@@ -76,7 +63,6 @@ export class MyApp {
     });
     this.loading.present();
     setTimeout(() => {
-      //this.rootPage = 'LoginPage';
       this.loading.dismiss();
     },100);
   }
@@ -160,13 +146,13 @@ export class MyApp {
     this.alert.present();
   }
 
-  showToast(text) {
-    let toast = this.toastCtrl.create({
+  showToast(text, duration, cssClass) {
+    this.toast = this.toastCtrl.create({
       message: text,
-      duration: 5000,
-      position: 'top'
+      duration: duration,
+      cssClass: cssClass
     });
-    toast.present();
+    this.toast.present();
   }
 
 
