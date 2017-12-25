@@ -82,4 +82,26 @@ export class BusinessDetailsPage {
     toast.present();
   }
 
+ 
+  ionViewWillEnter() {
+    console.log('Enter Register');
+    let tabs = document.querySelectorAll('.tabbar');
+    if ( tabs !== null ) {
+      Object.keys(tabs).map((key) => {
+        tabs[ key ].style.transform = 'translateY(56px)';
+        tabs[ key ].style.display = 'none';
+      });
+    } // end if
+  }
+
+  ionViewDidLeave() {
+    console.log('Left Register');
+    let tabs = document.querySelectorAll('.tabbar');
+    if ( tabs !== null ) {
+      Object.keys(tabs).map((key) => {
+        tabs[ key ].style.transform = 'translateY(0)';
+        tabs[ key ].style.display = 'inline';
+      });
+    } // end if
+  }
 }

@@ -34,4 +34,25 @@ export class RegisterPage {
   goToLogin(){
     this.navCtrl.setRoot(LoginPage);
   }
+
+  ionViewWillEnter() {
+    console.log('Enter Register');
+    let tabs = document.querySelectorAll('.tabbar');
+    if ( tabs !== null ) {
+      Object.keys(tabs).map((key) => {
+        tabs[ key ].style.transform = 'translateY(56px)';
+        tabs[ key ].style.display = 'none';
+      });
+    } // end if
+  }
+
+  ionViewDidLeave() {
+    console.log('Left Register');
+    let tabs = document.querySelectorAll('.tabbar');
+    if ( tabs !== null ) {
+      Object.keys(tabs).map((key) => {
+        tabs[ key ].style.transform = 'translateY(0)';
+      });
+    } // end if
+  }
 }

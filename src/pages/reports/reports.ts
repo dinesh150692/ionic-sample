@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Chart } from 'chart.js';
+//import { LoginPage } from '../login/login';
 /**
  * Generated class for the ReportsPage page.
  *
@@ -199,4 +200,8 @@ export class ReportsPage {
     var newDate = yyyy + '-' + mm1 + '-' + dd1;
     return newDate;
   }
+
+  // logout(){
+  //   this.navCtrl.setRoot(LoginPage);
+  // }
 }
