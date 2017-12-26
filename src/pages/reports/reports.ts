@@ -46,7 +46,6 @@ export class ReportsPage {
     this.labels1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
     this.data1 = [65, 59, 80, 81, 56, 55, 40];
     this.fetchLoader();
-    console.log('ionViewDidLoad ReportPage');
   }
   
   chartData(){
@@ -163,7 +162,6 @@ export class ReportsPage {
   
   fetchLoader(){
     this.loadingPage = true;
-    console.log(this.loadingPage);
     this.loader = this.loadingCtrl.create({
       spinner: 'hide',
       content: `
