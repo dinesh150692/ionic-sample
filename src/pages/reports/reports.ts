@@ -36,11 +36,9 @@ export class ReportsPage {
     public alertCtrl: AlertController) {
       this.startDate = this.getDateFormat(this.dayCount);
       this.endDate = this.getDateFormat(0);
-      this.loadingPage = true;
   }
   
-  ionViewDidLoad() {
-    
+  ionViewDidLoad() { 
     this.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
     this.data = [65, 59, 80, 81, 56, 55, 40];
     this.labels1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
@@ -115,10 +113,12 @@ export class ReportsPage {
         ]
       }
     });
-    setTimeout(()=> {
-      this.loader.dismiss();
-      this.loadingPage = false;
-    },500); 
+    this.loader.dismiss();
+    this.loader.onDidDismiss(() => {
+      setTimeout(()=> {
+        this.loadingPage = false;
+      },100); 
+    });
   }
   
   fetchFilter() {
@@ -199,7 +199,8 @@ export class ReportsPage {
     var newDate = yyyy + '-' + mm1 + '-' + dd1;
     return newDate;
   }
-
+  
+  
   // logout(){
   //   this.navCtrl.setRoot(LoginPage);
   // }
