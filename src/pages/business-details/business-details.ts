@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
+
 import { SuccessPage } from '../success/success';
 
 /**
@@ -20,8 +23,15 @@ import { SuccessPage } from '../success/success';
 
 export class BusinessDetailsPage {
   cameraOptions: CameraOptions;
-  base64Image: any;
+  fileNativePath: any;
   fileName: any;
+  businessDetails = new FormGroup({
+    businessType: new FormControl(null, Validators.required),
+    businessCategory: new FormControl(null, Validators.required),
+    businessSubCategory: new FormControl(null, Validators.required),
+    fileName: new FormControl(this.fileName, Validators.required),
+    filePath: new FormControl(this.fileNativePath, Validators.required)
+  });
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -47,7 +57,7 @@ export class BusinessDetailsPage {
         this.fileName = uri.substr(uri.lastIndexOf('/') + 1);
         this.filePath.resolveNativePath(uri)
         .then(filePath => {
-          this.base64Image = filePath;
+          this.fileNativePath = filePath;
           this.showToast("File is sucessfully selected", "toast-success");
         })
         .catch(err => {
@@ -62,7 +72,7 @@ export class BusinessDetailsPage {
 
   captureImage(){
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
-      this.base64Image = imageData;
+      this.fileNativePath = imageData;
       this.showToast('Image captured sucessfully', "toast-success");
       this.fileName = imageData.substr(imageData.lastIndexOf('/') + 1);
       //var fileExtension = filename.substr(filename.lastIndexOf('/') + 1);

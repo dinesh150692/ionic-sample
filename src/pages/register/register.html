@@ -6,55 +6,165 @@
 -->
 
 <ion-content padding>
-    <div margin-top text-center>
+   
+  <div margin-top text-center>
       <h4 class="phonepe">
         Create PhonePe Merchant Account
       </h4> 
     </div>
+   
+    <form [formGroup]="register">
+    
     <ion-item class="padding">
       <ion-label stacked>Name</ion-label>
-      <ion-input type="text" [(ngModel)]="merchant_name"></ion-input>
+      <ion-input type="text" formControlName="name"></ion-input>
       <ion-icon name="person" item-left></ion-icon>
     </ion-item>  
+    
+    <ion-item id="noLine" *ngIf="register.controls.name.touched && register.controls.name.errors">
+      <div class="error" *ngIf="register.controls.name.errors.required">
+        <small>
+          <strong>
+            <sup>*</sup>
+            <i>Enter Name</i>
+          </strong>
+        </small>
+      </div>
+      <div class="error" *ngIf="register.controls.name.errors.minlength">
+        <small>
+          <strong> 
+            <sup>*</sup>
+            <i>Name must contain atleast 3 characters</i>
+          </strong>
+        </small>
+      </div>  
+    </ion-item>
+
     <ion-item class="padding">
       <ion-label stacked>Business Name</ion-label>
-      <ion-input type="text"  [(ngModel)]="merchant_business"></ion-input>
+      <ion-input type="text"  formControlName="business_name"></ion-input>
       <ion-icon name="paper" item-left></ion-icon>
     </ion-item>  
+    
+    <ion-item id="noLine" *ngIf="register.controls.business_name.touched && register.controls.business_name.errors">
+      <div class="error" *ngIf="register.controls.business_name.errors.required">
+        <small>
+          <strong>
+            <sup>*</sup>
+            <i>Enter Business Name</i>
+          </strong>
+        </small>
+      </div>
+      <div class="error" *ngIf="register.controls.business_name.errors.minlength">
+        <small>
+          <strong> 
+            <sup>*</sup>
+            <i>Business Name must contain atleast 3 characters</i>
+          </strong>
+        </small>
+      </div>  
+    </ion-item>
+    
     <ion-item class="padding">
       <ion-label stacked>E-mail</ion-label>
-      <ion-input type="email" [(ngModel)]="merchant_email"></ion-input>
+      <ion-input type="email" formControlName="email"></ion-input>
       <ion-icon name="mail" item-left></ion-icon>
     </ion-item>
+    
+    <ion-item id="noLine" *ngIf="register.controls.email.touched && register.controls.email.errors">
+      <div class="error" *ngIf="register.controls.email.errors.required">
+        <small>
+          <strong> 
+            <sup>*</sup>
+            <i>Enter Email ID</i>
+          </strong>
+        </small>
+      </div>
+      <div class="error" *ngIf="register.controls.email.errors.invalidEmail">
+        <small>
+          <strong>
+            <sup>*</sup>
+            <i>Enter valid email</i>
+          </strong>
+        </small>
+      </div>  
+    </ion-item>
+    
+    <ion-item class="padding">
+      <ion-label stacked>Mobile</ion-label>
+      <ion-input type="tel" formControlName="mobile"></ion-input>
+      <ion-icon name="phone-portrait" item-left></ion-icon>
+    </ion-item>
+    
+    <ion-item id="noLine" *ngIf="register.controls.mobile.touched && register.controls.mobile.errors">
+      <div class="error" *ngIf="register.controls.mobile.errors.required">
+        <small>
+          <strong> 
+            <sup>*</sup>
+            <i>Enter Mobile Number</i>
+          </strong>
+        </small>
+      </div>
+      <div class="error" *ngIf="register.controls.mobile.errors.invalidMobile">
+        <small>
+          <strong>
+            <sup>*</sup>
+            <i>Please enter valid mobile number</i>
+          </strong>
+        </small>
+      </div>  
+    </ion-item>
+
     <ion-item id="align" class="padding">
       <ion-label stacked>Set PhonePe Password</ion-label>
-      <ion-input  *ngIf="!showPassword" type="password" [(ngModel)]="merchant_password"></ion-input>
-      <ion-input  *ngIf="showPassword" type="text" [(ngModel)]="merchant_password"></ion-input>
+      <ion-input  *ngIf="!showPassword" type="password" formControlName="password"></ion-input>
+      <ion-input  *ngIf="showPassword" type="text" formControlName="password"></ion-input>
       <ion-icon  name="lock" item-left></ion-icon>
       <button ion-button clear color="dark" type="button" item-right (click)="showPassword = !showPassword"> 
         <ion-icon *ngIf="!showPassword" name="eye"> </ion-icon> 
         <ion-icon *ngIf="showPassword" name="eye-off"> </ion-icon>
       </button>
     </ion-item>
+    
+    <ion-item id="noLine" *ngIf="register.controls.password.touched && register.controls.password.errors">
+      <div class="error" *ngIf="register.controls.password.errors.required">
+        <small>
+          <strong> 
+            <sup>*</sup>
+            <i>Enter Password</i>
+          </strong>
+        </small>
+      </div>
+      <div class="error" *ngIf="register.controls.password.errors.minlength">
+        <small>
+          <strong>
+            <sup>*</sup>
+            <i>Password must contain atleast 8 characters</i>
+          </strong>
+        </small>
+      </div>  
+    </ion-item>
+
     <div margin-top text-center>
       <label class="dark_grey" >By Clicking continue you are accepting to PhonePe's </label>
       <label tappable class="phonepe" (click)="openTermsAndCondition()">Terms & Conditions</label>
     </div> 
+   
     <ion-item id="noLine">
-      <button id="noStyle" ion-button full large color="phonepe" type="button" (click)="getFurtherDetails()">
+      <button id="noStyle" ion-button full large color="phonepe" [disabled]="register.invalid" type="button" (click)="getFurtherDetails()">
         Continue
       </button>
-    </ion-item> 
-    <div margin-top text-center>
-      <label>Already have an account?</label>
-      <label tappable class="phonepe" (click)="goToLogin()">Sign In</label>
-    </div>
-    <!-- <ion-item id="noLine">
-        <button ion-button full  clear (click)="goToRegister()">Register</button>
-    </ion-item> -->
-  </ion-content>
-  <!-- <ion-footer>
-    
-  </ion-footer> -->
+    </ion-item>  
+  
+  </form>
+  
+  <div margin-top text-center>
+    <label>Already have an account?</label>
+    <label tappable class="phonepe" (click)="goToLogin()">Sign In</label>
+  </div>
+  <!-- <ion-item id="noLine">
+      <button ion-button full  clear (click)="goToRegister()">Register</button>
+  </ion-item> -->
+</ion-content>
   
   

@@ -6,22 +6,99 @@
 -->
 
 <ion-content padding>
+  
   <p class="centerPadding">
     <ion-img [src]="logo" alt="PhonePe">
     </ion-img>
   </p>
+  
   <h4 class="center blue">
     Welcome back!
   </h4> 
+  
   <h6 class="center">
     Login into Merchant Console
   </h6>
-  <ion-item class="padding">
+
+  <form [formGroup]="signIn">
+  
+    <ion-item class="padding">
       <ion-label stacked>E-mail</ion-label>
-    <ion-input type="email"  [(ngModel)]="merchant_email"></ion-input>
-    <ion-icon name="mail" item-left></ion-icon>
+      <ion-input type="email"  formControlName="email"></ion-input>
+      <ion-icon name="mail" item-left></ion-icon>
+    </ion-item>
+    
+    <ion-item id="noLine" *ngIf="signIn.controls.email.touched && signIn.controls.email.errors">
+      <div class="error" *ngIf="signIn.controls.email.errors.required">
+        <small>
+          <strong> 
+            <sup>*</sup>
+            <i>Enter Email Id</i>
+          </strong>
+        </small>
+      </div>
+      <div class="error" *ngIf="signIn.controls.email.errors.invalidEmail">
+        <small>
+          <strong>
+            <sup>*</sup>
+            <i>Enter valid email</i>
+          </strong>
+        </small>
+      </div>  
+    </ion-item>
+      
+    <ion-item id="align" class="padding">
+      <ion-label stacked>Password</ion-label>
+      <ion-input  *ngIf="!showPassword" type="password" formControlName="password"></ion-input>
+      <ion-input  *ngIf="showPassword" type="text" formControlName="password"></ion-input>
+      <ion-icon  name="lock" item-left></ion-icon>
+      <button ion-button clear color="dark" type="button" item-right (click)="showPassword = !showPassword"> 
+        <ion-icon *ngIf="!showPassword" name="eye"> </ion-icon> 
+        <ion-icon *ngIf="showPassword" name="eye-off"> </ion-icon>
+      </button>
+    </ion-item>
+
+    <ion-item id="noLine" *ngIf="signIn.controls.password.touched && signIn.controls.password.errors">
+      <div class="error" *ngIf="signIn.controls.password.errors.required">
+        <small>
+          <strong>
+            <sup>*</sup>
+            <i>Enter Password</i>
+          </strong>
+        </small>
+      </div>
+      <div class="error" *ngIf="signIn.controls.password.errors.minlength">
+        <small>
+          <strong> 
+            <sup>*</sup>
+            <i>Password must contain alteast 8 characters</i>
+          </strong>
+        </small>
+      </div>  
+    </ion-item>
+    
+    <ion-item id="noLine">
+      <input ion-button full large color="phonepe" type="submit" value="Login" [disabled]="signIn.invalid" (click)="login()">
+    </ion-item>
+    
+  </form>
+
+  <ion-item>
+    <button id="noStyle" ion-button full clear color="phonepe" (click)="resetPassword()">Forgot Password ?</button>
   </ion-item>
-  <!-- <ion-item class="padding">
+  
+  <div margin-top text-center text-wrap>
+    Don't have PhonePe Merchant account?
+    <button id="noStyle" ion-button full clear color="phonepe" (click)="goToRegister()">Register</button>
+  </div>
+
+</ion-content>
+<!-- <ion-footer>
+  
+</ion-footer> -->
+
+
+ <!-- <ion-item class="padding">
     <ion-input type="number" placeholder="Mobile No." [(ngModel)]="mobile_no"></ion-input>
     <ion-icon name="phone-portrait" item-left></ion-icon>
   </ion-item> -->
@@ -34,30 +111,3 @@
       <ion-icon *ngIf="showOTP" name="eye-off"> </ion-icon>
     </button>
   </ion-item> -->
-  <ion-item id="align" class="padding">
-    <ion-label stacked>Password</ion-label>
-    <ion-input  *ngIf="!showPassword" type="password" [(ngModel)]="password"></ion-input>
-    <ion-input  *ngIf="showPassword" type="text" [(ngModel)]="password"></ion-input>
-    <ion-icon  name="lock" item-left></ion-icon>
-    <button ion-button clear color="dark" type="button" item-right (click)="showPassword = !showPassword"> 
-      <ion-icon *ngIf="!showPassword" name="eye"> </ion-icon> 
-      <ion-icon *ngIf="showPassword" name="eye-off"> </ion-icon>
-    </button>
-  </ion-item>
-  <ion-item id="noLine">
-    <button ion-button full large color="phonepe" type="button" (click)="login()">
-      Login 
-    </button>
-  </ion-item>
-  <ion-item>
-    <button id="noStyle" ion-button full clear color="phonepe" (click)="resetPassword()">Forgot Password ?</button>
-  </ion-item>
-  <div margin-top text-center text-wrap>
-    Don't have PhonePe Merchant account?
-    <button id="noStyle" ion-button full clear color="phonepe" (click)="goToRegister()">Register</button>
-  </div>
-</ion-content>
-<!-- <ion-footer>
-  
-</ion-footer> -->
-

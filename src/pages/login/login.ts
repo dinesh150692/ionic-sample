@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+
+import { CustomValidator } from '../../helpers/validator';
+
 import { MenuPage } from '../menu/menu';
 import { RegisterPage }  from '../register/register';
 /**
@@ -7,7 +12,6 @@ import { RegisterPage }  from '../register/register';
  *
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -15,25 +19,29 @@ import { RegisterPage }  from '../register/register';
 })
 
 export class LoginPage {
-  
   logo: any = 'assets/phonepe_icon.png';
-  password: string = '1234';
-  mobile_no: string = '9999999999';
-  merchant_email: string ='CCDAY';
   showPassword: boolean = false;
-  
+  signIn = new FormGroup({
+    email: new FormControl('sample@sample.com', Validators.compose([
+      Validators.required,
+      CustomValidator.isValidEmail
+    ])),
+    password: new FormControl('12345678', [Validators.required, Validators.minLength(8)]),
+  });
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public alertCtrl: AlertController,
     public toastCtrl: ToastController) {
   }
+
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
   login() {
+    console.log(this.signIn.value);
     this.navCtrl.setRoot(MenuPage);
   }
 
@@ -138,4 +146,5 @@ export class LoginPage {
     });
     toast.present();
   }
+
 }

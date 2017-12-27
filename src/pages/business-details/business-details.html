@@ -10,47 +10,100 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-item class="padding">
-    <ion-label stacked>Business Type</ion-label>
-    <ion-select [(ngModel)]="business_type">
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-    </ion-select>
-    <ion-icon name="build" item-left></ion-icon>
-  </ion-item>  
-  <ion-item class="padding">
-    <ion-label stacked>Category</ion-label>
-    <ion-select [(ngModel)]="business_category">
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-    </ion-select>
-    <ion-icon name="briefcase" item-left></ion-icon>
-  </ion-item>
-  <ion-item class="padding">
-    <ion-label stacked>Sub-Category</ion-label>
-    <ion-select [(ngModel)]="business_sub_category">
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-    </ion-select>
-    <ion-icon name="briefcase" item-left></ion-icon>
-  </ion-item> 
-  <ion-item class="padding">
-    <ion-label stacked>Documents</ion-label>
-    <ion-input type="text" [ngModel]="fileName"></ion-input>
-    <ion-icon *ngIf="!base64Image" name="document" item-left></ion-icon>
-    <ion-thumbnail *ngIf="base64Image" item-start>
-      <img [src]="base64Image" alt="No Image Available">
-    </ion-thumbnail>
-    <button ion-button clear color="dark" type="button" item-right (click)="captureImage()"> 
-      <ion-icon name="camera"></ion-icon> 
-    </button>
-    <button ion-button clear color="dark" hideWhen="ios" type="button" item-right (click)="selectFile()"> 
-      <ion-icon name="attach"></ion-icon> 
-    </button>
-  </ion-item> 
-  <ion-item id="noLine">
-    <button id="noStyle" ion-button full large color="phonepe" type="button" (click)="goToSuccess()">
-      Continue
-    </button>
-  </ion-item> 
+  <form [formGroup]="businessDetails">
+
+    <ion-item class="padding">
+      <ion-label stacked>Business Type</ion-label>
+      <ion-select formControlName="businessType">
+        <ion-option value="f">Female</ion-option>
+        <ion-option value="m">Male</ion-option>
+      </ion-select>
+      <ion-icon name="build" item-left></ion-icon>
+    </ion-item>  
+    
+    <ion-item id="noLine" *ngIf="businessDetails.controls.businessType.touched && businessDetails.controls.businessType.errors">
+      <div class="error" *ngIf="businessDetails.controls.businessType.errors.required">
+        <small>
+          <strong> 
+            <sup>*</sup>
+            <i>Select business type</i>
+          </strong>
+        </small>
+      </div> 
+    </ion-item>
+
+    <ion-item class="padding">
+      <ion-label stacked>Category</ion-label>
+      <ion-select formControlName="businessCategory">
+        <ion-option value="f">Female</ion-option>
+        <ion-option value="m">Male</ion-option>
+      </ion-select>
+      <ion-icon name="briefcase" item-left></ion-icon>
+    </ion-item>
+  
+    <ion-item id="noLine" *ngIf="businessDetails.controls.businessCategory.touched && businessDetails.controls.businessCategory.errors">
+      <div class="error" *ngIf="businessDetails.controls.businessCategory.errors.required">
+        <small>
+          <strong> 
+            <sup>*</sup>
+            <i>Select business category</i>
+          </strong>
+        </small>
+      </div> 
+    </ion-item>
+
+    <ion-item class="padding">
+      <ion-label stacked>Sub-Category</ion-label>
+      <ion-select formControlName="businessSubCategory">
+        <ion-option value="f">Female</ion-option>
+        <ion-option value="m">Male</ion-option>
+      </ion-select>
+      <ion-icon name="briefcase" item-left></ion-icon>
+    </ion-item> 
+    
+    <ion-item id="noLine" *ngIf="businessDetails.controls.businessSubCategory.touched && businessDetails.controls.businessSubCategory.errors">
+      <div class="error" *ngIf="businessDetails.controls.businessSubCategory.errors.required">
+        <small>
+          <strong> 
+            <sup>*</sup>
+            <i>Select business sub category</i>
+          </strong>
+        </small>
+      </div> 
+    </ion-item>
+
+    <ion-item class="padding">
+      <ion-label stacked>Documents</ion-label>
+      <ion-input type="text" formControlName="fileName"></ion-input>
+      <ion-icon *ngIf="!fileNativePath" name="document" item-left></ion-icon>
+      <ion-thumbnail *ngIf="fileNativePath" item-start>
+        <img [src]="fileNativePath" alt="No Image Available">
+      </ion-thumbnail>
+      <button ion-button clear color="dark" type="button" item-right (click)="captureImage()"> 
+        <ion-icon name="camera"></ion-icon> 
+      </button>
+      <button ion-button clear color="dark" hideWhen="ios" type="button" item-right (click)="selectFile()"> 
+        <ion-icon name="attach"></ion-icon> 
+      </button>
+    </ion-item> 
+    
+    <ion-item id="noLine" *ngIf="businessDetails.controls.fileName.touched && businessDetails.controls.fileName.errors">
+      <div class="error" *ngIf="businessDetails.controls.fileName.errors.required">
+        <small>
+          <strong> 
+            <sup>*</sup>
+            <i>Select/Capture a file</i>
+          </strong>
+        </small>
+      </div> 
+    </ion-item>
+
+    <ion-item id="noLine">
+      <button id="noStyle" ion-button full large color="phonepe" [disabled]="businessDetails.invalid" type="button" (click)="goToSuccess()">
+        Continue
+      </button>
+    </ion-item> 
+  
+  </form>
+
 </ion-content>
