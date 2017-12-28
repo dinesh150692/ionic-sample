@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef, ViewChild } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -18,8 +18,15 @@ import { BusinessDetailsPage } from '../business-details/business-details';
   selector: 'page-register',
   templateUrl: 'register.html',
 })
+
 export class RegisterPage {
   @ViewChild('textInput') textInput;
+  @HostListener('document:click', ['$event'])
+  handleClickEvent(event: MouseEvent): void {
+    if (this.textInput.nativeElement && document.activeElement !== this.textInput.nativeElement) {
+      this.textInput.nativeElement.focus();
+    }
+  }
   register = new FormGroup({
     name: new FormControl(null, [ Validators.required, Validators.minLength(3) ]),
     business_name: new FormControl(null, [ Validators.required, Validators.minLength(3) ]),
@@ -66,11 +73,5 @@ export class RegisterPage {
       });
     } // end if
   }
-
-  @HostListener('document:click', ['$event'])
-  handleClickEvent(event: MouseEvent): void {
-    if (document.activeElement !== this.textInput.nativeElement) {
-      this.textInput.nativeElement.focus();
-    }
-  }
+ 
 }
