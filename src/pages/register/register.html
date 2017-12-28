@@ -17,7 +17,7 @@
     
     <ion-item class="padding">
       <ion-label stacked>Name</ion-label>
-      <ion-input type="text" formControlName="name"></ion-input>
+      <ion-input tabJumper="1" type="text" formControlName="name"></ion-input>
       <ion-icon name="person" item-left></ion-icon>
     </ion-item>  
     
@@ -42,7 +42,7 @@
 
     <ion-item class="padding">
       <ion-label stacked>Business Name</ion-label>
-      <ion-input type="text"  formControlName="business_name"></ion-input>
+      <ion-input tabJumper="2" type="text"  formControlName="business_name"></ion-input>
       <ion-icon name="paper" item-left></ion-icon>
     </ion-item>  
     
@@ -67,7 +67,7 @@
     
     <ion-item class="padding">
       <ion-label stacked>E-mail</ion-label>
-      <ion-input type="email" formControlName="email"></ion-input>
+      <ion-input tabJumper="3" type="email" formControlName="email" [clearInput]=true></ion-input>
       <ion-icon name="mail" item-left></ion-icon>
     </ion-item>
     
@@ -92,7 +92,7 @@
     
     <ion-item class="padding">
       <ion-label stacked>Mobile</ion-label>
-      <ion-input type="tel" formControlName="mobile"></ion-input>
+      <ion-input tabJumper="4"  type="tel" formControlName="mobile"></ion-input>
       <ion-icon name="phone-portrait" item-left></ion-icon>
     </ion-item>
     
@@ -117,8 +117,8 @@
 
     <ion-item id="align" class="padding">
       <ion-label stacked>Set PhonePe Password</ion-label>
-      <ion-input  *ngIf="!showPassword" type="password" formControlName="password"></ion-input>
-      <ion-input  *ngIf="showPassword" type="text" formControlName="password"></ion-input>
+      <ion-input tabJumper="5" #textInput *ngIf="!showPassword" type="password" formControlName="password" autofocus></ion-input>
+      <ion-input tabJumper="5" #textInput *ngIf="showPassword" type="text" formControlName="password"></ion-input>
       <ion-icon  name="lock" item-left></ion-icon>
       <button ion-button clear color="dark" type="button" item-right (click)="showPassword = !showPassword"> 
         <ion-icon *ngIf="!showPassword" name="eye"> </ion-icon> 
@@ -151,7 +151,7 @@
     </div> 
    
     <ion-item id="noLine">
-      <button id="noStyle" ion-button full large color="phonepe" [disabled]="register.invalid" type="button" (click)="getFurtherDetails()">
+      <button tabJumper="6" id="noStyle" ion-button full large color="phonepe" [disabled]="register.invalid" type="button" (click)="getFurtherDetails()">
         Continue
       </button>
     </ion-item>  

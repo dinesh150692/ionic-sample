@@ -14,6 +14,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { Network } from '@ionic-native/network';
 
 import { PipesModule } from '../pipes/pipes.module';
+import { DirectivesModule } from '../directives/directives.module';
 
 import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
@@ -33,14 +34,15 @@ import { SuccessPage } from '../pages/success/success';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(MyApp,{
       scrollPadding: false,
       scrollAssist: true,
       autoFocusAssist: true
     }), 
     PipesModule,
-    FormsModule,
-    ReactiveFormsModule
+    DirectivesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

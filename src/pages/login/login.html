@@ -24,7 +24,7 @@
   
     <ion-item class="padding">
       <ion-label stacked>E-mail</ion-label>
-      <ion-input type="email"  formControlName="email"></ion-input>
+      <ion-input type="email"  tabJumper="1" formControlName="email"></ion-input>
       <ion-icon name="mail" item-left></ion-icon>
     </ion-item>
     
@@ -49,8 +49,8 @@
       
     <ion-item id="align" class="padding">
       <ion-label stacked>Password</ion-label>
-      <ion-input  *ngIf="!showPassword" type="password" formControlName="password"></ion-input>
-      <ion-input  *ngIf="showPassword" type="text" formControlName="password"></ion-input>
+      <ion-input tabJumper="2"  *ngIf="!showPassword" type="password" formControlName="password"></ion-input>
+      <ion-input  tabJumper="2" *ngIf="showPassword" type="text" formControlName="password"></ion-input>
       <ion-icon  name="lock" item-left></ion-icon>
       <button ion-button clear color="dark" type="button" item-right (click)="showPassword = !showPassword"> 
         <ion-icon *ngIf="!showPassword" name="eye"> </ion-icon> 
@@ -78,7 +78,7 @@
     </ion-item>
     
     <ion-item id="noLine">
-      <input ion-button full large color="phonepe" type="submit" value="Login" [disabled]="signIn.invalid" (click)="login()">
+      <input ion-button tabJumper="3" full large color="phonepe" type="submit" value="Login" [disabled]="signIn.invalid" (click)="login()">
     </ion-item>
     
   </form>
