@@ -1,7 +1,7 @@
-import { Component, HostListener, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 
 import { CustomValidator } from '../../helpers/validator';
 
@@ -20,24 +20,37 @@ import { BusinessDetailsPage } from '../business-details/business-details';
 })
 
 export class RegisterPage {
-  @ViewChild('textInput') textInput;
-  @HostListener('document:click', ['$event'])
-  handleClickEvent(event: MouseEvent): void {
-    if (this.textInput.nativeElement && document.activeElement !== this.textInput.nativeElement) {
-      this.textInput.nativeElement.focus();
-    }
-  }
+  @ViewChild(Content) content: Content
+  @ViewChild('inputToFocus') inputToFocus;
   register = new FormGroup({
-    name: new FormControl(null, [ Validators.required, Validators.minLength(3) ]),
-    business_name: new FormControl(null, [ Validators.required, Validators.minLength(3) ]),
-    email: new FormControl(null, [ Validators.required, CustomValidator.isValidEmail ]),
-    mobile: new FormControl(null, [ Validators.required, CustomValidator.isValidMobile ]),
-    password: new FormControl(null, [ Validators.required,Validators.minLength(8) ])
+    name: new FormControl(null, [ 
+      Validators.required, 
+      Validators.minLength(3) 
+    ]),
+    business_name: new FormControl(null, [ 
+      Validators.required, 
+      Validators.minLength(3)
+    ]),
+    email: new FormControl(null, [ 
+      Validators.required,
+      CustomValidator.isValidEmail
+    ]),
+    mobile: new FormControl(null, [ 
+      Validators.required, 
+      CustomValidator.isValidMobile 
+    ]),
+    password: new FormControl(null, [ 
+      Validators.required,
+      Validators.minLength(8) 
+    ])
   });
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
+    setTimeout(() => {
+      this.inputToFocus.setFocus();
+    },200);
     console.log('ionViewDidLoad RegisterPage');
   }
 
@@ -73,5 +86,13 @@ export class RegisterPage {
       });
     } // end if
   }
- 
+  
+  focusInput(inputRef) {
+    let itemTop = inputRef._elementRef.nativeElement.getBoundingClientRect().top;
+    let dimensions = this.content.getContentDimensions();
+    let itemPositionY = dimensions.scrollTop + itemTop - 80;
+    this.content.scrollTo(null, itemPositionY, 500, () => {
+      inputRef.setFocus();
+    });
+  }
 }

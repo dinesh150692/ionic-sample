@@ -11,13 +11,13 @@
       <h4 class="phonepe">
         Create PhonePe Merchant Account
       </h4> 
-    </div>
+  </div>
    
-    <form [formGroup]="register">
+  <form [formGroup]="register">
     
     <ion-item class="padding">
       <ion-label stacked>Name</ion-label>
-      <ion-input tabJumper="1" type="text" formControlName="name"></ion-input>
+      <ion-input #inputToFocus tabJumper="1" type="text" formControlName="name"></ion-input>
       <ion-icon name="person" item-left></ion-icon>
     </ion-item>  
     
@@ -117,8 +117,8 @@
 
     <ion-item id="align" class="padding">
       <ion-label stacked>Set PhonePe Password</ion-label>
-      <ion-input tabJumper="5" #textInput *ngIf="!showPassword" type="password" formControlName="password" autofocus></ion-input>
-      <ion-input tabJumper="5" #textInput *ngIf="showPassword" type="text" formControlName="password"></ion-input>
+      <ion-input tabJumper="5" #textInput (focus)="focusInput(textInput)" *ngIf="!showPassword" type="password" formControlName="password" autofocus></ion-input>
+      <ion-input tabJumper="5" *ngIf="showPassword" type="text" formControlName="password"></ion-input>
       <ion-icon  name="lock" item-left></ion-icon>
       <button ion-button clear color="dark" type="button" item-right (click)="showPassword = !showPassword"> 
         <ion-icon *ngIf="!showPassword" name="eye"> </ion-icon> 
