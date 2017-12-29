@@ -72,34 +72,8 @@
       </div> 
     </ion-item>
 
-    <ion-item class="padding">
-      <ion-label stacked>Documents</ion-label>
-      <ion-input type="text" formControlName="fileName"></ion-input>
-      <ion-icon *ngIf="!fileNativePath" name="document" item-left></ion-icon>
-      <ion-thumbnail *ngIf="fileNativePath" item-start>
-        <img [src]="fileNativePath" alt="No Image Available">
-      </ion-thumbnail>
-      <button ion-button clear color="dark" type="button" item-right (click)="captureImage()"> 
-        <ion-icon name="camera"></ion-icon> 
-      </button>
-      <button ion-button clear color="dark" hideWhen="ios" type="button" item-right (click)="selectFile()"> 
-        <ion-icon name="attach"></ion-icon> 
-      </button>
-    </ion-item> 
-    
-    <ion-item id="noLine" *ngIf="businessDetails.controls.fileName.touched && businessDetails.controls.fileName.errors">
-      <div class="error" *ngIf="businessDetails.controls.fileName.errors.required">
-        <small>
-          <strong> 
-            <sup>*</sup>
-            <i>Select/Capture a file</i>
-          </strong>
-        </small>
-      </div> 
-    </ion-item>
-
     <ion-item id="noLine">
-      <button id="noStyle" ion-button full large color="phonepe" [disabled]="businessDetails.invalid" type="button" (click)="goToSuccess()">
+      <button id="noStyle" ion-button full large color="phonepe" [disabled]="businessDetails.invalid" type="button" (click)="goToDocument()">
         Continue
       </button>
     </ion-item> 

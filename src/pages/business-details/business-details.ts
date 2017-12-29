@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { FileChooser } from '@ionic-native/file-chooser';
-import { Camera, CameraOptions } from '@ionic-native/camera';
-import { FilePath } from '@ionic-native/file-path';
 
-import { SuccessPage } from '../success/success';
+import { DocumentsPage } from '../documents/documents';
 
 /**
  * Generated class for the BusinessDetailsPage page.
@@ -22,77 +19,20 @@ import { SuccessPage } from '../success/success';
 })
 
 export class BusinessDetailsPage {
-  cameraOptions: CameraOptions;
-  fileNativePath: any;
-  fileName: any;
   businessDetails = new FormGroup({
-    businessType: new FormControl(null, Validators.required),
-    businessCategory: new FormControl(null, Validators.required),
-    businessSubCategory: new FormControl(null, Validators.required),
-    fileName: new FormControl(this.fileName, Validators.required),
-    filePath: new FormControl(this.fileNativePath, Validators.required)
+    businessType: new FormControl('m', Validators.required),
+    businessCategory: new FormControl('f', Validators.required),
+    businessSubCategory: new FormControl('m', Validators.required),
+    //fileName: new FormControl(null, Validators.required),
+    //filePath: new FormControl(this.fileNativePath, Validators.required)
   });
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public fileChooser: FileChooser, 
-    public toastCtrl:ToastController,
-    public camera: Camera,
-    public filePath: FilePath) {
-      this.cameraOptions = {
-        quality: 100,
-        destinationType: this.camera.DestinationType.NATIVE_URI,
-        encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE
-      }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BusinessDetailsPage');
   }
-
-  selectFile(){
-    this.fileChooser.open()
-      .then(uri => {
-        this.fileName = uri.substr(uri.lastIndexOf('/') + 1);
-        this.filePath.resolveNativePath(uri)
-        .then(filePath => {
-          this.fileNativePath = filePath;
-          this.showToast("File is sucessfully selected", "toast-success");
-        })
-        .catch(err => {
-          this.showToast("Error in file selection", "toast-failure");  
-        });
-      })
-    .catch(e => {
-      this.showToast("Error in file selection", "toast-failure");
-      console.log(e)
-    });
-  }
-
-  captureImage(){
-    this.camera.getPicture(this.cameraOptions).then((imageData) => {
-      this.fileNativePath = imageData;
-      this.showToast('Image captured sucessfully', "toast-success");
-      this.fileName = imageData.substr(imageData.lastIndexOf('/') + 1);
-      //var fileExtension = filename.substr(filename.lastIndexOf('/') + 1);
-    }, (err) => {
-      this.showToast("Error Capturing,Try Again", "toast-failure");
-    });
-  }
-
-  showToast(text, cssClass) {
-    let toast = this.toastCtrl.create({
-      message: text,
-      duration: 3000,
-      position: 'bottom',
-      showCloseButton: true,
-      closeButtonText: 'Ok',
-      cssClass: cssClass
-    });
-    toast.present();
-  }
-
  
   ionViewWillEnter() {
     console.log('Enter Register');
@@ -116,7 +56,7 @@ export class BusinessDetailsPage {
     } // end if
   }
 
-  goToSuccess(){
-    this.navCtrl.setRoot(SuccessPage);
+  goToDocument(){
+    this.navCtrl.setRoot(DocumentsPage);
   }
 }

@@ -12,7 +12,11 @@
     <ion-title class="font">Transactions</ion-title>
     <ion-title  hideWhen="ios" class="font">
       <span class="headersmall">Merchant Name</span>    
-      </ion-title>
+    </ion-title>
+    <ion-title  hideWhen="ios" class="font">
+      <span class="headersmall">Total Amount:</span>
+      <span class="headersmall">{{ total | currency:'₹ ' }}</span>    
+    </ion-title>
   </ion-navbar>
   <ion-toolbar color="phonepe" showWhen="ios">
     <span class="headersmall">Merchant Name</span>    
@@ -31,18 +35,18 @@
     <ion-card *ngFor="let item of transactionsList">
       <ion-row>
         <ion-col col-8>
-          <ion-row>
-            Received From
+          <ion-row class="text-bold">
+            {{item.amount | currency:'₹ '}}
           </ion-row>
           <ion-row class="text-left">
-            {{item.mobileNumber| mask }}
+            {{item.terminal}}
           </ion-row>
           <ion-row class="text-left small">
-            {{item.date| timesAgo }}
+            {{ item.date }}<!-- {{item.date| timesAgo  }} -->
           </ion-row>
         </ion-col>
         <ion-col col-4 class="text-right">
-            {{item.amount | currency:'₹ '}}
+          {{item.mobileNumber| mask }}
         </ion-col>
       </ion-row>
     </ion-card>

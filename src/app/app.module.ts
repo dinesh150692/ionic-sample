@@ -21,7 +21,7 @@ import { MenuPage } from '../pages/menu/menu';
 import { RegisterPage } from '../pages/register/register';
 import { BusinessDetailsPage } from '../pages/business-details/business-details';
 import { SuccessPage } from '../pages/success/success';
-
+import { DocumentsPage} from '../pages/documents/documents';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,7 @@ import { SuccessPage } from '../pages/success/success';
     RegisterPage,
     BusinessDetailsPage,
     SuccessPage,
+    DocumentsPage
   ],
   imports: [
     BrowserModule,
@@ -52,6 +53,7 @@ import { SuccessPage } from '../pages/success/success';
     RegisterPage,
     BusinessDetailsPage,
     SuccessPage,
+    DocumentsPage
   ],
   providers: [
     StatusBar,

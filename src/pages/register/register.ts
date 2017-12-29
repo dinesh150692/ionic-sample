@@ -23,23 +23,23 @@ export class RegisterPage {
   @ViewChild(Content) content: Content
   @ViewChild('inputToFocus') inputToFocus;
   register = new FormGroup({
-    name: new FormControl(null, [ 
+    name: new FormControl('Ram', [ 
       Validators.required, 
       Validators.minLength(3) 
     ]),
-    business_name: new FormControl(null, [ 
+    business_name: new FormControl('Shop', [ 
       Validators.required, 
       Validators.minLength(3)
     ]),
-    email: new FormControl(null, [ 
+    email: new FormControl('sample@sample.com', [ 
       Validators.required,
       CustomValidator.isValidEmail
     ]),
-    mobile: new FormControl(null, [ 
+    mobile: new FormControl('9876543210', [ 
       Validators.required, 
       CustomValidator.isValidMobile 
     ]),
-    password: new FormControl(null, [ 
+    password: new FormControl('123456789', [ 
       Validators.required,
       Validators.minLength(8) 
     ])
