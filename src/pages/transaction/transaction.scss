@@ -1,12 +1,15 @@
 page-transaction {
 
     .background{
-        background-color: beige;
+        background-color: rgba(104, 58, 183, 0.116);
     }
     
     .text {
-        padding-top: 2px;
-        font-size: 10px;
+        padding: 2px;
+        font-size: 11px;
+        color: #56309c;
+        padding-left: 5px;
+        padding-right: 10px;
     }
     
     .text-padding{
@@ -36,7 +39,7 @@ page-transaction {
     
     .small{
         font-size: 8px;
-        color: dimgray;
+        color: rgba(104, 58, 183, 0.99);
     }
     
     .text-bold{

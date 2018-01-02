@@ -43,20 +43,25 @@
   <div>
     <ion-card class="background" *ngFor="let item of transactionsList">
       <ion-row>
-        <ion-col col-8>
-          <ion-row class="text text-bold">
-            {{item.amount | currency:'₹ '}}
-          </ion-row>
-          <ion-row class="text text-left">
-            {{item.terminal}}
-          </ion-row>
-          <ion-row class="text text-left small">
-            {{ item.date }}<!-- {{item.date| timesAgo  }} -->
-          </ion-row>
+        <ion-col class="headersmall text text-bold" col-8>
+          {{ item.amount | currency:'₹ ' }}
         </ion-col>
-        <ion-col col-4 class="text text-right">
-          {{item.mobileNumber| mask }}
+        <ion-col class="text text-right text-right-float" col-4>
+          {{ item.mobileNumber| mask }}
         </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="text text-left" col-8>
+          {{ item.terminal }}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col  class="text text-left small" col-8>
+          {{ item.date }}
+        </ion-col>
+        <!-- <ion-col class="text text-right text-right-float" col-4>
+          {{ item.terminal }}
+        </ion-col> -->
       </ion-row>
     </ion-card>
   </div>
