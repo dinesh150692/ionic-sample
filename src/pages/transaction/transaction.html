@@ -10,25 +10,27 @@
       <ion-icon name="menu"></ion-icon>
     </button>     -->
     <ion-title hideWhen="ios" class="font">Merchant Name</ion-title>
-    <ion-title hideWhen="ios"  class="font">
-      <div class="headersmall">
-        <span class="text-padding text-left-float ">
-          Total Amount: {{ totalAmount | currency:'₹ ' }}
-        </span>
-        <span class="text-padding text-right-float">
-          Total Transactions: {{ transactionsList.length }}
-        </span>
-      </div>
-    </ion-title>
+    <ion-buttons color="snowwhite" right>
+      <button ion-button icon-only (click)="fetchFilter()">
+        <ion-icon name="funnel" ></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title showWhen="ios"  class="font">
       <div class="header headerlarge">Merchant Name</div>
     </ion-title>
   </ion-navbar>
-  <ion-toolbar color="phonepe" showWhen="ios">
-    <div class="header text text-ios text-bold">
-      <span class="text-left-float">Total Amount: {{ total | currency:'₹ ' }}</span>
-      <span class="text-right-float">Total Transactions: {{ transactionsList.length }}</span>
-    </div>    
+  <ion-toolbar color="phonepe" >
+    <ion-row color="phonepe"  class="header headerlarge text-ios text-bold">
+      <ion-col col-6 class="text-left">
+        <span>Total Amount: {{ totalAmount | currency:'₹ ' }}</span>
+      </ion-col>
+      <ion-col col-6 class="text-right">
+        <span>Total Transactions: {{ transactionsList.length }}</span>
+      </ion-col>
+      <ion-col col-12 class="headersmall">
+          <span>{{ date | date: 'dd/MMM/yyyy' }}</span>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 <ion-content no-padding>
@@ -67,3 +69,5 @@
   </div>
 </ion-content>
 
+
+  

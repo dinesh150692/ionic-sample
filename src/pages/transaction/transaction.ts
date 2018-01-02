@@ -1,5 +1,7 @@
 import { Component, } from '@angular/core';
 import { IonicPage, NavController , NavParams, LoadingController} from 'ionic-angular';
+import { Helper } from '../../helpers/helper';
+
 /**
  * Generated class for the TransactionPage page.
  *
@@ -17,8 +19,14 @@ export class TransactionPage {
   transactionsList: any = [];
   loadingPage: boolean = true;
   loader: any;
+  date: any;
   totalAmount: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public loadingCtrl: LoadingController,
+    public helper: Helper
+  ) {
     this.fetchLoader();
     this.transactionsList = [
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-12T23:30:52.123Z', 'terminal': 'q123444'},
@@ -29,6 +37,7 @@ export class TransactionPage {
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444'}
     ];
     this.totalAmount = 24400;
+    this.date = this.helper.getDateFormat();
     this.fetchTransactionsList();
   }
 

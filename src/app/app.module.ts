@@ -15,6 +15,7 @@ import { Network } from '@ionic-native/network';
 
 import { PipesModule } from '../pipes/pipes.module';
 import { DirectivesModule } from '../directives/directives.module';
+import { Helper } from '../helpers/helper';
 
 import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
@@ -62,6 +63,7 @@ import { DocumentsPage} from '../pages/documents/documents';
     Camera,
     FilePath,
     Network,
+    Helper,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

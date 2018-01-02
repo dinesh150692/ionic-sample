@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Chart } from 'chart.js';
+
+import { Helper } from '../../helpers/helper';
 //import { LoginPage } from '../login/login';
 /**
  * Generated class for the ReportsPage page.
@@ -34,9 +36,10 @@ export class ReportsPage {
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController) {
-      this.startDate = this.getDateFormat(this.dayCount);
-      this.endDate = this.getDateFormat(0);
+    public alertCtrl: AlertController,
+    public helper: Helper) {
+      this.startDate = this.helper.getDateFormat(this.dayCount);
+      this.endDate = this.helper.getDateFormat();
       this.lineChart = new ChartData();
       this.lineChart1 = new ChartData();
   }
@@ -187,30 +190,7 @@ export class ReportsPage {
     this.lineChart.labels = ['A', 'B', 'C', 'D', 'E'];
     this.lineChart.data = [10, 20, 30, 40, 10]; 
     this.fetchLoader();
-  }
-
-  getDateFormat(count){
-    var dateOffset = (24*60*60*1000) * count;
-    var date = new Date();
-    date.setTime(date.getTime() - dateOffset);
-    var dd = date.getDate();
-    var mm = date.getMonth()+1; 
-    var yyyy = date.getFullYear();
-    var dd1 = dd.toString();
-    var mm1 = mm.toString();
-    if(dd<10) 
-    { 
-      dd1 = '0' + dd.toString();
-    } 
-
-    if(mm<10) 
-    {
-      mm1 = '0' + mm.toString();;
-    } 
-    var newDate = yyyy + '-' + mm1 + '-' + dd1;
-    return newDate;
-  }
-  
+  }  
   
   // logout(){
   //   this.navCtrl.setRoot(LoginPage);
