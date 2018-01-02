@@ -181,8 +181,10 @@ export class ReportsPage {
   }
 
   getDateFormat(count){
+    var dateOffset = (24*60*60*1000) * count;
     var date = new Date();
-    var dd = date.getDate()-count;
+    date.setTime(date.getTime() - dateOffset);
+    var dd = date.getDate();
     var mm = date.getMonth()+1; 
     var yyyy = date.getFullYear();
     var dd1 = dd.toString();
