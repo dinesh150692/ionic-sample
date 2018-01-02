@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, LoadingController, AlertController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 
 import { Helper } from '../../helpers/helper';
@@ -33,11 +33,9 @@ export class ReportsPage {
   loader: any;
   
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController,
-    public helper: Helper) {
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private helper: Helper) {
       this.startDate = this.helper.getDateFormat(this.dayCount);
       this.endDate = this.helper.getDateFormat();
       this.lineChart = new ChartData();

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import { IonicPage, NavController, ToastController} from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { FileChooser } from '@ionic-native/file-chooser';
@@ -34,12 +34,13 @@ export class DocumentsPage {
     cheque: new FormControl(null, Validators.required),
     itr: new FormControl(null, Validators.required),
   });
-  constructor(public navCtrl: NavController,
-     public navParams: NavParams,
-     public fileChooser: FileChooser, 
-     public camera: Camera,
-     public filePath: FilePath,
-     public toastCtrl:ToastController) {
+  constructor(
+    private navCtrl: NavController,
+    private fileChooser: FileChooser, 
+    private camera: Camera,
+    private filePath: FilePath,
+    private toastCtrl:ToastController
+  ) {
       this.cameraOptions = {
         quality: 100,
         destinationType: this.camera.DestinationType.NATIVE_URI,

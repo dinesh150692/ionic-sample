@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { IonicPage, NavController, Content } from 'ionic-angular';
 
 import { CustomValidator } from '../../helpers/validator';
 
@@ -44,7 +44,7 @@ export class RegisterPage {
       Validators.minLength(8) 
     ])
   });
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController) {
   }
 
   ionViewDidLoad() {

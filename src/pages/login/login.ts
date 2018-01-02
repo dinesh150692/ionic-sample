@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, ToastController } from 'ionic-angular';
 
 import { CustomValidator } from '../../helpers/validator';
 
@@ -30,7 +30,6 @@ export class LoginPage {
   });
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams, 
     public alertCtrl: AlertController,
     public toastCtrl: ToastController) {
   }

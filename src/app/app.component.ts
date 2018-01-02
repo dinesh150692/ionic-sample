@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 
-import { App,Platform, MenuController, LoadingController, AlertController, NavControllerBase, ToastController} from 'ionic-angular';
+import { App,Platform, LoadingController, AlertController, NavControllerBase, ToastController} from 'ionic-angular';
 import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -20,24 +20,23 @@ export class MyApp {
   networkCount: any;
   toast: any;
   constructor(
-    public platform: Platform,
-    public menu: MenuController,
-    public statusBar: StatusBar,
-    public splashScreen: SplashScreen,
-    public loadingCtrl: LoadingController,
-    public zone: NgZone,
-    public alertCtrl: AlertController,
-    public network: Network,
-    public toastCtrl: ToastController,
-    public app: App)
+    private platform: Platform,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    private loadingCtrl: LoadingController,
+    private zone: NgZone,
+    private alertCtrl: AlertController,
+    private network: Network,
+    private toastCtrl: ToastController,
+    private app: App)
   { 
     this.networkCount = 0;
-    platform.ready().then(() => {
+    this.platform.ready().then(() => {
       //platform.resume.subscribe((e) => this.showPause(e));
       //platform.pause.subscribe((e) => this.showResume(e));
-      platform.registerBackButtonAction(() => this.handleHardwareBackButtonPress());
-      statusBar.styleDefault();
-      splashScreen.hide();
+      this.platform.registerBackButtonAction(() => this.handleHardwareBackButtonPress());
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
       this.zone.run(() =>  {
         this.disconnectSubscription = this.network.onDisconnect().subscribe(() => {
           this.showToast("Could not connect to internet", 5000, "toast-failure");

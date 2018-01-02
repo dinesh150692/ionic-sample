@@ -1,5 +1,5 @@
 import { Component, } from '@angular/core';
-import { IonicPage, NavController , NavParams, LoadingController} from 'ionic-angular';
+import { IonicPage, LoadingController, AlertController} from 'ionic-angular';
 import { Helper } from '../../helpers/helper';
 
 /**
@@ -22,10 +22,9 @@ export class TransactionPage {
   date: any;
   totalAmount: any;
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public loadingCtrl: LoadingController,
-    public helper: Helper
+    private loadingCtrl: LoadingController,
+    private helper: Helper,
+    private alertCtrl: AlertController
   ) {
     this.fetchLoader();
     this.transactionsList = [
@@ -77,5 +76,41 @@ export class TransactionPage {
       this.fetchTransactionsList();
       refresher.complete();
     }, 2000);
+  }
+
+  fetchFilter() {
+    
+    let alert = this.alertCtrl.create({
+      title: 'Report Filter',
+      message: "Select the start and end date for filtering",
+      inputs: [
+        {
+          name: 'Start Date',
+          placeholder: 'date',
+          type:"date",
+          value: this.date,
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Filter',
+          handler: data => {
+            if (data) {
+            this.fetchLoader();
+            setTimeout(() => {
+              this.fetchTransactionsList();
+            }, 2000);
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }

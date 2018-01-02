@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 /**
  * Generated class for the TabPage page.
  *
@@ -17,8 +17,8 @@ export class TabPage {
   tab2Root = 'ReportsPage';
   myIndex: number;
  
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.myIndex = navParams.data.tabIndex || 0;
+  constructor( private navParams: NavParams) {
+    this.myIndex = this.navParams.data.tabIndex || 0;
   }
 
   ionViewDidLoad() {

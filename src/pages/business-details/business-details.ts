@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { DocumentsPage } from '../documents/documents';
@@ -25,7 +25,7 @@ export class BusinessDetailsPage {
     //fileName: new FormControl(null, Validators.required),
     //filePath: new FormControl(this.fileNativePath, Validators.required)
   });
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController) {
     
   }
 
