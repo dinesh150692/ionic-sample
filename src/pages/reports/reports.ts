@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { Chain } from '@angular/compiler';
 //import { LoginPage } from '../login/login';
 /**
  * Generated class for the ReportsPage page.
@@ -8,7 +9,11 @@ import { Chart } from 'chart.js';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+class ChartData{
+  chart: Chart;
+  labels: any;
+  data: any;
+}
 @IonicPage()
 @Component({
   selector: 'page-reports',
@@ -19,10 +24,7 @@ export class ReportsPage {
   @ViewChild('lineCanvas1') lineCanvas1;
   lineChart: any;
   lineChart1: any;
-  labels: any;
-  data: any;
-  labels1: any;
-  data1: any;
+  
   loadingPage: boolean = true;
   endDate: any;
   dayCount: any = 10;
@@ -36,27 +38,29 @@ export class ReportsPage {
     public alertCtrl: AlertController) {
       this.startDate = this.getDateFormat(this.dayCount);
       this.endDate = this.getDateFormat(0);
+      this.lineChart = new ChartData();
+      this.lineChart1 = new ChartData();
   }
   
   ionViewDidLoad() { 
-    this.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
-    this.data = [65, 59, 80, 81, 56, 55, 40];
-    this.labels1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
-    this.data1 = [65, 59, 80, 81, 56, 55, 40];
+    this.lineChart.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
+    this.lineChart.data = [65, 59, 80, 81, 56, 55, 40];
+    this.lineChart1.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
+    this.lineChart1.data = [65, 59, 80, 81, 56, 55, 40];
     this.fetchLoader();
   }
   
   chartData(){
-    if(this.lineChart){
-      this.lineChart.destroy();
+    if(this.lineChart.chart){
+      this.lineChart.chart.destroy();
     }
-    if(this.lineChart1){
-      this.lineChart1.destroy(); 
+    if(this.lineChart1.chart){
+      this.lineChart1.chart.destroy(); 
     }
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+    this.lineChart.chart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
       data: {
-        labels: this.labels,
+        labels: this.lineChart.labels,
         datasets: [
           {
             label: "My First dataset",
@@ -77,16 +81,16 @@ export class ReportsPage {
             pointHoverBorderWidth: 2,
             pointRadius: 4,
             pointHitRadius: 10,
-            data: this.data,
+            data: this.lineChart.data,
             spanGaps: false,
           }
         ]
       }
     });
-    this.lineChart1 = new Chart(this.lineCanvas1.nativeElement, {
+    this.lineChart1.chart = new Chart(this.lineCanvas1.nativeElement, {
       type: 'line',
       data: {
-        labels: this.labels1,
+        labels: this.lineChart1.labels,
         datasets: [
           {
             label: "Stock B",
@@ -107,7 +111,7 @@ export class ReportsPage {
             pointHoverBorderWidth: 2,
             pointRadius: 4,
             pointHitRadius: 10,
-            data: this.data1,
+            data: this.lineChart1.data,
             spanGaps: false,
           }
         ]
@@ -175,8 +179,8 @@ export class ReportsPage {
   }
 
   fetchNewData(data: any){
-    this.labels = ['A', 'B', 'C', 'D', 'E'];
-    this.data = [10, 20, 30, 40, 10]; 
+    this.lineChart.labels = ['A', 'B', 'C', 'D', 'E'];
+    this.lineChart.data = [10, 20, 30, 40, 10]; 
     this.fetchLoader();
   }
 
