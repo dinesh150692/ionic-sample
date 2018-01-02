@@ -67,7 +67,7 @@ export class LoginPage {
     this.navCtrl.setRoot(RegisterPage);
   }
 
-  resetPassword(){
+  forgotPassword(){
     let alert = this.alertCtrl.create({
       title: 'Forgot Password',
       inputs: [
@@ -88,7 +88,7 @@ export class LoginPage {
           text: 'Confirm',
           handler: (data) => {
             alert.dismiss().then(() => {
-              this.fetchResetPassword(data);
+              this.resetPassword(data);
             });
             return false;
           }
@@ -98,7 +98,7 @@ export class LoginPage {
     alert.present();
   }
 
-  fetchResetPassword(data){
+  resetPassword(data){
     let alert = this.alertCtrl.create({
       title: 'Reset Password',
       message: "Verification code sent to: " + data.email,
@@ -106,7 +106,7 @@ export class LoginPage {
         {
           name: 'code',
           placeholder: 'Enter 5 digit verification code',
-          type:"text",
+          type:"number",
         },
         {
           name: 'password',
