@@ -45,14 +45,16 @@ a[disabled], button[disabled], [ion-button][disabled]{
 .label-ios{
     margin: 0px 0px 10px 0px;
 }
+
 .error{
     color: red;
     font-size: 11px;
 }
 
 .invalid {
-    border-bottom: 1px solid #ea6153;
+    border-bottom: 1px solid #f53d3d;
 }
+
 .loading-wrapper{
     background: transparent !important;
     padding: 0px !important;
@@ -219,7 +221,7 @@ a[disabled], button[disabled], [ion-button][disabled]{
 
 .toast-failure {
     > div{
-        background-color: red !important;
+        background-color: #f53d3d !important;
         color: white !important;;
     }
 }
