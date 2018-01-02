@@ -15,7 +15,9 @@ import { Network } from '@ionic-native/network';
 
 import { PipesModule } from '../pipes/pipes.module';
 import { DirectivesModule } from '../directives/directives.module';
+
 import { Helper } from '../helpers/helper';
+import { CustomValidator } from '../helpers/validator';
 
 import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
@@ -23,6 +25,7 @@ import { RegisterPage } from '../pages/register/register';
 import { BusinessDetailsPage } from '../pages/business-details/business-details';
 import { SuccessPage } from '../pages/success/success';
 import { DocumentsPage} from '../pages/documents/documents';
+
 
 @NgModule({
   declarations: [
@@ -64,6 +67,7 @@ import { DocumentsPage} from '../pages/documents/documents';
     FilePath,
     Network,
     Helper,
+    CustomValidator,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
