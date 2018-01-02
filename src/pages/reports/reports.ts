@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Chart } from 'chart.js';
-import { Chain } from '@angular/compiler';
 //import { LoginPage } from '../login/login';
 /**
  * Generated class for the ReportsPage page.
@@ -51,33 +50,35 @@ export class ReportsPage {
   }
   
   chartData(){
+   
     if(this.lineChart.chart){
       this.lineChart.chart.destroy();
     }
     if(this.lineChart1.chart){
       this.lineChart1.chart.destroy(); 
     }
+    
     this.lineChart.chart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
       data: {
         labels: this.lineChart.labels,
         datasets: [
           {
-            label: "My First dataset",
+            label: "No. of Transaction",
             fill: true,
             lineTension: 0.1,
-            backgroundColor: "rgba(75,192, 192,0.4)",
-            borderColor: "rgb(75,192,192)",
+            backgroundColor: "rgba(103, 58, 183, 0.4)",
+            borderColor: "rgb(103, 58, 183)",
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(75,192,192,1)",
+            pointBorderColor: "rgba(103,58,183,1)",//rgba(75,192,192,1)",
             pointBackgroundColor: "#fff",
             pointBorderWidth: 1,
             pointHoverRadius: 8,
-            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBackgroundColor: "rgba(103, 58, 183, 1)",
+            pointHoverBorderColor: "rgba(255,255,255,1)",
             pointHoverBorderWidth: 2,
             pointRadius: 4,
             pointHitRadius: 10,
@@ -87,13 +88,14 @@ export class ReportsPage {
         ]
       }
     });
+
     this.lineChart1.chart = new Chart(this.lineCanvas1.nativeElement, {
       type: 'line',
       data: {
         labels: this.lineChart1.labels,
         datasets: [
           {
-            label: "Stock B",
+            label: "Amount of Transaction",
             fill: true,
             //lineTension: 0.1,
             backgroundColor: "rgba(167,105,0,0.4)",
@@ -117,12 +119,15 @@ export class ReportsPage {
         ]
       }
     });
+    
     this.loader.dismiss();
+    
     this.loader.onDidDismiss(() => {
       setTimeout(()=> {
         this.loadingPage = false;
       },100); 
     });
+
   }
   
   fetchFilter() {
