@@ -9,17 +9,29 @@
     <!-- <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>     -->
-    <ion-title class="font">Transactions</ion-title>
-    <ion-title  hideWhen="ios" class="font">
-      <span class="headersmall">Merchant Name</span>    
+    <!-- <ion-title class="font">Transactions</ion-title> -->
+    <ion-title hideWhen="ios"  class="font">
+      <div class="header headerlarge">
+        Merchant Name
+      </div>
+      <div class="text">
+        <span class="text-padding text-left-float ">
+          Total Amount: {{ totalAmount | currency:'₹ ' }}
+        </span>
+        <span class="text-padding text-right-float">
+          Total Transactions: {{ transactionsList.length }}
+        </span>
+      </div>
     </ion-title>
-    <ion-title  hideWhen="ios" class="font">
-      <span class="headersmall">Total Amount:</span>
-      <span class="headersmall">{{ total | currency:'₹ ' }}</span>    
+    <ion-title showWhen="ios"  class="font">
+      <div class="header headerlarge">Merchant Name</div>
     </ion-title>
   </ion-navbar>
   <ion-toolbar color="phonepe" showWhen="ios">
-    <span class="headersmall">Merchant Name</span>    
+    <div class="header text text-ios text-bold">
+      <span class="text-left-float">Total Amount: {{ total | currency:'₹ ' }}</span>
+      <span class="text-right-float">Total Transactions: {{ transactionsList.length }}</span>
+    </div>    
   </ion-toolbar>
 </ion-header>
 <ion-content no-padding>
@@ -35,17 +47,17 @@
     <ion-card *ngFor="let item of transactionsList">
       <ion-row>
         <ion-col col-8>
-          <ion-row class="text-bold">
+          <ion-row class="text text-bold">
             {{item.amount | currency:'₹ '}}
           </ion-row>
-          <ion-row class="text-left">
+          <ion-row class="text text-left">
             {{item.terminal}}
           </ion-row>
-          <ion-row class="text-left small">
+          <ion-row class="text text-left small">
             {{ item.date }}<!-- {{item.date| timesAgo  }} -->
           </ion-row>
         </ion-col>
-        <ion-col col-4 class="text-right">
+        <ion-col col-4 class="text text-right">
           {{item.mobileNumber| mask }}
         </ion-col>
       </ion-row>

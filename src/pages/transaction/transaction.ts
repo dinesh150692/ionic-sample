@@ -17,7 +17,7 @@ export class TransactionPage {
   transactionsList: any = [];
   loadingPage: boolean = true;
   loader: any;
-  total: any;
+  totalAmount: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
     this.fetchLoader();
     this.transactionsList = [
@@ -28,7 +28,7 @@ export class TransactionPage {
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2014-09-13T23:30:52.123Z', 'terminal': 'q12343'},
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444'}
     ];
-    this.total = 24400;
+    this.totalAmount = 24400;
     this.fetchTransactionsList();
   }
 
@@ -65,7 +65,7 @@ export class TransactionPage {
         { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444'},
         { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444'},
       ];
-      this.total = 24600;
+      this.totalAmount = 24600;
       this.fetchTransactionsList();
       refresher.complete();
     }, 2000);
