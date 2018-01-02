@@ -34,7 +34,6 @@ export class TransactionPage {
 
   fetchLoader(){
     this.loadingPage = true;
-    console.log(this.loadingPage);
     this.loader = this.loadingCtrl.create({
       spinner: 'hide',
       content: `

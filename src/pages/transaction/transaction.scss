@@ -1,44 +1,48 @@
 page-transaction {
+
+    .background{
+        background-color: beige;
+    }
+    
     .text {
         padding-top: 2px;
         font-size: 10px;
     }
+    
     .text-padding{
         padding: 20px 0px 10px
     }
+    
     .text-ios{
         margin-left: 5px;
         margin-right: 5px;
     }
+    
     .text-left{
         text-align: left;
     }
+    
     .text-right{
         text-align: right;
     }
+    
     .text-left-float{
         float: left;
     }
+    
     .text-right-float{
         float:right;
     }
+    
     .small{
         font-size: 8px;
         color: dimgray;
     }
+    
     .text-bold{
         font-weight: bold;
     }
 
-    // ion-header .toolbar-ios-phonepe .toolbar-title-ios,
-    // ion-header .toolbar-md-phonepe .toolbar-title-md{
-    //     font-size:15px;
-    // }
-
-    // ion-header ion-toolbar .toolbar-ios-phonepe .toolbar-title-ios,
-    // ion-header ion-toolbar .toolbar-md-phonepe .toolbar-title-md{
-    //     font-size:12px;
-    // }
     .header{
         color:white;
         text-align: center;

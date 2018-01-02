@@ -9,12 +9,9 @@
     <!-- <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>     -->
-    <!-- <ion-title class="font">Transactions</ion-title> -->
+    <ion-title hideWhen="ios" class="font">Merchant Name</ion-title>
     <ion-title hideWhen="ios"  class="font">
-      <div class="header headerlarge">
-        Merchant Name
-      </div>
-      <div class="text">
+      <div class="headersmall">
         <span class="text-padding text-left-float ">
           Total Amount: {{ totalAmount | currency:'₹ ' }}
         </span>
@@ -44,7 +41,7 @@
     </ion-refresher-content>
   </ion-refresher>
   <div>
-    <ion-card *ngFor="let item of transactionsList">
+    <ion-card class="background" *ngFor="let item of transactionsList">
       <ion-row>
         <ion-col col-8>
           <ion-row class="text text-bold">

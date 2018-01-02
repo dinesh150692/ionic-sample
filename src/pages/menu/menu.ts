@@ -28,8 +28,8 @@ export class MenuPage {
   @ViewChild(Nav) nav: Nav;
   
   pages: PageInterface[] = [
-    { title: 'Transaction', pageName: 'TransactionPage', tabComponent: 'TransactionPage', index: 0, icon: 'swap' },
-    { title: 'Reports', pageName: 'TransactionPage', tabComponent: 'ReportPage', index: 1, icon: 'document' },
+    { title: 'Transaction', pageName: 'TabPage', tabComponent: 'TransactionPage', index: 0, icon: 'swap' },
+    { title: 'Reports', pageName: 'TabPage', tabComponent: 'ReportsPage', index: 1, icon: 'document' },
   ];
   constructor(public navCtrl: NavController) {
   }
@@ -45,7 +45,6 @@ export class MenuPage {
     // The active child nav is our Tabs Navigation
     if (this.nav.getActiveChildNav() && page.index != undefined) {
       this.nav.getActiveChildNav().select(page.index);
-      //this.nav.setRoot(page.pageName, params);
     } else {
       // Tabs are not active, so reset the root page 
       // In this case: moving to or from SpecialPage
@@ -58,15 +57,16 @@ export class MenuPage {
     let childNav = this.nav.getActiveChildNav();
  
     if (childNav) {
+      console.log(childNav.getSelected());
       if (childNav.getSelected() && childNav.getSelected().root === page.tabComponent) {
-        return 'primary';
+        return 'phonepe';
       }
-      return;
+      return ;
     }
  
     // Fallback needed when there is no active childnav (tabs not active)
     if (this.nav.getActive() && this.nav.getActive().name === page.pageName) {
-      return 'primary';
+      return 'phonepe';
     }
     return;
   }
