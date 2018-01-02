@@ -24,7 +24,6 @@ export class MenuPage {
   // Basic root for our content view
   rootPage = 'TabPage';
   // Reference to the app's root nav
-
   @ViewChild(Nav) nav: Nav;
   
   pages: PageInterface[] = [
@@ -43,8 +42,8 @@ export class MenuPage {
     }
  
     // The active child nav is our Tabs Navigation
-    if (this.nav.getActiveChildNav() && page.index != undefined) {
-      this.nav.getActiveChildNav().select(page.index);
+    if (this.nav.getActiveChildNavs()[0] && page.index != undefined) {
+      this.nav.getActiveChildNavs()[0].select(page.index);
     } else {
       // Tabs are not active, so reset the root page 
       // In this case: moving to or from SpecialPage
@@ -54,10 +53,9 @@ export class MenuPage {
  
   isActive(page: PageInterface) {
     // Again the Tabs Navigation
-    let childNav = this.nav.getActiveChildNav();
+    let childNav = this.nav.getActiveChildNavs()[0];
  
     if (childNav) {
-      console.log(childNav.getSelected());
       if (childNav.getSelected() && childNav.getSelected().root === page.tabComponent) {
         return 'phonepe';
       }

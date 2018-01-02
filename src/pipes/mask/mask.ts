@@ -10,7 +10,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class MaskPipe implements PipeTransform {
   /**
-   * Takes a value and makes it lowercase.
+   * Takes a value and makes it a masked value
    */
   transform(value: string) {
     var result = value.slice(0,2)+'xxxxxx'+value.slice(8,10);

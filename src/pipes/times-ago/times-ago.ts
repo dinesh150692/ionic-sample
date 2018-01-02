@@ -11,7 +11,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TimesAgoPipe implements PipeTransform {
   /**
-   * Takes a value and makes it lowercase.
+   * Takes a value and makes it to display in timeline.
    */
   transform(value: string, ...args) {
     var result;
