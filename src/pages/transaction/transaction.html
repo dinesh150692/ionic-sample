@@ -19,8 +19,8 @@
       <div class="header headerlarge">Merchant Name</div>
     </ion-title>
   </ion-navbar>
-  <ion-toolbar color="phonepe">
-    <ion-row color="phonepe"  class="header headermedium text-bold">
+  <ion-toolbar color="phonepe1">
+    <ion-row color="phonepe"  class="header medium text-bold">
       <ion-col col-6 >
         Total Amount <br>
         <span *ngIf="totalAmount">{{ totalAmount | currency:'INR':true:'1.0' }}</span>
@@ -37,14 +37,14 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [hidden]="loadingPage"no-padding>
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content
-        pullingIcon="arrow-dropdown"
-        pullingText="Pull to refresh"
-        refreshingSpinner="circles"
-        refreshingText="Refreshing...">
-      </ion-refresher-content>
-    </ion-refresher>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <div *ngIf="transactionsList.length > 0">
     <ion-card class="background" *ngFor="let item of transactionsList">
       <ion-row>
