@@ -15,6 +15,10 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.toolbar{
+    min-height: 10px;
+}
+
 a[disabled], button[disabled], [ion-button][disabled]{
     background-color: #a7a7ac;
     pointer-events: none;
@@ -207,6 +211,9 @@ a[disabled], button[disabled], [ion-button][disabled]{
     background-color: #fff;
     padding: 6px;
 }
+.alert-md .alert-input:focus{
+    border-bottom-color: #673ab7;
+}
 
 .alert-md .alert-message{
     padding-top: 5px;
@@ -225,4 +232,8 @@ a[disabled], button[disabled], [ion-button][disabled]{
         background-color: #f53d3d !important;
         color: white !important;;
     }
+}
+
+.text-bold{
+    font-weight: bold;
 }

@@ -1,11 +1,7 @@
 page-transaction {
     
-    .toolbar{
-        min-height: 10px;
-    }
-    
     .background{
-        //background-color: rgba(104, 58, 183, 0.066);
+        background-color: rgba(104, 58, 183, 0.0001);
         margin-bottom: 10px;
         padding: 6px 4px 6px 4px;
         border-radius: 10px;
@@ -14,7 +10,7 @@ page-transaction {
     .card-ios,
     .card-md,
     .card-wp {
-        box-shadow: rgba(104, 58, 183, 0.34) 0px 2px 2px 0px, rgba(104, 58, 183, 0.3) 0px 3px 1px -2px, rgba(104, 58, 183, 0.2) 0px 1px 5px 0px;
+        box-shadow: rgba(104, 58, 183, 0.24) 0px 2px 2px 0px, rgba(104, 58, 183, 0.2) 0px 3px 1px -2px, rgba(104, 58, 183, 0.12) 0px 1px 5px 0px;
     }
     
     .text {
@@ -59,10 +55,6 @@ page-transaction {
         color: rgba(104, 58, 183, 0.99);
     }
     
-    .text-bold{
-        font-weight: bold;
-    }
-
     .header{
         color:white;
         text-align: center;

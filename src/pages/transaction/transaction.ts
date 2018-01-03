@@ -90,8 +90,8 @@ export class TransactionPage {
   fetchFilter() {
     this.enableInfiniteScroll = true;
     let alert = this.alertCtrl.create({
-      title: 'Report Filter',
-      message: "Select the start and end date for filtering",
+      title: 'Transaction Filter',
+      message: "Select the date for filtering",
       inputs: [
         {
           name: 'date',
@@ -112,10 +112,10 @@ export class TransactionPage {
           handler: data => {
             if (data) {
               this.date = data.date;
-            this.fetchLoader();
-            setTimeout(() => {
-              this.fetchTransactionsList();
-            }, 2000);
+              this.fetchLoader();
+              setTimeout(() => {
+                this.fetchTransactionsList();
+              }, 2000);
             }
           }
         }
