@@ -37,15 +37,15 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [hidden]="loadingPage"no-padding>
-  <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="Pull to refresh"
-      refreshingSpinner="circles"
-      refreshingText="Refreshing...">
-    </ion-refresher-content>
-  </ion-refresher>
-  <div>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+  <div *ngIf="transactionsList.length > 0">
     <ion-card class="background" *ngFor="let item of transactionsList">
       <ion-row>
         <ion-col class="text medium text-bold" col-8>
@@ -69,12 +69,21 @@
         </ion-col> -->
       </ion-row>
     </ion-card>
-    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [enabled]="enableInfiniteScroll">
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
         loadingText="Loading more data...">
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
+  </div>
+  <div *ngIf="transactionsList.length == 0">
+    <ion-card class="background">
+      <ion-row>
+        <ion-col class="headerlarge text text-center text-bold" >
+          No Transactions Found
+        </ion-col>   
+      </ion-row>
+    </ion-card>
   </div>
 </ion-content>
 <ion-content [hidden]="!loadingPage"></ion-content>

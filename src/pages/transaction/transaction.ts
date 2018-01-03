@@ -20,6 +20,7 @@ export class TransactionPage {
   loadingPage: boolean = true;
   loader: any;
   date: any;
+  enableInfiniteScroll: boolean = true;
   totalAmount: any;
   constructor(
     private loadingCtrl: LoadingController,
@@ -66,6 +67,7 @@ export class TransactionPage {
   }
 
   doRefresh(refresher) {
+    this.enableInfiniteScroll = true;
     console.log('Begin async operation', refresher);
     setTimeout(() => {
       this.transactionsList = [
@@ -86,13 +88,13 @@ export class TransactionPage {
   }
 
   fetchFilter() {
-    
+    this.enableInfiniteScroll = true;
     let alert = this.alertCtrl.create({
       title: 'Report Filter',
       message: "Select the start and end date for filtering",
       inputs: [
         {
-          name: 'Start Date',
+          name: 'date',
           placeholder: 'date',
           type:"date",
           value: this.date,
@@ -109,6 +111,7 @@ export class TransactionPage {
           text: 'Filter',
           handler: data => {
             if (data) {
+              this.date = data.date;
             this.fetchLoader();
             setTimeout(() => {
               this.fetchTransactionsList();
@@ -139,7 +142,8 @@ export class TransactionPage {
         { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444'}
       ];
       this.totalAmount = 24200;
-      infiniteScroll.enable(false);
+      //infiniteScroll.enable(false);
+      this.enableInfiniteScroll = false;
       infiniteScroll.complete();
     }, 5000);
     
