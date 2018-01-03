@@ -39,11 +39,14 @@ export class MyApp {
       this.splashScreen.hide();
       this.zone.run(() =>  {
         this.disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+          this.networkCount += 1;
           this.showToast("Could not connect to internet", 5000, "toast-failure");
         });
         this.connectSubscription = this.network.onConnect().subscribe(() => {
-          this.networkCount += this.networkCount + 1;
-          this.toast.dismiss();
+          this.networkCount += 1;
+          if(this.toast){
+            this.toast.dismiss();
+          }
           if(this.networkCount > 1){
             this.showToast("Connected to a Network", 2000, "toast-success");
           }

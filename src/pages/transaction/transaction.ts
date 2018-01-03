@@ -26,6 +26,7 @@ export class TransactionPage {
     private helper: Helper,
     private alertCtrl: AlertController
   ) {
+    this.date = this.helper.getDateFormat();
     this.fetchLoader();
     this.transactionsList = [
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-12T23:30:52.123Z', 'terminal': 'q123444'},
@@ -36,12 +37,12 @@ export class TransactionPage {
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444'}
     ];
     this.totalAmount = 24400;
-    this.date = this.helper.getDateFormat();
     this.fetchTransactionsList();
   }
 
   fetchLoader(){
     this.loadingPage = true;
+    console.log(this.loadingPage);
     this.loader = this.loadingCtrl.create({
       spinner: 'hide',
       content: `
@@ -56,6 +57,8 @@ export class TransactionPage {
   
   fetchTransactionsList() {
     this.loader.dismiss();
+    this.loadingPage = false;
+    console.log(this.loadingPage);
   }
 
   doRefresh(refresher) {
