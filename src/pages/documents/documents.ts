@@ -82,7 +82,7 @@ export class DocumentsPage {
         this.filePath.resolveNativePath(uri)
         .then(filePath => {
           let fileNativePath = filePath;
-          this.showToast("File is sucessfully selected", "toast-documents");
+          this.showToast("File is sucessfully selected", "toast-success");
           this.assignfileValue(fileNativePath, file, chooser);
         })
         .catch(err => {
@@ -99,7 +99,7 @@ export class DocumentsPage {
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
       let fileNativePath = imageData;
       let file = imageData.substr(imageData.lastIndexOf('/') + 1);
-      this.showToast('Image captured sucessfully', "toast-documents");
+      this.showToast('Image captured sucessfully', "toast-success");
       this.assignfileValue(fileNativePath, file, chooser);
       //var fileExtension = filename.substr(filename.lastIndexOf('/') + 1);
     }, (err) => {

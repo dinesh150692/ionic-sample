@@ -23,9 +23,10 @@ class ChartData{
 export class ReportsPage {
   @ViewChild('lineCanvas') lineCanvas;
   @ViewChild('lineCanvas1') lineCanvas1;
+  @ViewChild('doughnutCanvas') doughnutCanvas;
   lineChart: any;
   lineChart1: any;
-  
+  doughnutChart: any;
   loadingPage: boolean = true;
   endDate: any;
   dayCount: any = 10;
@@ -61,6 +62,16 @@ export class ReportsPage {
     
     this.lineChart.chart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
+      options: {
+        responsive: true,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+            }
+          }]
+       }
+      },
       data: {
         labels: this.lineChart.labels,
         datasets: [
@@ -85,7 +96,7 @@ export class ReportsPage {
             pointHitRadius: 10,
             data: this.lineChart.data,
             spanGaps: false,
-          }
+          },
         ]
       }
     });
@@ -96,7 +107,7 @@ export class ReportsPage {
         labels: this.lineChart1.labels,
         datasets: [
           {
-            label: "Amount of Transaction",
+            label: "Amount",
             fill: true,
             //lineTension: 0.1,
             backgroundColor: "rgba(167,105,0,0.4)",
@@ -120,7 +131,29 @@ export class ReportsPage {
         ]
       }
     });
-    
+    var dynamicColors = function(i) {
+      var r = Math.floor(Math.random() * 255);
+      var g = Math.floor(Math.random() * 255);
+      var b = Math.floor(Math.random() * 255);
+      return "rgb(" + r + "," + g + "," + b + ")";
+    };
+    var color = [];
+    for (var i in this.lineChart.data) {
+      color.push(dynamicColors(i));
+    }
+    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+ 
+      type: 'doughnut',
+      data: {
+          labels: this.lineChart.labels,
+          datasets: [{
+              label: 'Amount',
+              data: this.lineChart.data,
+              backgroundColor: color,
+          }]
+      }
+
+    });
     this.loader.dismiss();
     
     this.loader.onDidDismiss(() => {
