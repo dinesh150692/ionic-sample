@@ -45,7 +45,8 @@ export class DocumentsPage {
         quality: 100,
         destinationType: this.camera.DestinationType.NATIVE_URI,
         encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE
+        mediaType: this.camera.MediaType.PICTURE,
+        saveToPhotoAlbum: true
       }
   }
 
