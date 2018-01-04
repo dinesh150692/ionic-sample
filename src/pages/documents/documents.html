@@ -16,8 +16,40 @@
 <ion-content padding>
  
   <form [formGroup]="documentsDetails">
+
+    <ion-card>
+      <ion-card-content>
+          <ion-item>
+            <ion-avatar *ngIf="panNativePath" item-start>
+              <img [src]="panNativePath" alt="N/A">
+            </ion-avatar>
+            <ion-label stacked>PAN</ion-label>
+            <ion-input type="text" formControlName="pan" placeholder="Select/Capture" [(ngModel)]="panfile"></ion-input>
+            <ion-icon *ngIf="!panNativePath" name="document" item-left></ion-icon>
+            <!-- <ion-thumbnail *ngIf="panNativePath" item-start>
+              <img [src]="panNativePath" alt="No Image Available">
+            </ion-thumbnail> -->
+            <button ion-button clear color="dark" type="button" item-right (click)="captureImage('PAN')"> 
+              <ion-icon name="camera"></ion-icon> 
+            </button>
+            <button ion-button clear color="dark" hideWhen="ios" type="button" item-right (click)="selectFile('PAN')"> 
+              <ion-icon name="attach"></ion-icon> 
+            </button>  
+          </ion-item>
+          <ion-item id="noLine" *ngIf="documentsDetails.controls.pan.touched && documentsDetails.controls.pan.errors">
+              <div class="error" *ngIf="documentsDetails.controls.pan.errors.required">
+                <small>
+                  <strong> 
+                    <sup>*</sup>
+                    <i>Capture/Select a file</i>
+                  </strong>
+                </small>
+              </div> 
+          </ion-item>
+      </ion-card-content>
+    </ion-card>
     
-    <ion-item class="padding">
+    <!-- <ion-item class="padding">
       <ion-label stacked>PAN</ion-label>
       <ion-input type="text" formControlName="pan" [(ngModel)]="panfile"></ion-input>
       <ion-icon *ngIf="!panNativePath" name="document" item-left></ion-icon>
@@ -30,18 +62,18 @@
       <button ion-button clear color="dark" hideWhen="ios" type="button" item-right (click)="selectFile('PAN')"> 
         <ion-icon name="attach"></ion-icon> 
       </button>
-    </ion-item> 
+    </ion-item>  -->
     
-    <ion-item id="noLine" *ngIf="documentsDetails.controls.pan.touched && documentsDetails.controls.pan.errors">
+    <!-- <ion-item id="noLine" *ngIf="documentsDetails.controls.pan.touched && documentsDetails.controls.pan.errors">
       <div class="error" *ngIf="documentsDetails.controls.pan.errors.required">
         <small>
           <strong> 
             <sup>*</sup>
-            <i>Select/Capture a file</i>
+            <i>Capture/Select a file</i>
           </strong>
         </small>
       </div> 
-    </ion-item>
+    </ion-item> -->
 
     <ion-item class="padding">
       <ion-label stacked>Old Cheque</ion-label>
@@ -63,7 +95,7 @@
         <small>
           <strong> 
             <sup>*</sup>
-            <i>Select/Capture a file</i>
+            <i>Capture/Select a file</i>
           </strong>
         </small>
       </div> 
@@ -89,7 +121,7 @@
         <small>
           <strong> 
             <sup>*</sup>
-            <i>Select/Capture a file</i>
+            <i>Capture/Select a file</i>
           </strong>
         </small>
       </div> 
