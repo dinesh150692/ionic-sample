@@ -37,7 +37,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [hidden]="loadingPage" no-padding>
-  <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher (ionRefresh)="doRefresh($event)" [enabled]="enableRefresher">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
       pullingText="Pull to refresh"

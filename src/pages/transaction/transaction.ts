@@ -21,6 +21,7 @@ export class TransactionPage {
   loader: any;
   date: any;
   enableInfiniteScroll: boolean = true;
+  enableRefresher: boolean = true;
   totalAmount: any;
   constructor(
     private loadingCtrl: LoadingController,
@@ -112,6 +113,7 @@ export class TransactionPage {
           handler: data => {
             if (data) {
               this.date = data.date;
+              this.checkCurrentDate(this.date);
               this.fetchLoader();
               setTimeout(() => {
                 this.fetchTransactionsList();
@@ -147,5 +149,16 @@ export class TransactionPage {
       infiniteScroll.complete();
     }, 5000);
     
+  }
+
+  checkCurrentDate(date){
+    date = new Date(date);
+    var now = new Date();
+    if(date.getDate() == now.getDate() && date.getMonth() == now.getMonth() && date.getFullYear() == now.getFullYear()){
+      this.enableRefresher = true;
+    }
+    else {
+      this.enableRefresher = false;
+    }
   }
 }
