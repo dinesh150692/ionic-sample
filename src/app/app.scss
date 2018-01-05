@@ -18,7 +18,9 @@
 .toolbar{
     min-height: 10px;
 }
-
+.item-inner{
+    margin-top: 10px;
+}
 a[disabled], button[disabled], [ion-button][disabled]{
     background-color: #a7a7ac;
     pointer-events: none;
@@ -211,6 +213,7 @@ a[disabled], button[disabled], [ion-button][disabled]{
     background-color: #fff;
     padding: 6px;
 }
+
 .alert-md .alert-input:focus{
     border-bottom-color: #673ab7;
 }

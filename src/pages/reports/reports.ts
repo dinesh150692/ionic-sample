@@ -202,7 +202,11 @@ export class ReportsPage {
         }
       ]
     });
-    alert.present();
+    alert.present().then(() => {
+      const firstInput: any = document.querySelector('ion-alert input');
+      firstInput.focus();
+      return;
+    });
   }
   
   fetchLoader(){
