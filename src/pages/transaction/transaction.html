@@ -36,7 +36,7 @@
     </ion-row>
   </ion-toolbar>
 </ion-header>
-<ion-content [hidden]="loadingPage"no-padding>
+<ion-content [hidden]="loadingPage" no-padding>
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
@@ -51,17 +51,17 @@
         <ion-col class="text medium text-bold" col-8>
           {{ item.amount | currency:'INR':true:'1.0'}}
         </ion-col>
-        <ion-col class="text text-right text-right-float" col-4>
+        <ion-col class="text" text-right float-right col-4>
           {{ item.mobileNumber| mask }}
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="text text-left" col-8>
+        <ion-col class="text" text-left col-8>
           {{ item.terminal }}
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col  class="text text-left small" col-8>
+        <ion-col  class="text small" text-left col-8>
           {{ item.date }}
         </ion-col>
         <!-- <ion-col class="text text-right text-right-float" col-4>
@@ -79,7 +79,7 @@
   <div *ngIf="transactionsList.length == 0">
     <ion-card class="background">
       <ion-row>
-        <ion-col class="headerlarge text text-center text-bold" >
+        <ion-col class="headerlarge text text-bold" text-center >
           No Transactions Found
         </ion-col>   
       </ion-row>
