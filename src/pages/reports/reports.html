@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="phonepe">
+  <ion-navbar color="phonepe" no-border-bottom>
     <!-- <ion-buttons olor="snowwhite" left>
       <button ion-button icon-only (click)="logout()">
         <ion-icon name="log-out"></ion-icon>
@@ -18,31 +18,37 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+  
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="segmentSelection" (ionChange)="fetchLoader()">
+      <ion-segment-button value="Amount">
+        Amount
+      </ion-segment-button>
+      <ion-segment-button value="Transactions">
+        Transactions
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
 </ion-header>
 <ion-content [hidden]="loadingPage" no-padding>
-  <ion-card>
-    <ion-card-header text-center>
-      Transactions
-    </ion-card-header>
-    <ion-card-content>
-      <canvas #lineCanvas></canvas>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-card-header text-center>
-      Transaction Amount
-    </ion-card-header>
-    <ion-card-content>
-      <canvas #lineCanvas1></canvas>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-      <ion-card-header text-center>
-        Transaction Amount
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #doughnutCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
+    <div [ngSwitch]="segmentSelection">
+      <div *ngSwitchCase="'Amount'">
+        <ion-card>
+          <ion-card-content>
+            <canvas #barCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div *ngSwitchCase="'Transactions'">
+        <ion-card>
+          <ion-card-content>
+            <canvas #barCanvas1></canvas>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
 </ion-content>
 <ion-content [hidden]="!loadingPage"></ion-content>
+
+

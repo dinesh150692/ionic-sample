@@ -1,5 +1,5 @@
 import { Component, } from '@angular/core';
-import { IonicPage, LoadingController, AlertController} from 'ionic-angular';
+import { IonicPage, LoadingController } from 'ionic-angular';
 import { Helper } from '../../helpers/helper';
 
 /**
@@ -25,8 +25,7 @@ export class TransactionPage {
   totalAmount: any;
   constructor(
     private loadingCtrl: LoadingController,
-    private helper: Helper,
-    private alertCtrl: AlertController
+    private helper: Helper
   ) {
     this.date = this.helper.getDateFormat();
     this.fetchLoader();

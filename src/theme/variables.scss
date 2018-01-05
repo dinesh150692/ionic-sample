@@ -43,6 +43,7 @@ $colors: (
   snowwhite:  #ffffff,
   dark_grey:  grey,
   light_grey: lightgrey,
+  white:  white,
 );
 
 
@@ -100,3 +101,8 @@ $tabs-ios-tab-icon-size: 20px;
 $tabs-md-tab-icon-size: 20px;
 $tabs-ios-tab-font-size: 10px;
 $tabs-md-tab-font-size: 10px;
+
+$segment-button-ios-background-color-activated: color($colors, phonepe);
+$segment-button-md-border-color-activated: color($colors, phonepe);
+$segment-button-md-border-bottom-color: color($colors, light_grey);
+$segment-button-md-text-color-activated: color($colors, phonepe);
