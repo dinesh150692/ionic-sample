@@ -17,18 +17,15 @@
  
   <form [formGroup]="documentsDetails">
 
-    <ion-card>
+    <!-- <ion-card>
       <ion-card-content>
-          <ion-item>
+          <ion-item class="borderBottom">
             <ion-avatar *ngIf="panNativePath" item-start>
               <img [src]="panNativePath" alt="N/A">
             </ion-avatar>
             <ion-label stacked>PAN</ion-label>
             <ion-input type="text" formControlName="pan" placeholder="Select/Capture" [(ngModel)]="panfile"></ion-input>
             <ion-icon *ngIf="!panNativePath" name="document" item-left></ion-icon>
-            <!-- <ion-thumbnail *ngIf="panNativePath" item-start>
-              <img [src]="panNativePath" alt="No Image Available">
-            </ion-thumbnail> -->
             <button ion-button clear color="dark" type="button" item-right (click)="captureImage('PAN')"> 
               <ion-icon name="camera"></ion-icon> 
             </button>
@@ -47,24 +44,27 @@
               </div> 
           </ion-item>
       </ion-card-content>
-    </ion-card>
+    </ion-card> -->
     
-    <!-- <ion-item class="padding">
+    <ion-item class="padding">
       <ion-label stacked>PAN</ion-label>
       <ion-input type="text" formControlName="pan" [(ngModel)]="panfile"></ion-input>
       <ion-icon *ngIf="!panNativePath" name="document" item-left></ion-icon>
-      <ion-thumbnail *ngIf="panNativePath" item-start>
+      <!-- <ion-thumbnail *ngIf="panNativePath" item-start>
         <img [src]="panNativePath" alt="No Image Available">
-      </ion-thumbnail>
+      </ion-thumbnail> -->
+      <ion-avatar *ngIf="panNativePath" item-start>
+        <img [src]="panNativePath" alt="N/A">
+      </ion-avatar>
       <button ion-button clear color="dark" type="button" item-right (click)="captureImage('PAN')"> 
         <ion-icon name="camera"></ion-icon> 
       </button>
       <button ion-button clear color="dark" hideWhen="ios" type="button" item-right (click)="selectFile('PAN')"> 
         <ion-icon name="attach"></ion-icon> 
       </button>
-    </ion-item>  -->
+    </ion-item> 
     
-    <!-- <ion-item id="noLine" *ngIf="documentsDetails.controls.pan.touched && documentsDetails.controls.pan.errors">
+    <ion-item id="noLine" *ngIf="documentsDetails.controls.pan.touched && documentsDetails.controls.pan.errors">
       <div class="error" *ngIf="documentsDetails.controls.pan.errors.required">
         <small>
           <strong> 
@@ -73,15 +73,15 @@
           </strong>
         </small>
       </div> 
-    </ion-item> -->
+    </ion-item>
 
     <ion-item class="padding">
       <ion-label stacked>Old Cheque</ion-label>
       <ion-input type="text" formControlName="cheque" [(ngModel)]="chequefile"></ion-input>
       <ion-icon *ngIf="!chequeNativePath" name="document" item-left></ion-icon>
-      <ion-thumbnail *ngIf="chequeNativePath" item-start>
-        <img [src]="chequeNativePath" alt="No Image Available">
-      </ion-thumbnail>
+      <ion-avatar *ngIf="chequeNativePath" item-start>
+        <img [src]="chequeNativePath" alt="N/A">
+      </ion-avatar>
       <button ion-button clear color="dark" type="button" item-right (click)="captureImage('CHEQUE')"> 
         <ion-icon name="camera"></ion-icon> 
       </button>
@@ -105,9 +105,9 @@
       <ion-label stacked>ITR Statements</ion-label>
       <ion-input type="text" formControlName="itr" [(ngModel)]="itrfile"></ion-input>
       <ion-icon *ngIf="!itrNativePath" name="document" item-left></ion-icon>
-      <ion-thumbnail *ngIf="itrNativePath" item-start>
-        <img [src]="itrNativePath" alt="No Image Available">
-      </ion-thumbnail>
+      <ion-avatar *ngIf="itrNativePath" item-start>
+        <img [src]="itrNativePath" alt="N/A">
+      </ion-avatar>
       <button ion-button clear color="dark" type="button" item-right (click)="captureImage('ITR')"> 
         <ion-icon name="camera"></ion-icon> 
       </button>
