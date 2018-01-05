@@ -106,6 +106,8 @@ export class LoginPage {
           name: 'code',
           placeholder: 'Enter 5 digit verification code',
           type:"number",
+          max:99999,
+          min:10000,
         },
         {
           name: 'password',
@@ -146,4 +148,7 @@ export class LoginPage {
     toast.present();
   }
 
+  checkValidCode(){
+
+  }
 }

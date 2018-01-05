@@ -175,12 +175,14 @@ export class ReportsPage {
           placeholder: 'date',
           type:"date",
           value: this.startDate,
+          max: this.helper.getDateFormat(1),
         },
         {
           name: 'End Date',
           placeholder: 'date',
           type:"date",
           value: this.endDate,
+          max: this.endDate
         },
       ],
       buttons: [

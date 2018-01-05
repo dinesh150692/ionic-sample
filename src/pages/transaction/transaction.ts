@@ -98,6 +98,7 @@ export class TransactionPage {
           name: 'date',
           placeholder: 'date',
           type:"date",
+          max: this.date,
           value: this.date,
         },
       ],
