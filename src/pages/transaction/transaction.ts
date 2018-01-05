@@ -88,49 +88,6 @@ export class TransactionPage {
     }, 2000);
   }
 
-  fetchFilter() {
-    this.enableInfiniteScroll = true;
-    let alert = this.alertCtrl.create({
-      title: 'Transaction Filter',
-      message: "Select the date for filtering",
-      inputs: [
-        {
-          name: 'date',
-          placeholder: 'date',
-          type:"date",
-          max: this.date,
-          value: this.date,
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Filter',
-          handler: data => {
-            if (data) {
-              this.date = data.date;
-              this.checkCurrentDate(this.date);
-              this.fetchLoader();
-              setTimeout(() => {
-                this.fetchTransactionsList();
-              }, 2000);
-            }
-          }
-        }
-      ]
-    });
-    alert.present().then(() => {
-      const firstInput: any = document.querySelector('ion-alert input');
-      firstInput.focus();
-      return;
-    });
-  }
-
   doInfinite(infiniteScroll) {
     setTimeout(() => {
       this.transactionsList = [
@@ -156,14 +113,4 @@ export class TransactionPage {
     
   }
 
-  checkCurrentDate(date){
-    date = new Date(date);
-    var now = new Date();
-    if(date.getDate() == now.getDate() && date.getMonth() == now.getMonth() && date.getFullYear() == now.getFullYear()){
-      this.enableRefresher = true;
-    }
-    else {
-      this.enableRefresher = false;
-    }
-  }
 }
