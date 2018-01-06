@@ -18,7 +18,6 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  
   <ion-toolbar>
     <ion-segment [(ngModel)]="segmentSelection" (ionChange)="fetchLoader()">
       <ion-segment-button value="Amount">
@@ -29,8 +28,8 @@
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
-
 </ion-header>
+
 <ion-content [hidden]="loadingPage" no-padding>
     <div [ngSwitch]="segmentSelection">
       <div *ngSwitchCase="'Amount'">
@@ -39,6 +38,13 @@
             <canvas #barCanvas></canvas>
           </ion-card-content>
         </ion-card>
+        <report-card [lists]="amount.stores"></report-card>
+        <ion-infinite-scroll (ionInfinite)="" [enabled]="enableInfiniteScroll">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
       </div>
       <div *ngSwitchCase="'Transactions'">
         <ion-card>
@@ -46,6 +52,7 @@
             <canvas #barCanvas1></canvas>
           </ion-card-content>
         </ion-card>
+        <report-card [lists]="transaction.stores"></report-card>
       </div>
     </div>
 </ion-content>

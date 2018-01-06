@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler , CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -47,7 +47,7 @@ import { DocumentsPage} from '../pages/documents/documents';
       autoFocusAssist: true
     }), 
     PipesModule,
-    DirectivesModule
+    DirectivesModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -69,7 +69,8 @@ import { DocumentsPage} from '../pages/documents/documents';
     Helper,
     CustomValidator,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 })
 
 export class AppModule {}

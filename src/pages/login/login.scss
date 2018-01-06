@@ -12,7 +12,7 @@ page-login
     }
     
     .borderBackground{
-        background: rgb(103,58,183);
+        background: color($colors, phonepe);
         border-radius: 100px;
     }
     .center{
@@ -20,7 +20,7 @@ page-login
     }
 
     .blue{
-        color:#673ab7;
+        color:color($colors, phonepe);
     }
     
     ion-item.padding{
@@ -28,7 +28,7 @@ page-login
     }
     
     button.color{
-        background-color:#673ab7 !important;
+        background-color: color($colors, phonepe) !important;
         color: white !important;
     }
     ion-item ion-label{

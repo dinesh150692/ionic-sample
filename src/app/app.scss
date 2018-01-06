@@ -27,9 +27,9 @@ a[disabled], button[disabled], [ion-button][disabled]{
 }
 
 .focus-outline button:focus, .focus-outline [ion-button]:focus{
-    border-color: #673ab7;
-    outline: 2px solid #673ab7;
-    box-shadow: 0 0 8px 1px #673ab7;
+    border-color: color($colors, phonepe);
+    outline: 2px solid color($colors, phonepe);;
+    box-shadow: 0 0 8px 1px color($colors, phonepe);;
 }
 
 #noLine .label-md{
@@ -78,7 +78,7 @@ a[disabled], button[disabled], [ion-button][disabled]{
         position: absolute;
         top: 50%;
         left: 50%;
-        border: 2px solid #673ab7;
+        border: 2px solid color($colors, phonepe);;
         border-left-color: white;
         border-right-color: white;
         border-radius: 1748px;
@@ -121,7 +121,7 @@ a[disabled], button[disabled], [ion-button][disabled]{
 }
 
 .phonepe {
-    color: #673ab7;
+    color: color($colors, phonepe);
 }
 
 #noStyle .button-inner { 
@@ -167,7 +167,7 @@ a[disabled], button[disabled], [ion-button][disabled]{
 }
 
 .alert-ios .alert-button{
-    color: #673ab7;
+    color: color($colors, phonepe);
 }
 
 .alert-md .alert-button {
@@ -183,7 +183,7 @@ a[disabled], button[disabled], [ion-button][disabled]{
     border-right: 0.55px solid #dbdbdf;
     font-size: 17px;
     background-color: transparent;
-    color: #673ab7;
+    color: color($colors, phonepe);
     text-transform: none;
 }
 
@@ -215,7 +215,7 @@ a[disabled], button[disabled], [ion-button][disabled]{
 }
 
 .alert-md .alert-input:focus{
-    border-bottom-color: #673ab7;
+    border-bottom-color: color($colors, phonepe);
 }
 
 .alert-md .alert-message{
@@ -239,4 +239,39 @@ a[disabled], button[disabled], [ion-button][disabled]{
 
 .text-bold{
     font-weight: bold;
+}
+
+.text {
+    padding: 2px;
+    font-size: 11px;
+    color: #56309c;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+.text-ios{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.small{
+    font-size: 8px;
+    color: rgba(104, 58, 183, 0.99);
+}
+
+.header{
+    color:white;
+    text-align: center;
+}
+
+.headersmall{
+    font-size: 10px;
+}
+
+.medium{
+    font-size:13px;
+}
+
+.headerlarge{
+    font-size: 16px;
 }

@@ -21,7 +21,7 @@ class Segment{
 @IonicPage()
 @Component({
   selector: 'page-reports',
-  templateUrl: 'reports.html',
+  templateUrl: 'reports.html'
 })
 export class ReportsPage {
   @ViewChild('barCanvas') barCanvas;
@@ -34,6 +34,7 @@ export class ReportsPage {
   transaction: any;
   amount: any;
   segmentSelection: string = 'Amount';
+  chartOptions: any;
   constructor(
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
@@ -46,10 +47,67 @@ export class ReportsPage {
       this.transaction.data = [6, 9, 8, 1, 6, 5, 4];
       this.amount.labels =  ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
       this.amount.data = [65, 59, 80, 81, 56, 55, 40];
-      this.transaction.stores = [];
+      this.transaction.stores = [
+        {name:'A', value:100},
+        {name:'B', value:100},
+        {name:'C', value:100},
+        {name:'D', value:100}
+      ];
+      console.log(this.transaction.stores);
       this.transaction.instruments = [];
-      this.amount.stores = [];
+      this.amount.stores = [
+        {name:'A', value:100},
+        {name:'B', value:100},
+        {name:'C', value:100},
+        {name:'D', value:100}
+      ];
       this.amount.instruments = [];
+      this.chartOptions = {
+        events: false,
+        tooltips: {
+            enabled: false
+        },
+        hover: {
+            animationDuration: 0
+        },
+        scales: {
+          xAxes : [{
+            gridLines: {
+              lineWidth: 0,
+              display: false,
+            }  
+          }],
+          yAxes: [{
+           // stacked:true,
+            //display:false,
+            gridLines: {
+              lineWidth: 0,
+              display: false,
+            },
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        animation: {
+            duration: 1,
+            onComplete: function () {
+                var chartInstance = this.chart,
+                ctx = chartInstance.ctx;
+                Chart.defaults.global.defaultFontColor = '#673ab7';
+                ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                this.data.datasets.forEach(function (dataset, i) {
+                    var meta = chartInstance.controller.getDatasetMeta(i);
+                    meta.data.forEach(function (bar, index) {
+                        var data = dataset.data[index];                            
+                        ctx.fillText(data, bar._model.x, bar._model.y);
+                    });
+                });
+            }
+        }
+      };
     }
   
   ionViewDidLoad() { 
@@ -71,10 +129,11 @@ export class ReportsPage {
   }
   chartData(segmentName, data: Segment, barCanvas){
     var dynamicColors = function(i) {
-      var r = Math.floor(Math.random() * 255);
-      var g = Math.floor(Math.random() * 255);
-      var b = Math.floor(Math.random() * 255);
-      return "rgb(" + r + "," + g + "," + b + ")";
+      // var r = Math.floor(Math.random() * 255);
+      // var g = Math.floor(Math.random() * 255);
+      // var b = Math.floor(Math.random() * 255);
+      //return "rgb(" + r + "," + g + "," + b + ")";
+      return '#673ab7';
     };
     if(data.chart){
       this.amount.chart.destroy();
@@ -85,6 +144,7 @@ export class ReportsPage {
     }
       data.chart = new Chart(barCanvas.nativeElement, {
         type: 'bar',
+        options: this.chartOptions,
         data: {
           labels: data.labels,
           datasets: [
@@ -92,7 +152,7 @@ export class ReportsPage {
               label: segmentName,
               data: data.data,
               backgroundColor: color
-              },
+            }
           ]
         }
       });

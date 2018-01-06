@@ -94,7 +94,7 @@ $colors: (
 
 
 // Custom Changes
-$text-input-md-highlight-color: #673ab7;
+$text-input-md-highlight-color: color($colors, phonepe);
 $tabs-ios-tab-min-height: 20px;
 $tabs-md-tab-min-height: 20px;
 $tabs-ios-tab-icon-size: 20px;

@@ -1,0 +1,19 @@
+<!-- Generated template for the ReportCardComponent component -->
+<div>
+  <h3 text-center>Stores</h3>
+  <div class="scroll">
+    <ion-list *ngFor="let list of lists">
+      <ion-card>
+        <ion-row>
+          <ion-col class="text medium text-bold" col-8>
+            {{ list.name}}
+          </ion-col>
+          <ion-col class="text" text-right float-right col-4>
+            {{ list.value }}
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-list>
+  </div>
+</div>
+
