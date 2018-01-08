@@ -11,15 +11,15 @@
         <ion-icon name="log-out"></ion-icon>
       </button>
     </ion-buttons> -->
-    <ion-title>Reports</ion-title>
+    <ion-title text-uppercase>Reports</ion-title>
     <ion-buttons color="snowwhite" right>
       <button ion-button icon-only (click)="fetchFilter()">
-        <ion-icon name="funnel" ></ion-icon>
+        <ion-icon ios="ios-funnel" md="ios-funnel" ></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-toolbar>
-    <ion-segment [(ngModel)]="segmentSelection" (ionChange)="fetchLoader()">
+  <ion-toolbar mode="md">
+    <ion-segment mode="md" [(ngModel)]="segmentSelection" (ionChange)="fetchLoader()">
       <ion-segment-button value="Amount">
         Amount
       </ion-segment-button>

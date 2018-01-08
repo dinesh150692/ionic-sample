@@ -1,6 +1,9 @@
 import { Component, Input, ViewChild, Output, EventEmitter} from '@angular/core';
-//import { Content } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
+
 import { Chart } from 'chart.js';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
+
 /**
  * Generated class for the ReportCardComponent component.
  *
@@ -28,7 +31,16 @@ export class ReportCardComponent {
   lists:any = [];
   moreDataStores: boolean = false;
   offset: number = 4;
-  constructor() {
+  fileName: any;
+  filePath: any;
+  constructor(private base64ToGallery: Base64ToGallery, private toastCtrl: ToastController) {
+    Chart.plugins.register({
+      beforeDraw: function(chartInstance) {
+        var ctx = chartInstance.chart.ctx;
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
+      }
+    });
     this.chartOptions = {
       events: false,
       tooltips: {
@@ -129,20 +141,39 @@ export class ReportCardComponent {
   }
 
   fetchNewData(){
-    console.log(this.stores.length);
     var counter = this.offset;
     if(counter < this.stores.length){
       this.lists = this.stores.slice(0, this.offset);
       this.offset += 4;
       this.moreDataStores = true;
-      console.log('more data');
-      console.log(this.moreDataStores);
     }else {
       this.moreDataStores = false;
       this.lists = this.stores.slice(0, this.stores.length);
       this.offset = 4;
-      console.log('no more data');
-      console.log(this.moreDataStores);
     }
+  }
+
+  downloadImage(){
+    var options = { year: 'numeric', month: 'short', day: 'numeric' };
+    var today  = new Date();
+    this.base64ToGallery.base64ToGallery(this.barChart.toBase64Image(), { prefix: this.segmentName + '_' + today.toLocaleDateString("en-US",options) + '_' }).then(
+      res => this.showToast('Saved image to gallery ', 3000, 'toast-success'),
+      err => this.showToast('Error saving image to gallery ', 3000, 'toast-failure')
+    );
+  }
+
+  showToast(text, duration, cssClass) {
+    let toast = this.toastCtrl.create({
+      message: text,
+      duration: duration,
+      cssClass: cssClass
+    });
+    toast.present();
+  }
+
+  hideData(){
+      this.lists = this.stores.slice(0, this.offset);
+      this.moreDataStores = true;
+      this.offset += 4;
   }
 }

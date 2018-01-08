@@ -12,6 +12,8 @@ import { FileChooser } from '@ionic-native/file-chooser';
 import { Camera } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
 import { Network } from '@ionic-native/network';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
+
 
 import { PipesModule } from '../pipes/pipes.module';
 import { DirectivesModule } from '../directives/directives.module';
@@ -66,6 +68,7 @@ import { DocumentsPage} from '../pages/documents/documents';
     Camera,
     FilePath,
     Network,
+    Base64ToGallery,
     Helper,
     CustomValidator,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

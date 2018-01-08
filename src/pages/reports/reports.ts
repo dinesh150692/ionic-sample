@@ -45,25 +45,25 @@ export class ReportsPage {
       this.amount.labels =  ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
       this.amount.data = [65, 59, 80, 81, 56, 55, 40];
       this.transaction.stores = [
-        {name:'A', value:100},
-        {name:'B', value:100},
-        {name:'C', value:100},
-        {name:'D', value:100},
-        {name:'E', value:100},
-        {name:'F', value:100},
-        {name:'G', value:100},
-        {name:'H', value:100}
+        {name:'Koramangala', value:100},
+        {name:'JP Nagar', value:100},
+        {name:'Jaya Nagar', value:100},
+        {name:'Electronic City', value:100},
+        {name:'Hebbal', value:100},
+        {name:'Old Airport Road', value:100},
+        {name:'Bannerghatta Road', value:100},
+        {name:'BTM', value:100}
       ];
       this.transaction.instruments = [];
       this.amount.stores = [
-        {name:'A', value:100},
-        {name:'B', value:100},
-        {name:'C', value:100},
-        {name:'D', value:100},
-        {name:'E', value:100},
-        {name:'F', value:100},
-        {name:'G', value:100},
-        {name:'H', value:100}
+        {name:'Koramangala', value:100},
+        {name:'JP Nagar', value:100},
+        {name:'Jaya Nagar', value:100},
+        {name:'Electronic City', value:100},
+        {name:'Hebbal', value:100},
+        {name:'Old Airport Road', value:100},
+        {name:'Bannerghatta Road', value:100},
+        {name:'BTM', value:100}
       ];
       this.amount.instruments = [
         {name:'CC', value:100},
