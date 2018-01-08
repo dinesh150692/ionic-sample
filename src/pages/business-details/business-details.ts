@@ -28,13 +28,8 @@ export class BusinessDetailsPage {
   constructor(private navCtrl: NavController) {
     
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BusinessDetailsPage');
-  }
  
   ionViewWillEnter() {
-    console.log('Enter Register');
     let tabs = document.querySelectorAll('.tabbar');
     if ( tabs !== null ) {
       Object.keys(tabs).map((key) => {
@@ -45,7 +40,6 @@ export class BusinessDetailsPage {
   }
 
   ionViewDidLeave() {
-    console.log('Left Register');
     let tabs = document.querySelectorAll('.tabbar');
     if ( tabs !== null ) {
       Object.keys(tabs).map((key) => {

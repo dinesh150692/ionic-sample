@@ -47,13 +47,6 @@ export class RegisterPage {
   constructor(private navCtrl: NavController) {
   }
 
-  ionViewDidLoad() {
-    setTimeout(() => {
-      this.inputToFocus.setFocus();
-    },200);
-    console.log('ionViewDidLoad RegisterPage');
-  }
-
   openTermsAndCondition(){
 
   }
@@ -67,7 +60,6 @@ export class RegisterPage {
   }
 
   ionViewWillEnter() {
-    console.log('Enter Register');
     let tabs = document.querySelectorAll('.tabbar');
     if ( tabs !== null ) {
       Object.keys(tabs).map((key) => {
@@ -78,7 +70,6 @@ export class RegisterPage {
   }
 
   ionViewDidLeave() {
-    console.log('Left Register');
     let tabs = document.querySelectorAll('.tabbar');
     if ( tabs !== null ) {
       Object.keys(tabs).map((key) => {

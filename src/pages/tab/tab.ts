@@ -21,8 +21,4 @@ export class TabPage {
     this.myIndex = this.navParams.data.tabIndex || 0;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TabPage');
-  }
-
 }

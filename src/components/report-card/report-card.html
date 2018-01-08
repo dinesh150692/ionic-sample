@@ -1,19 +1,52 @@
 <!-- Generated template for the ReportCardComponent component -->
 <div>
-  <h3 text-center>Stores</h3>
+  <ion-card *ngIf="chart">
+    <ion-card-content>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  <h5 text-center class="phonepe">Stores</h5>
   <div class="scroll">
-    <ion-list *ngFor="let list of lists">
-      <ion-card>
-        <ion-row>
-          <ion-col class="text medium text-bold" col-8>
-            {{ list.name}}
-          </ion-col>
-          <ion-col class="text" text-right float-right col-4>
-            {{ list.value }}
-          </ion-col>
-        </ion-row>
-      </ion-card>
-    </ion-list>
+    <ion-card  class="card-background" *ngFor="let list of lists" no-padding>
+      <ion-row>
+        <ion-col class="text medium text-bold" col-8>
+          {{ list.name}}
+        </ion-col>
+        <ion-col class="text medium text-bold" text-right float-right col-4 *ngIf="segmentName == 'Amount'">
+          {{ list.value | currency:'INR':'true':'1.0'}}
+        </ion-col>
+        <ion-col class="text medium text-bold" text-right float-right col-4 *ngIf="segmentName != 'Amount'">
+          {{ list.value }}
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <button *ngIf="moreDataStores" float-right ion-fab mini color="phonepe" (click)="fetchNewData()">&#10225;</button>
+    <ion-card class="card-background" *ngIf="lists.length == 0">
+      <ion-card-content class="text medium text-bold" text-center>
+        No Data Available
+      </ion-card-content>
+    </ion-card>    
+  </div>
+  <h5 text-center class="phonepe">Instruments</h5>
+  <div>
+    <ion-card  class="card-background" *ngFor="let list of instruments" no-padding>
+      <ion-row>
+        <ion-col class="text medium text-bold" col-8>
+          {{ list.name}}
+        </ion-col>
+        <ion-col class="text medium text-bold" text-right float-right col-4 *ngIf="segmentName == 'Amount'">
+          {{ list.value | currency:'INR':'true':'1.0'}}
+        </ion-col>
+        <ion-col class="text medium text-bold" text-right float-right col-4 *ngIf="segmentName != 'Amount'">
+          {{ list.value }}
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card class="card-background" *ngIf="instruments.length == 0">
+      <ion-card-content class="text medium text-bold" text-center>
+        No Data Available
+      </ion-card-content>
+    </ion-card>    
   </div>
 </div>
 

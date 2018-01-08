@@ -31,30 +31,14 @@
 </ion-header>
 
 <ion-content [hidden]="loadingPage" no-padding>
-    <div [ngSwitch]="segmentSelection">
-      <div *ngSwitchCase="'Amount'">
-        <ion-card>
-          <ion-card-content>
-            <canvas #barCanvas></canvas>
-          </ion-card-content>
-        </ion-card>
-        <report-card [lists]="amount.stores"></report-card>
-        <ion-infinite-scroll (ionInfinite)="" [enabled]="enableInfiniteScroll">
-          <ion-infinite-scroll-content
-            loadingSpinner="bubbles"
-            loadingText="Loading more data...">
-          </ion-infinite-scroll-content>
-        </ion-infinite-scroll>
-      </div>
-      <div *ngSwitchCase="'Transactions'">
-        <ion-card>
-          <ion-card-content>
-            <canvas #barCanvas1></canvas>
-          </ion-card-content>
-        </ion-card>
-        <report-card [lists]="transaction.stores"></report-card>
-      </div>
+  <div [ngSwitch]="segmentSelection">
+    <div *ngSwitchCase="'Amount'">
+      <report-card [labels]="amount.labels" [data]="amount.data" [stores]="amount.stores" [instruments]="amount.instruments" [segmentName]="segmentSelection" (change)="finishLoading($event)"></report-card>
     </div>
+    <div *ngSwitchCase="'Transactions'">
+      <report-card [labels]="transaction.labels" [data]="transaction.data" [stores]="transaction.stores" [instruments]="transaction.instruments" [segmentName]="segmentSelection" (change)="finishLoading($event)"></report-card>
+    </div>
+  </div>
 </ion-content>
 <ion-content [hidden]="!loadingPage"></ion-content>
 

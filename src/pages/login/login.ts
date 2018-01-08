@@ -34,11 +34,6 @@ export class LoginPage {
     public toastCtrl: ToastController) {
   }
 
-  
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
   login() {
     console.log(this.signIn.value);
     this.navCtrl.setRoot(MenuPage);
@@ -80,7 +75,6 @@ export class LoginPage {
         {
           text: 'Cancel',
           handler: data => {
-            console.log('Cancel clicked');
           }
         },
         {
@@ -123,7 +117,6 @@ export class LoginPage {
         {
           text: 'Cancel',
           handler: data => {
-            console.log('Cancel clicked');
           }
         },
         {

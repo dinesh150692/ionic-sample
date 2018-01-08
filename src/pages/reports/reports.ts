@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, LoadingController, AlertController } from 'ionic-angular';
 
-import { Chart } from 'chart.js';
 
 import { Helper } from '../../helpers/helper';
 //import { LoginPage } from '../login/login';
@@ -16,7 +15,7 @@ class Segment{
   instruments: any = [];
   labels: any;
   data: any;
-  chart: Chart;
+  chart: any = null;
 }
 @IonicPage()
 @Component({
@@ -24,8 +23,6 @@ class Segment{
   templateUrl: 'reports.html'
 })
 export class ReportsPage {
-  @ViewChild('barCanvas') barCanvas;
-  @ViewChild('barCanvas1') barCanvas1;
   loadingPage: boolean = true;
   endDate: any;
   dayCount: any = 10;
@@ -51,119 +48,44 @@ export class ReportsPage {
         {name:'A', value:100},
         {name:'B', value:100},
         {name:'C', value:100},
-        {name:'D', value:100}
+        {name:'D', value:100},
+        {name:'E', value:100},
+        {name:'F', value:100},
+        {name:'G', value:100},
+        {name:'H', value:100}
       ];
-      console.log(this.transaction.stores);
       this.transaction.instruments = [];
       this.amount.stores = [
         {name:'A', value:100},
         {name:'B', value:100},
         {name:'C', value:100},
-        {name:'D', value:100}
+        {name:'D', value:100},
+        {name:'E', value:100},
+        {name:'F', value:100},
+        {name:'G', value:100},
+        {name:'H', value:100}
       ];
-      this.amount.instruments = [];
-      this.chartOptions = {
-        events: false,
-        tooltips: {
-            enabled: false
-        },
-        hover: {
-            animationDuration: 0
-        },
-        scales: {
-          xAxes : [{
-            gridLines: {
-              lineWidth: 0,
-              display: false,
-            }  
-          }],
-          yAxes: [{
-           // stacked:true,
-            //display:false,
-            gridLines: {
-              lineWidth: 0,
-              display: false,
-            },
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        },
-        animation: {
-            duration: 1,
-            onComplete: function () {
-                var chartInstance = this.chart,
-                ctx = chartInstance.ctx;
-                Chart.defaults.global.defaultFontColor = '#673ab7';
-                ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'bottom';
-                this.data.datasets.forEach(function (dataset, i) {
-                    var meta = chartInstance.controller.getDatasetMeta(i);
-                    meta.data.forEach(function (bar, index) {
-                        var data = dataset.data[index];                            
-                        ctx.fillText(data, bar._model.x, bar._model.y);
-                    });
-                });
-            }
-        }
-      };
+      this.amount.instruments = [
+        {name:'CC', value:100},
+        {name:'DC', value:100},
+        {name:'POS', value:100},
+        {name:'Cash', value:100}
+      ]; 
     }
   
   ionViewDidLoad() { 
     this.fetchLoader();
   }
-  onSegmentChange(){
-    switch(this.segmentSelection){
-      case 'Transactions':
-        setTimeout(() => {
-          this.chartData('Transactions', this.transaction, this.barCanvas1);
-        }, 500);
-        break;
-      case 'Amount':
-      setTimeout(() => {
-        this.chartData('Amount', this.amount, this.barCanvas);
-      }, 500);
-        break;
-    }
-  }
-  chartData(segmentName, data: Segment, barCanvas){
-    var dynamicColors = function(i) {
-      // var r = Math.floor(Math.random() * 255);
-      // var g = Math.floor(Math.random() * 255);
-      // var b = Math.floor(Math.random() * 255);
-      //return "rgb(" + r + "," + g + "," + b + ")";
-      return '#673ab7';
-    };
-    if(data.chart){
-      this.amount.chart.destroy();
-    }
-    var color = [];
-    for (var i in data.data) {
-      color.push(dynamicColors(i));
-    }
-      data.chart = new Chart(barCanvas.nativeElement, {
-        type: 'bar',
-        options: this.chartOptions,
-        data: {
-          labels: data.labels,
-          datasets: [
-            {
-              label: segmentName,
-              data: data.data,
-              backgroundColor: color
-            }
-          ]
-        }
-      });
-    this.loader.dismiss();
-    
-    this.loader.onDidDismiss(() => {
-      setTimeout(()=> {
-        this.loadingPage = false;
-      },100); 
-    });
 
+  finishLoading(event){
+    if(event){
+      this.loader.dismiss();
+      this.loader.onDidDismiss(() => {
+        setTimeout(()=> {
+          this.loadingPage = false;
+        },100); 
+      });
+    }
   }
   
   fetchFilter() {
@@ -191,7 +113,6 @@ export class ReportsPage {
         {
           text: 'Cancel',
           handler: data => {
-            console.log('Cancel clicked');
           }
         },
         {
@@ -222,19 +143,21 @@ export class ReportsPage {
       `,
     });
     this.loader.present();
-    this.onSegmentChange();
   }
 
   fetchNewData(data: any){
+    this.fetchLoader();
     this.transaction.labels = ['A', 'B', 'C', 'D', 'E'];
     this.transaction.data = [1, 2, 3, 4, 1]; 
-    this.amount.labels =  ['A', 'B', 'C', 'D', 'E'];
-    this.amount.data = [10, 20, 30, 40, 10]; 
     this.transaction.stores = [];
     this.transaction.instruments = [];
     this.amount.stores = [];
     this.amount.instruments = [];
-    this.fetchLoader();
+    this.amount.labels =  [];
+    this.amount.data = [];
+    setTimeout(() => {
+      this.finishLoading(true);
+    },  1000);
   }  
   
   // logout(){

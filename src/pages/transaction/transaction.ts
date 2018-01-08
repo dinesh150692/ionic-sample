@@ -47,7 +47,6 @@ export class TransactionPage {
 
   fetchLoader(){
     this.loadingPage = true;
-    console.log(this.loadingPage);
     this.loader = this.loadingCtrl.create({
       spinner: 'hide',
       content: `
@@ -63,12 +62,10 @@ export class TransactionPage {
   fetchTransactionsList() {
     this.loader.dismiss();
     this.loadingPage = false;
-    console.log(this.loadingPage);
   }
 
   doRefresh(refresher) {
     this.enableInfiniteScroll = true;
-    console.log('Begin async operation', refresher);
     setTimeout(() => {
       this.transactionsList = [
         { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-12T23:30:52.123Z', 'terminal': 'q123444'},

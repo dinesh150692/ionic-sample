@@ -50,12 +50,7 @@ export class DocumentsPage {
       }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DocumentsPage');
-  }
-
   ionViewWillEnter() {
-    console.log('Enter Register');
     let tabs = document.querySelectorAll('.tabbar');
     if ( tabs !== null ) {
       Object.keys(tabs).map((key) => {
@@ -66,7 +61,6 @@ export class DocumentsPage {
   }
 
   ionViewDidLeave() {
-    console.log('Left Register');
     let tabs = document.querySelectorAll('.tabbar');
     if ( tabs !== null ) {
       Object.keys(tabs).map((key) => {
@@ -92,7 +86,6 @@ export class DocumentsPage {
       })
     .catch(e => {
       this.showToast("Error in file selection", "toast-failure");
-      console.log(e)
     });
   }
 

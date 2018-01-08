@@ -28,8 +28,8 @@ a[disabled], button[disabled], [ion-button][disabled]{
 
 .focus-outline button:focus, .focus-outline [ion-button]:focus{
     border-color: color($colors, phonepe);
-    outline: 2px solid color($colors, phonepe);;
-    box-shadow: 0 0 8px 1px color($colors, phonepe);;
+    outline: 2px solid color($colors, phonepe);
+    box-shadow: 0 0 8px 1px color($colors, phonepe);
 }
 
 #noLine .label-md{

@@ -19,9 +19,6 @@ export class SuccessPage {
   constructor(private navCtrl: NavController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SuccessPage');
-  }
   ionViewWillEnter() {
     let tabs = document.querySelectorAll('.tabbar');
     if ( tabs !== null ) {
