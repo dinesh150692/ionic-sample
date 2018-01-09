@@ -4,7 +4,7 @@
     <span> 
       <ion-icon float-right padding color="phonepe" name="download" (click)="downloadImage()"></ion-icon>
     </span>
-    <canvas #barCanvas></canvas>
+    <canvas #barCanvas (click)="chartClicked($event)"></canvas>
   </ion-item>
   <span text-left padding class="textDesign text-bold">Stores</span>
   <div class="padding">

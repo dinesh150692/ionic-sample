@@ -68,12 +68,15 @@ export class ReportCardComponent {
           }
         }]
       },
+      legend: {
+        display: true,
+      },
       animation: {
           duration: 1,
           onComplete: function () {
               var chartInstance = this.chart,
               ctx = chartInstance.ctx;
-              Chart.defaults.global.defaultFontColor = '#673ab7';
+              //Chart.defaults.global.defaultFontColor = '#673ab7';
               ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
               ctx.textAlign = 'center';
               ctx.textBaseline = 'bottom';
@@ -97,11 +100,11 @@ export class ReportCardComponent {
  
   plotChart(){
     var dynamicColors = function(i) {
-      // var r = Math.floor(Math.random() * 255);
-      // var g = Math.floor(Math.random() * 255);
-      // var b = Math.floor(Math.random() * 255);
-      //return "rgb(" + r + "," + g + "," + b + ")";
-      return '#673ab7';
+      var r = Math.floor(Math.random() * 255);
+      var g = Math.floor(Math.random() * 255);
+      var b = Math.floor(Math.random() * 255);
+      return "rgb(" + r + "," + g + "," + b + ")";
+      //return '#673ab7';
     };
     var color = [];
     for (var i in this.data) {
@@ -175,5 +178,20 @@ export class ReportCardComponent {
       this.lists = this.stores.slice(0, this.offset);
       this.moreDataStores = true;
       this.offset += 4;
+  }
+
+  chartClicked(event){
+    var myChart = this.barChart;
+    var activePoint = myChart.getElementAtEvent(event)[0];
+    if(activePoint){
+      var data = activePoint._chart.data;
+      var datasetIndex = activePoint._datasetIndex;
+      var label = data.datasets[datasetIndex].label;
+      var value = data.datasets[datasetIndex].data[activePoint._index];
+      console.log(label, value);
+      console.log(data);
+      label = data.labels[activePoint._index];
+      console.log('y-label : '+label);
+    }
   }
 }
