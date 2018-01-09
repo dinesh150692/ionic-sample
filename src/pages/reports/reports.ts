@@ -35,7 +35,9 @@ export class ReportsPage {
   constructor(
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    private helper: Helper) {
+    private helper: Helper
+  ) 
+  {
       this.startDate = this.helper.getDateFormat(this.dayCount);
       this.endDate = this.helper.getDateFormat();
       this.transaction = new Segment();
@@ -304,7 +306,7 @@ export class ReportsPage {
           {name:'Cash', value:10}
         ],
       ]; 
-    }
+  }
   
   ionViewDidLoad() { 
     this.fetchLoader();
@@ -382,10 +384,10 @@ export class ReportsPage {
     this.fetchLoader();
     this.transaction.labels = ['A', 'B', 'C', 'D', 'E'];
     this.transaction.data = [1, 2, 3, 4, 1]; 
-    this.transaction.stores = [];
-    this.transaction.instruments = [];
-    this.amount.stores = [];
-    this.amount.instruments = [];
+    this.transaction.stores = [[]];
+    this.transaction.instruments = [[]];
+    this.amount.stores = [[]];
+    this.amount.instruments = [[]];
     this.amount.labels =  [];
     this.amount.data = [];
     setTimeout(() => {

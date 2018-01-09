@@ -4,8 +4,8 @@
     <ion-icon float-right small padding-right padding-top color="phonepe" name="download" (click)="downloadImage()"></ion-icon>
   </span>
   <span *ngIf="chart"> 
-      <ion-icon float-left small padding-left padding-top color="phonepe" name="refresh" (click)="refreshData()"></ion-icon>
-    </span>
+    <ion-icon float-left small padding-left padding-top color="phonepe" name="refresh" (click)="refreshData()"></ion-icon>
+  </span>
   <ion-item padding-bottom *ngIf="chart" text-center>
     <canvas #barCanvas (click)="chartClicked($event)"></canvas>
     <span class="text textDanger" float-right padding-left><sup>*</sup>Click on bar for individual reports</span>

@@ -23,7 +23,7 @@ report-card {
  .textDesign{
     padding: 2px;
     font-size: 17px;
-    color: #56309c;
+    color: rgba(96, 97, 99, 1);
     margin-bottom: 10px;
  }
  .text{
@@ -70,6 +70,7 @@ report-card {
     padding: 2px;
     font-size: 11px;
     color: color($colors, primary);
+    background: transparent;
     text-decoration: underline;
     padding-left: 5px;
     padding-right: 10px;

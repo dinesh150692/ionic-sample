@@ -53,8 +53,8 @@
       <ion-input  tabJumper="2" *ngIf="showPassword" type="text" formControlName="password"></ion-input>
       <ion-icon  name="lock" item-left></ion-icon>
       <button ion-button clear color="dark" type="button" item-right (click)="showPassword = !showPassword"> 
-        <ion-icon *ngIf="!showPassword" name="eye"> </ion-icon> 
-        <ion-icon *ngIf="showPassword" name="eye-off"> </ion-icon>
+        <ion-icon *ngIf="!showPassword && signIn.controls.password.value" name="eye"> </ion-icon> 
+        <ion-icon *ngIf="showPassword && signIn.controls.password.value" name="eye-off"> </ion-icon>
       </button>
     </ion-item>
 

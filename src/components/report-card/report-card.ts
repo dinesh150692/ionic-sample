@@ -32,8 +32,6 @@ export class ReportCardComponent {
   instrumentLists: any = [];
   moreDataStores: boolean = false;
   offset: number = 4;
-  fileName: any;
-  filePath: any;
   activeIndex: any = 0;
   activeLabel: any = '';
   constructor(private base64ToGallery: Base64ToGallery, private toastCtrl: ToastController) {
@@ -99,7 +97,9 @@ export class ReportCardComponent {
   }
   
   ngOnChanges(changes) {
+    this.activeLabel = '';
     setTimeout(() => {
+      this.setLabel();
       this.fetchNewData();
       this.plotChart();
     }, 1);
@@ -153,15 +153,23 @@ export class ReportCardComponent {
 
   fetchNewData(){
     var counter = this.offset;
-    this.instrumentLists = this.instruments[this.activeIndex];
-    if(counter < this.stores.length){
-      this.storeLists = this.stores[this.activeIndex].slice(0, this.offset);
-      this.offset += 4;
-      this.moreDataStores = true;
+    if(this.instruments[this.activeIndex]){
+      this.instrumentLists = this.instruments[this.activeIndex];
     }else {
-      this.moreDataStores = false;
-      this.storeLists = this.stores[this.activeIndex].slice(0, this.stores.length);
-      this.offset = 4;
+      this.instrumentLists = [];
+    }
+    if(this.stores[this.activeIndex]){
+      if(counter < this.stores[this.activeIndex].length){
+        this.storeLists = this.stores[this.activeIndex].slice(0, this.offset);
+        this.offset += 4;
+        this.moreDataStores = true;
+      } else {
+        this.moreDataStores = false;
+        this.storeLists = this.stores[this.activeIndex].slice(0, this.stores.length);
+        this.offset = 4;
+      }
+    }else{
+      this.storeLists = [];
     }
   }
 
@@ -197,7 +205,7 @@ export class ReportCardComponent {
       // var datasetIndex = activePoint._datasetIndex;
       // var label = data.datasets[datasetIndex].label;
       // var value = data.datasets[datasetIndex].data[activePoint._index];
-      this.activeLabel = '- ' + data.labels[activePoint._index];
+      this.activeLabel = '( ' + data.labels[activePoint._index] + ' )';
       this.activeIndex = activePoint._index + 1;
       this.offset = 4;
       this.fetchNewData();
@@ -206,8 +214,16 @@ export class ReportCardComponent {
 
   refreshData(){
     this.activeIndex = 0;
-    this.activeLabel = '';
+    this.setLabel();
     this.offset = 4;
     this.fetchNewData();
+  }
+
+  setLabel(){
+    if(this.labels.length > 1){
+      this.activeLabel = ' ( ' + this.labels[0] + ' - ' + this.labels[this.labels.length - 1] + ' )';
+    }else if(this.labels.length == 1) {
+      this.activeLabel = ' ( ' + this.labels[this.labels.length - 1] + ' )';
+    }
   }
 }
