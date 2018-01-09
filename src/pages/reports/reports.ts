@@ -45,31 +45,264 @@ export class ReportsPage {
       this.amount.labels =  ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
       this.amount.data = [65, 59, 80, 81, 56, 55, 40];
       this.transaction.stores = [
-        {name:'Koramangala', value:100},
-        {name:'JP Nagar', value:100},
-        {name:'Jaya Nagar', value:100},
-        {name:'Electronic City', value:100},
-        {name:'Hebbal', value:100},
-        {name:'Old Airport Road', value:100},
-        {name:'Bannerghatta Road', value:100},
-        {name:'BTM', value:100}
+        [ 
+          {name:'Koramangala', value:100},
+          {name:'JP Nagar', value:100},
+          {name:'Jaya Nagar', value:100},
+          {name:'Electronic City', value:100},
+          {name:'Hebbal', value:100},
+          {name:'Old Airport Road', value:100},
+          {name:'Bannerghatta Road', value:100},
+          {name:'BTM', value:100},
+        ],
+        [
+          {name:'Koramangala', value:10},
+          {name:'JP Nagar', value:10},
+          {name:'Jaya Nagar', value:10},
+          {name:'Electronic City', value:10},
+          {name:'Hebbal', value:10},
+          {name:'Old Airport Road', value:10},
+          {name:'Bannerghatta Road', value:10},
+          {name:'BTM', value:10},
+        ],
+        [
+          {name:'Koramangala', value:20},
+          {name:'JP Nagar', value:20},
+          {name:'Jaya Nagar', value:20},
+          {name:'Electronic City', value:20},
+          {name:'Hebbal', value:20},
+          {name:'Old Airport Road', value:20},
+          {name:'Bannerghatta Road', value:20},
+          {name:'BTM', value:20}
+        ],
+        [
+          {name:'Koramangala', value:20},
+          {name:'JP Nagar', value:20},
+          {name:'Jaya Nagar', value:20},
+          {name:'Electronic City', value:20},
+          {name:'Hebbal', value:20},
+          {name:'Old Airport Road', value:20},
+          {name:'Bannerghatta Road', value:20},
+          {name:'BTM', value:20}
+        ],
+        [
+          {name:'Koramangala', value:10},
+          {name:'JP Nagar', value:10},
+          {name:'Jaya Nagar', value:10},
+          {name:'Electronic City', value:10},
+          {name:'Hebbal', value:10},
+          {name:'Old Airport Road', value:10},
+          {name:'Bannerghatta Road', value:10},
+          {name:'BTM', value:10}
+        ],
+        [
+          {name:'Koramangala', value:10},
+          {name:'JP Nagar', value:10},
+          {name:'Jaya Nagar', value:10},
+          {name:'Electronic City', value:10},
+          {name:'Hebbal', value:10},
+          {name:'Old Airport Road', value:10},
+          {name:'Bannerghatta Road', value:10},
+          {name:'BTM', value:10}
+        ],
+        [
+          {name:'Koramangala', value:10},
+          {name:'JP Nagar', value:10},
+          {name:'Jaya Nagar', value:10},
+          {name:'Electronic City', value:10},
+          {name:'Hebbal', value:10},
+          {name:'Old Airport Road', value:10},
+          {name:'Bannerghatta Road', value:10},
+          {name:'BTM', value:10}
+        ],
+        [
+          {name:'Koramangala', value:20},
+          {name:'JP Nagar', value:20},
+          {name:'Jaya Nagar', value:20},
+          {name:'Electronic City', value:20},
+          {name:'Hebbal', value:20},
+          {name:'Old Airport Road', value:20},
+          {name:'Bannerghatta Road', value:20},
+          {name:'BTM', value:20}
+        ]
       ];
-      this.transaction.instruments = [];
+      this.transaction.instruments = [
+        [
+          {name:'CC', value:100},
+          {name:'DC', value:100},
+          {name:'POS', value:100},
+          {name:'Cash', value:100}
+        ],
+        [
+        ],
+        [
+          {name:'CC', value:10},
+          {name:'DC', value:10},
+          {name:'POS', value:10},
+          {name:'Cash', value:10}
+        ],
+        [
+          {name:'CC', value:20},
+          {name:'DC', value:20},
+          {name:'POS', value:20},
+          {name:'Cash', value:20}
+        ],
+        [
+          {name:'CC', value:10},
+          {name:'DC', value:10},
+          {name:'POS', value:10},
+          {name:'Cash', value:10}
+        ],
+        [
+          {name:'CC', value:20},
+          {name:'DC', value:20},
+          {name:'POS', value:20},
+          {name:'Cash', value:20}
+        ],
+        [
+          {name:'CC', value:10},
+          {name:'DC', value:10},
+          {name:'POS', value:10},
+          {name:'Cash', value:10}
+        ],
+        [
+          {name:'CC', value:10},
+          {name:'DC', value:10},
+          {name:'POS', value:10},
+          {name:'Cash', value:10}
+        ],
+      ]; 
       this.amount.stores = [
-        {name:'Koramangala', value:100},
-        {name:'JP Nagar', value:100},
-        {name:'Jaya Nagar', value:100},
-        {name:'Electronic City', value:100},
-        {name:'Hebbal', value:100},
-        {name:'Old Airport Road', value:100},
-        {name:'Bannerghatta Road', value:100},
-        {name:'BTM', value:100}
+        [ 
+          {name:'Koramangala', value:100},
+          {name:'JP Nagar', value:100},
+          {name:'Jaya Nagar', value:100},
+          {name:'Electronic City', value:100},
+          {name:'Hebbal', value:100},
+          {name:'Old Airport Road', value:100},
+          {name:'Bannerghatta Road', value:100},
+          {name:'BTM', value:100},
+        ],
+        [
+          {name:'Koramangala', value:10},
+          {name:'JP Nagar', value:10},
+          {name:'Jaya Nagar', value:10},
+          {name:'Electronic City', value:10},
+          {name:'Hebbal', value:10},
+          {name:'Old Airport Road', value:10},
+          {name:'Bannerghatta Road', value:10},
+          {name:'BTM', value:10},
+        ],
+        [
+          {name:'Koramangala', value:20},
+          {name:'JP Nagar', value:20},
+          {name:'Jaya Nagar', value:20},
+          {name:'Electronic City', value:20},
+          {name:'Hebbal', value:20},
+          {name:'Old Airport Road', value:20},
+          {name:'Bannerghatta Road', value:20},
+          {name:'BTM', value:20}
+        ],
+        [
+          {name:'Koramangala', value:20},
+          {name:'JP Nagar', value:20},
+          {name:'Jaya Nagar', value:20},
+          {name:'Electronic City', value:20},
+          {name:'Hebbal', value:20},
+          {name:'Old Airport Road', value:20},
+          {name:'Bannerghatta Road', value:20},
+          {name:'BTM', value:20}
+        ],
+        [
+          {name:'Koramangala', value:10},
+          {name:'JP Nagar', value:10},
+          {name:'Jaya Nagar', value:10},
+          {name:'Electronic City', value:10},
+          {name:'Hebbal', value:10},
+          {name:'Old Airport Road', value:10},
+          {name:'Bannerghatta Road', value:10},
+          {name:'BTM', value:10}
+        ],
+        [
+          {name:'Koramangala', value:10},
+          {name:'JP Nagar', value:10},
+          {name:'Jaya Nagar', value:10},
+          {name:'Electronic City', value:10},
+          {name:'Hebbal', value:10},
+          {name:'Old Airport Road', value:10},
+          {name:'Bannerghatta Road', value:10},
+          {name:'BTM', value:10}
+        ],
+        [
+          {name:'Koramangala', value:10},
+          {name:'JP Nagar', value:10},
+          {name:'Jaya Nagar', value:10},
+          {name:'Electronic City', value:10},
+          {name:'Hebbal', value:10},
+          {name:'Old Airport Road', value:10},
+          {name:'Bannerghatta Road', value:10},
+          {name:'BTM', value:10}
+        ],
+        [
+          {name:'Koramangala', value:20},
+          {name:'JP Nagar', value:20},
+          {name:'Jaya Nagar', value:20},
+          {name:'Electronic City', value:20},
+          {name:'Hebbal', value:20},
+          {name:'Old Airport Road', value:20},
+          {name:'Bannerghatta Road', value:20},
+          {name:'BTM', value:20}
+        ]
       ];
       this.amount.instruments = [
-        {name:'CC', value:100},
-        {name:'DC', value:100},
-        {name:'POS', value:100},
-        {name:'Cash', value:100}
+        [
+          {name:'CC', value:100},
+          {name:'DC', value:100},
+          {name:'POS', value:100},
+          {name:'Cash', value:100}
+        ],
+        [
+          {name:'CC', value:20},
+          {name:'DC', value:20},
+          {name:'POS', value:20},
+          {name:'Cash', value:20}
+        ],
+        [
+          {name:'CC', value:10},
+          {name:'DC', value:10},
+          {name:'POS', value:10},
+          {name:'Cash', value:10}
+        ],
+        [
+          {name:'CC', value:20},
+          {name:'DC', value:20},
+          {name:'POS', value:20},
+          {name:'Cash', value:20}
+        ],
+        [
+          {name:'CC', value:10},
+          {name:'DC', value:10},
+          {name:'POS', value:10},
+          {name:'Cash', value:10}
+        ],
+        [
+          {name:'CC', value:20},
+          {name:'DC', value:20},
+          {name:'POS', value:20},
+          {name:'Cash', value:20}
+        ],
+        [
+          {name:'CC', value:10},
+          {name:'DC', value:10},
+          {name:'POS', value:10},
+          {name:'Cash', value:10}
+        ],
+        [
+          {name:'CC', value:10},
+          {name:'DC', value:10},
+          {name:'POS', value:10},
+          {name:'Cash', value:10}
+        ],
       ]; 
     }
   

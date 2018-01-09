@@ -1,51 +1,50 @@
 <!-- Generated template for the ReportCardComponent component -->
 <div>
-  <ion-item padding-bottom *ngIf="chart" text-center>
-    <span> 
-      <ion-icon float-right padding color="phonepe" name="download" (click)="downloadImage()"></ion-icon>
+  <span *ngIf="chart"> 
+    <ion-icon float-right small padding-right padding-top color="phonepe" name="download" (click)="downloadImage()"></ion-icon>
+  </span>
+  <span *ngIf="chart"> 
+      <ion-icon float-left small padding-left padding-top color="phonepe" name="refresh" (click)="refreshData()"></ion-icon>
     </span>
+  <ion-item padding-bottom *ngIf="chart" text-center>
     <canvas #barCanvas (click)="chartClicked($event)"></canvas>
+    <span class="text textDanger" float-right padding-left><sup>*</sup>Click on bar for individual reports</span>
   </ion-item>
-  <ion-item *ngIf="chart">
-    <ion-range mode="ios" dualKnobs="true" snaps="true" step="1" [(ngModel)]="chartRange" min="0" max="{{ labels.length-1 }}" color="phonepe"> <!--(ionChange)="watchRange()" -->
-      <ion-badge range-left small color="phonepe">{{ labels[chartRange.lower]}}</ion-badge>
-      <ion-badge range-right small color="phonepe">{{ labels[chartRange.upper] }}</ion-badge>
-    </ion-range>
-  </ion-item>
-  <span text-left padding class="textDesign text-bold">Stores</span>
+  <span text-left padding class="textDesign text-bold">Stores {{ activeLabel }}</span>
+  <div class="padding" *ngIf="storeLists.length > 0">
+    <ion-item  class="itemCustom" *ngFor="let list of storeLists">
+      <ion-row>
+        <ion-col class="text medium" col-6>
+          {{ list.name}}
+        </ion-col>
+        <ion-col class="text medium" text-right float-right col-4 *ngIf="segmentName == 'Amount'">
+          {{ list.value | currency:'INR':'true':'1.0'}}
+        </ion-col>
+        <ion-col class="text medium" text-right float-right col-4 *ngIf="segmentName != 'Amount'">
+            {{ list.value }}
+          </ion-col>
+      </ion-row>
+    </ion-item>
+    <ion-item >
+      <ion-row>
+        <ion-col class="text medium" push-7 col-1 text-right>
+          <button *ngIf="moreDataStores" small outline  full class="linkText" text-underline (click)="fetchNewData()">More</button>
+          <button *ngIf="stores.length > 0 && storeLists.length == stores.length" full small outline class="linkText" (click)="hideData()">Hide</button>  
+        </ion-col>
+      </ion-row>
+    </ion-item> 
+  </div>
   <div>
-    <div class="padding" *ngIf="storeLists.length > 0">
-      <ion-item  class="item-background" *ngFor="let list of storeLists">
-        <ion-row>
-          <ion-col class="text medium" col-6>
-            {{ list.name}}
-          </ion-col>
-          <ion-col class="text medium" text-right float-right col-4 *ngIf="segmentName == 'Amount'">
-            {{ list.value | currency:'INR':'true':'1.0'}}
-          </ion-col>
-          <ion-col class="text medium" text-right float-right col-4 *ngIf="segmentName != 'Amount'">
-              {{ list.value }}
-            </ion-col>
-        </ion-row>
-      </ion-item>
-      <ion-item >
-        <ion-row>
-          <ion-col class="text medium" push-6 col-1 text-right>
-            <button *ngIf="moreDataStores" small outline  full class="linkText" text-underline (click)="fetchNewData()">More</button>
-            <button *ngIf="stores.length > 0 && storeLists.length == stores.length" full small outline class="linkText" (click)="hideData()">Hide</button>  
-          </ion-col>
-        </ion-row>
-      </ion-item> 
-    </div>
     <ion-item class="item-background" *ngIf="storeLists.length == 0">
       <span class="text medium text-bold" text-center>
         No Data Available
       </span>
     </ion-item>   
   </div>
-  <span text-left padding class="textDesign text-bold">Instruments</span>
+  
+  <span text-left padding class="textDesign text-bold">Instruments {{ activeLabel }}</span>
   <div class="padding" *ngIf="instruments.length > 0">
-    <ion-item  class="item-background" *ngFor="let list of instruments" no-padding>
+    <ion-item  class="itemCustom" *ngFor="let list of instrumentLists" no-padding>
       <ion-row>
         <ion-col class="text medium" col-6>
           {{ list.name}}
@@ -59,12 +58,13 @@
       </ion-row>
     </ion-item>   
   </div>
-  <div *ngIf="instruments.length == 0">
+  <div *ngIf="instrumentLists.length == 0">
     <ion-item class="item-background">
       <span class="text medium text-bold" text-center>
         No Data Available
       </span>
     </ion-item> 
   </div>
+
 </div>
 

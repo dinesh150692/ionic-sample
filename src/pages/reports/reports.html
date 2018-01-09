@@ -33,10 +33,22 @@
 <ion-content [hidden]="loadingPage" no-padding>
   <div [ngSwitch]="segmentSelection">
     <div *ngSwitchCase="'Amount'">
-      <report-card [labels]="amount.labels" [data]="amount.data" [stores]="amount.stores" [instruments]="amount.instruments" [segmentName]="segmentSelection" (change)="finishLoading($event)"></report-card>
+      <report-card 
+        [labels]="amount.labels" 
+        [data]="amount.data" 
+        [stores]="amount.stores" 
+        [instruments]="amount.instruments" 
+        [segmentName]="segmentSelection" 
+        (change)="finishLoading($event)"></report-card>
     </div>
     <div *ngSwitchCase="'Transactions'">
-      <report-card [labels]="transaction.labels" [data]="transaction.data" [stores]="transaction.stores" [instruments]="transaction.instruments" [segmentName]="segmentSelection" (change)="finishLoading($event)"></report-card>
+      <report-card 
+      [labels]="transaction.labels" 
+      [data]="transaction.data" 
+      [stores]="transaction.stores" 
+      [instruments]="transaction.instruments" 
+      [segmentName]="segmentSelection" 
+      (change)="finishLoading($event)"></report-card>
     </div>
   </div>
 </ion-content>

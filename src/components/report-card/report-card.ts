@@ -28,12 +28,14 @@ export class ReportCardComponent {
   chartOptions: any;
   chart: boolean = true;
   barChart: any;
-  storeLists:any = [];
+  storeLists :any = [];
+  instrumentLists: any = [];
   moreDataStores: boolean = false;
   offset: number = 4;
   fileName: any;
   filePath: any;
-  chartRange: any;
+  activeIndex: any = 0;
+  activeLabel: any = '';
   constructor(private base64ToGallery: Base64ToGallery, private toastCtrl: ToastController) {
     Chart.plugins.register({
       beforeDraw: function(chartInstance) {
@@ -71,13 +73,16 @@ export class ReportCardComponent {
       },
       legend: {
         display: true,
+        labels :{
+          boxWidth: 0,
+        }
       },
       animation: {
           duration: 1,
           onComplete: function () {
               var chartInstance = this.chart,
               ctx = chartInstance.ctx;
-              //Chart.defaults.global.defaultFontColor = '#673ab7';
+              Chart.defaults.global.defaultFontColor = '#000000';
               ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
               ctx.textAlign = 'center';
               ctx.textBaseline = 'bottom';
@@ -94,10 +99,10 @@ export class ReportCardComponent {
   }
   
   ngOnChanges(changes) {
-    this.chartRange = { lower: 0, upper: this.labels.length -1 };
-    console.log(this.chartRange);
-    this.fetchNewData();
-    this.plotChart();
+    setTimeout(() => {
+      this.fetchNewData();
+      this.plotChart();
+    }, 1);
   }
   
  
@@ -127,7 +132,7 @@ export class ReportCardComponent {
             labels: this.labels,
             datasets: [
               {
-                label: this.segmentName,
+                label: '',
                 data: this.data,
                 backgroundColor: color
              }
@@ -148,13 +153,14 @@ export class ReportCardComponent {
 
   fetchNewData(){
     var counter = this.offset;
+    this.instrumentLists = this.instruments[this.activeIndex];
     if(counter < this.stores.length){
-      this.storeLists = this.stores.slice(0, this.offset);
+      this.storeLists = this.stores[this.activeIndex].slice(0, this.offset);
       this.offset += 4;
       this.moreDataStores = true;
     }else {
       this.moreDataStores = false;
-      this.storeLists = this.stores.slice(0, this.stores.length);
+      this.storeLists = this.stores[this.activeIndex].slice(0, this.stores.length);
       this.offset = 4;
     }
   }
@@ -178,9 +184,9 @@ export class ReportCardComponent {
   }
 
   hideData(){
-      this.storeLists = this.stores.slice(0, this.offset);
-      this.moreDataStores = true;
-      this.offset += 4;
+    this.storeLists = this.stores[this.activeIndex].slice(0, this.offset);
+    this.moreDataStores = true;
+    this.offset += 4;
   }
 
   chartClicked(event){
@@ -188,13 +194,20 @@ export class ReportCardComponent {
     var activePoint = myChart.getElementAtEvent(event)[0];
     if(activePoint){
       var data = activePoint._chart.data;
-      var datasetIndex = activePoint._datasetIndex;
-      var label = data.datasets[datasetIndex].label;
-      var value = data.datasets[datasetIndex].data[activePoint._index];
-      console.log(label, value);
-      console.log(data);
-      label = data.labels[activePoint._index];
-      console.log('y-label : '+label);
+      // var datasetIndex = activePoint._datasetIndex;
+      // var label = data.datasets[datasetIndex].label;
+      // var value = data.datasets[datasetIndex].data[activePoint._index];
+      this.activeLabel = '- ' + data.labels[activePoint._index];
+      this.activeIndex = activePoint._index + 1;
+      this.offset = 4;
+      this.fetchNewData();
     }
+  }
+
+  refreshData(){
+    this.activeIndex = 0;
+    this.activeLabel = '';
+    this.offset = 4;
+    this.fetchNewData();
   }
 }
