@@ -29,7 +29,8 @@ report-card {
  .item-background{
     width: 60%;
     margin-left: 5% !important;
-    padding: 1px 10px;  
+    padding: 5px 10px;  
+    margin-bottom:10px;
     border-bottom: 0px;   
  }
 
@@ -57,6 +58,11 @@ report-card {
     text-decoration: underline;
     padding-left: 5px;
     padding-right: 10px;
+ }
+
+ .range-ios.range-has-pin,
+ .range-md.range-has-pin{
+     padding: 0px;
  }
 
 }

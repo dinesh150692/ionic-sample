@@ -28,11 +28,12 @@ export class ReportCardComponent {
   chartOptions: any;
   chart: boolean = true;
   barChart: any;
-  lists:any = [];
+  storeLists:any = [];
   moreDataStores: boolean = false;
   offset: number = 4;
   fileName: any;
   filePath: any;
+  chartRange: any;
   constructor(private base64ToGallery: Base64ToGallery, private toastCtrl: ToastController) {
     Chart.plugins.register({
       beforeDraw: function(chartInstance) {
@@ -93,6 +94,8 @@ export class ReportCardComponent {
   }
   
   ngOnChanges(changes) {
+    this.chartRange = { lower: 0, upper: this.labels.length -1 };
+    console.log(this.chartRange);
     this.fetchNewData();
     this.plotChart();
   }
@@ -146,12 +149,12 @@ export class ReportCardComponent {
   fetchNewData(){
     var counter = this.offset;
     if(counter < this.stores.length){
-      this.lists = this.stores.slice(0, this.offset);
+      this.storeLists = this.stores.slice(0, this.offset);
       this.offset += 4;
       this.moreDataStores = true;
     }else {
       this.moreDataStores = false;
-      this.lists = this.stores.slice(0, this.stores.length);
+      this.storeLists = this.stores.slice(0, this.stores.length);
       this.offset = 4;
     }
   }
@@ -175,7 +178,7 @@ export class ReportCardComponent {
   }
 
   hideData(){
-      this.lists = this.stores.slice(0, this.offset);
+      this.storeLists = this.stores.slice(0, this.offset);
       this.moreDataStores = true;
       this.offset += 4;
   }
