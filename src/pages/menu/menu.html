@@ -1,15 +1,15 @@
-<ion-menu [content]="content">
+<ion-menu type="reveal" side="left" [content]="content">
     <ion-header>
-      <ion-toolbar color="phonepe">
+      <ion-toolbar color="phonepe" text-left>
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
    
     <ion-content>
       <ion-list>
-        <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">
-            <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
-            {{ p.title }}
+        <button ion-item menuClose="left" menuToggle *ngFor="let p of pages" (click)="openPage(p)" [color]="isActive(p)">
+            <ion-icon item-start [name]="p.icon"></ion-icon>
+            <ion-label class="headerlarge">{{ p.title }}</ion-label>
           </button>
       </ion-list>
     </ion-content>
