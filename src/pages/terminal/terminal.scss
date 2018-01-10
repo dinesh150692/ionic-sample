@@ -14,6 +14,7 @@ page-terminal {
     
     .headerlarge{
         font-size: 15px;
+        color: #56309c;
     }
 
     .item-inner{
@@ -34,5 +35,19 @@ page-terminal {
     .select {
         padding: 2px 5px;
         margin-bottom: 5px
+    }
+
+    .text {
+        padding: 0px;
+        font-size: 13px;
+        color: #56309c;
+    }
+    .small {
+        padding: 0px;
+        font-size: 9px;
+        color: #56309c;
+    }
+    .padding{
+        padding: 0px 0px 10px 16px;
     }
 }

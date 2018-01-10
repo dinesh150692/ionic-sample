@@ -47,23 +47,25 @@
       <div *ngIf="transactionsList.length > 0">
         <ion-card  class="background" *ngFor="let item of transactionsList">
           <ion-row>
-            <ion-col text-center text-capitalize class="text headerlarge text-bold">
-              {{item.terminal}}
+            <ion-col padding-bottom>
+              <span text-capitalize class="headerlarge text-bold">{{item.terminal}}</span>
+              <span class="headerlarge"> -{{item.terminalName}},</span>
+              <span class="small">{{item.storeName}}</span>
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col col-6 class="text medium" text-center>
+            <ion-col col-6 class="text" text-center>
               Transactions
             </ion-col>
-            <ion-col col-6 class="text medium" text-center>
+            <ion-col col-6 class="text" text-center>
               Collection
             </ion-col>  
           </ion-row>
           <ion-row>
-            <ion-col col-6 class="text medium text-bold" text-center>
+            <ion-col col-6 class="text text-bold" text-center>
               {{ item.transactions || '--' }}
             </ion-col>
-            <ion-col col-6 class="text medium text-bold" text-center>
+            <ion-col col-6 class="text text-bold" text-center>
               {{ item.amount | currency:'INR':'true':'1.0' }}
             </ion-col>
           </ion-row>
@@ -93,14 +95,16 @@
         </button>
       </p>
       <ion-card *ngIf="showQRData">
-          <ion-card-header class="text headerlarge text-bold" text-center>
-            {{this.qrData}}
+          <ion-card-header padding text-center class="text headerlarge text-bold">
+              <span text-capitalize class="headerlarge text-bold">{{ this.qrData[0].terminal }}</span>
+              <span class="headerlarge"> -{{ this.qrData[0].terminalName }},</span>
+              <span class="small">{{ this.qrData[0].storeName }}</span>
           </ion-card-header>
       </ion-card>
       <div *ngIf="qrDataList.length > 0">
         <ion-card  class="background" *ngFor="let item of qrDataList">
-          <ion-row>
-            <ion-col text-center text-capitalize class="text headerlarge text-bold">
+          <ion-row class="padding">
+            <ion-col text-capitalize class="text headerlarge text-bold">
               {{item.name}}
             </ion-col>
           </ion-row>

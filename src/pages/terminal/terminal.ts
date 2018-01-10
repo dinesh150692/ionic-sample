@@ -36,12 +36,12 @@ export class TerminalPage {
       title: 'Filter'
     };
     this.transactionsList = [
-      { 'amount': 100,'terminal': 'q123444', 'transactions': 2},
-      { 'amount': 100,  'terminal': 'q123445', 'transactions': 3},
-      { 'amount': 23500,  'terminal': 'q123446', 'transactions': 4},
-      { 'amount': 100,'terminal': 'q123447', 'transactions': 2},
-      { 'amount': 100,  'terminal': 'q123448', 'transactions': 3},
-      { 'amount': 23500,  'terminal': 'q123449', 'transactions': 4},
+      { 'amount': 100,'terminal': 'q123444', 'transactions': 2, 'terminalName': 'Terminal 1', 'storeName': 'Koramangala'},
+      { 'amount': 100,  'terminal': 'q123445', 'transactions': 3, 'terminalName': 'Terminal 2', 'storeName': 'BTM'},
+      { 'amount': 23500,  'terminal': 'q123446', 'transactions': 4, 'terminalName': 'Terminal 3', 'storeName': 'Indiranagar'},
+      { 'amount': 100,'terminal': 'q123447', 'transactions': 2, 'terminalName': 'Terminal 4', 'storeName': 'Electronic City'},
+      { 'amount': 100,  'terminal': 'q123448', 'transactions': 3, 'terminalName': 'Terminal 5', 'storeName': 'Sony Signal'},
+      { 'amount': 23500,  'terminal': 'q123449', 'transactions': 4, 'terminalName': 'Terminal 6', 'storeName': 'Hebbal'},
     ];
   }
 
@@ -114,12 +114,14 @@ export class TerminalPage {
     this.barcodeScanner.scan().then((barcodeData) => {
       // Success! Barcode data is here
       if(barcodeData.format == 'QR_CODE'){
-        this.qrData = barcodeData.text;
+        // this.qrData = barcodeData.text;
+        this.qrData = [ {'terminal': 'q123444', 'terminalName': 'Terminal 1', 'storeName': 'Koramangala'}];
         this.showToast('Successfuly Scanned the QR, fetching the data', 'toast-success');
         this.fetchLoader();
         this.showQRData = true;
         this.qrDataList = [
           {'name': 'Today', 'amount': 100, 'transaction': 2},
+          {'name': 'Yesterday', 'amount': 300, 'transaction': 2},
           {'name': 'Week', 'amount': 1000, 'transaction': 5},
           {'name': 'Month', 'amount': 4000, 'transaction': 20},
           {'name': 'All', 'amount': 8000, 'transaction': 50},
@@ -131,6 +133,15 @@ export class TerminalPage {
         this.showToast('Not a vaild QR code','toast-failure');
       }
     }, (err) => {
+      this.showQRData = true;
+      this.qrData = [ {'terminal': 'q123444', 'terminalName': 'Terminal 1', 'storeName': 'Koramangala'}];
+      this.qrDataList = [
+        {'name': 'Today', 'amount': 100, 'transaction': 2},
+        {'name': 'Yesterday', 'amount': 300, 'transaction': 2},
+        {'name': 'Week', 'amount': 1000, 'transaction': 5},
+        {'name': 'Month', 'amount': 4000, 'transaction': 20},
+        {'name': 'All', 'amount': 8000, 'transaction': 50},
+      ];
       this.showToast('Error Occurred During Scan, Try Again', 'toast-failure');
     });
   }
