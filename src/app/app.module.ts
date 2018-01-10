@@ -13,7 +13,7 @@ import { Camera } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
 import { Network } from '@ionic-native/network';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
-
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { PipesModule } from '../pipes/pipes.module';
 import { DirectivesModule } from '../directives/directives.module';
@@ -69,6 +69,7 @@ import { DocumentsPage} from '../pages/documents/documents';
     FilePath,
     Network,
     Base64ToGallery,
+    BarcodeScanner,
     Helper,
     CustomValidator,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

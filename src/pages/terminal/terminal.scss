@@ -1,0 +1,29 @@
+page-terminal {
+    .background{
+        background-color: rgba(104, 58, 183, 0.0001);
+        margin-bottom: 10px;
+        padding: 6px 4px 6px 4px;
+        border-radius: 10px;
+    }
+
+    .card-ios,
+    .card-md,
+    .card-wp {
+        box-shadow: rgba(104, 58, 183, 0.24) 0px 2px 2px 0px, rgba(104, 58, 183, 0.2) 0px 3px 1px -2px, rgba(104, 58, 183, 0.12) 0px 1px 5px 0px;
+    }
+    
+    .headerlarge{
+        font-size: 15px;
+    }
+
+    .item-inner{
+        margin-top: 0px;
+        min-height: 10px;
+    }
+    .item-inner .label{
+        margin:0px
+    }
+    .ion-item-divider{
+        height: 20px;
+    }
+}

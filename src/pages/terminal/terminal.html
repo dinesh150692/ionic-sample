@@ -1,0 +1,137 @@
+<!--
+  Generated template for the TerminalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="phonepe">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> 
+    <ion-title>QR/POS</ion-title>
+  </ion-navbar>
+  <ion-toolbar mode="md">
+    <ion-segment mode="md" [(ngModel)]="segmentSelection" (ionChange)="segmentChange()">
+      <ion-segment-button value="POS">
+        All QR/POS
+      </ion-segment-button>
+      <ion-segment-button value="Scan">
+        SCAN QR
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [hidden]="loadingPage">
+  <ion-refresher (ionRefresh)="doRefresh($event)" [enabled]="enableRefresher">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div [ngSwitch]="segmentSelection" no-padding>
+    <div *ngSwitchCase="'POS'" no-padding>
+      <p padding-right>
+        <select  float-right [(ngModel)]="filerSelection" (change)="fetchNewData()">
+          <option value="today" selected>Today</option>
+          <option value="week" >Weekly</option>
+          <option value="month">Monthly</option>
+          <option value="all">All</option>
+        </select>
+      </p>
+      <div padding-top *ngIf="transactionsList.length > 0">
+        <ion-card  class="background" *ngFor="let item of transactionsList">
+          <ion-row>
+            <ion-col text-center text-capitalize class="text headerlarge text-bold">
+              {{item.terminal}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6 class="text medium" text-center>
+              Transactions
+            </ion-col>
+            <ion-col col-6 class="text medium" text-center>
+              Collection
+            </ion-col>  
+          </ion-row>
+          <ion-row>
+            <ion-col col-6 class="text medium text-bold" text-center>
+              {{ item.transactions || '--' }}
+            </ion-col>
+            <ion-col col-6 class="text medium text-bold" text-center>
+              {{ item.amount | currency:'INR':'true':'1.0' }}
+            </ion-col>
+          </ion-row>
+        </ion-card> 
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [enabled]="enableInfiniteScroll">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </div>
+      <div padding *ngIf="transactionsList.length == 0">
+        <ion-card class="background">
+          <ion-row>
+            <ion-col class="headerlarge text text-bold" text-center >
+              No Transactions Found
+            </ion-col>   
+          </ion-row>
+        </ion-card>
+      </div>
+    </div>
+    <div *ngSwitchCase="'Scan'" no-padding>
+      <p padding text-center>
+        <ion-label class=" text headerlarge">Scan QR</ion-label>
+        <button ion-button large icon-only (click)="scanQR()" color="phonepe">
+          <ion-icon name="camera"></ion-icon>
+        </button>
+      </p>
+      <ion-card *ngIf="showQRData">
+          <ion-card-header class="text headerlarge" text-center>
+            {{this.qrData}}
+          </ion-card-header>
+      </ion-card>
+      <div *ngIf="qrDataList.length > 0">
+        <ion-card  class="background" *ngFor="let item of qrDataList">
+          <ion-row>
+            <ion-col text-center text-capitalize class="text headerlarge text-bold">
+              {{item.name}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6 class="text medium" text-center>
+              Transactions
+            </ion-col>
+            <ion-col col-6 class="text medium" text-center>
+              Collection
+            </ion-col>  
+          </ion-row>
+          <ion-row>
+            <ion-col col-6 class="text medium text-bold" text-center>
+              {{ item.transaction || '--' }}
+            </ion-col>
+            <ion-col col-6 class="text medium text-bold" text-center>
+              {{ item.amount | currency:'INR':'true':'1.0' }}
+            </ion-col>
+          </ion-row>
+        </ion-card> 
+      </div>
+      <div padding *ngIf="showQRData && qrDataList.length == 0">
+        <ion-card class="background">
+          <ion-row>
+            <ion-col class="headerlarge text text-bold" text-center >
+              No Transactions Found for the QR
+            </ion-col>   
+          </ion-row>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-content [hidden]="!loadingPage"></ion-content>
