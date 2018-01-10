@@ -59,24 +59,6 @@ export class RegisterPage {
     this.navCtrl.setRoot(LoginPage);
   }
 
-  ionViewWillEnter() {
-    let tabs = document.querySelectorAll('.tabbar');
-    if ( tabs !== null ) {
-      Object.keys(tabs).map((key) => {
-        tabs[ key ].style.transform = 'translateY(56px)';
-        tabs[ key ].style.display = 'none';
-      });
-    } // end if
-  }
-
-  ionViewDidLeave() {
-    let tabs = document.querySelectorAll('.tabbar');
-    if ( tabs !== null ) {
-      Object.keys(tabs).map((key) => {
-        tabs[ key ].style.transform = 'translateY(0)';
-      });
-    } // end if
-  }
   
   focusInput(inputRef) {
     let itemTop = inputRef._elementRef.nativeElement.getBoundingClientRect().top;

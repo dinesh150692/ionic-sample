@@ -29,25 +29,25 @@ export class BusinessDetailsPage {
     
   }
  
-  ionViewWillEnter() {
-    let tabs = document.querySelectorAll('.tabbar');
-    if ( tabs !== null ) {
-      Object.keys(tabs).map((key) => {
-        tabs[ key ].style.transform = 'translateY(56px)';
-        tabs[ key ].style.display = 'none';
-      });
-    } // end if
-  }
+  // ionViewWillEnter() {
+  //   let tabs = document.querySelectorAll('.tabbar');
+  //   if ( tabs !== null ) {
+  //     Object.keys(tabs).map((key) => {
+  //       tabs[ key ].style.transform = 'translateY(56px)';
+  //       tabs[ key ].style.display = 'none';
+  //     });
+  //   } // end if
+  // }
 
-  ionViewDidLeave() {
-    let tabs = document.querySelectorAll('.tabbar');
-    if ( tabs !== null ) {
-      Object.keys(tabs).map((key) => {
-        tabs[ key ].style.transform = 'translateY(0)';
-        tabs[ key ].style.display = 'inline';
-      });
-    } // end if
-  }
+  // ionViewDidLeave() {
+  //   let tabs = document.querySelectorAll('.tabbar');
+  //   if ( tabs !== null ) {
+  //     Object.keys(tabs).map((key) => {
+  //       tabs[ key ].style.transform = 'translateY(0)';
+  //       tabs[ key ].style.display = 'inline';
+  //     });
+  //   } // end if
+  // }
 
   goToDocument(){
     this.navCtrl.setRoot(DocumentsPage);

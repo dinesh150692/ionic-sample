@@ -19,24 +19,6 @@ export class SuccessPage {
   constructor(private navCtrl: NavController) {
   }
 
-  ionViewWillEnter() {
-    let tabs = document.querySelectorAll('.tabbar');
-    if ( tabs !== null ) {
-      Object.keys(tabs).map((key) => {
-        tabs[ key ].style.transform = 'translateY(56px)';
-      });
-    } // end if
-  }
-
-  ionViewDidLeave() {
-    let tabs = document.querySelectorAll('.tabbar');
-    if ( tabs !== null ) {
-      Object.keys(tabs).map((key) => {
-        tabs[ key ].style.transform = 'translateY(0)';
-      });
-    } // end if
-  }
-
   goToLogin(){
     this.navCtrl.setRoot(LoginPage);
   }

@@ -39,24 +39,6 @@ export class LoginPage {
     this.navCtrl.setRoot(MenuPage);
   }
 
-  ionViewWillEnter() {
-    let tabs = document.querySelectorAll('.tabbar');
-    if ( tabs !== null ) {
-      Object.keys(tabs).map((key) => {
-        tabs[ key ].style.transform = 'translateY(56px)';
-      });
-    } // end if
-  }
-
-  ionViewDidLeave() {
-    let tabs = document.querySelectorAll('.tabbar');
-    if ( tabs !== null ) {
-      Object.keys(tabs).map((key) => {
-        tabs[ key ].style.transform = 'translateY(0)';
-      });
-    } // end if
-  }
-
   goToRegister(){
     this.navCtrl.setRoot(RegisterPage);
   }
