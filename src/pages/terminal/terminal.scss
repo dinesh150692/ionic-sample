@@ -26,4 +26,13 @@ page-terminal {
     .ion-item-divider{
         height: 20px;
     }
+
+    ion-select{
+        border-radius: 20px;
+        border: 0.55px solid #cccccc;
+    }
+    .select {
+        padding: 2px 5px;
+        margin-bottom: 5px
+    }
 }

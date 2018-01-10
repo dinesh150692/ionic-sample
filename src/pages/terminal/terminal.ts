@@ -15,21 +15,26 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 })
 export class TerminalPage {
   loadingPage: boolean = true;
-  segmentSelection: string = 'Scan';
+  segmentSelection: string = 'POS';
   loader: any;
   filerSelection: any ='today';
   transactionsList: any = [];
   enableInfiniteScroll: boolean = true;
-  enableRefresher: boolean = true;
+  enableRefresher: boolean = false;
   qrData: any;
   showQRData: boolean = false;
   qrDataList: any = [];
+  selectOptions: any;
+  
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     public loadingCtrl: LoadingController,
     private barcodeScanner: BarcodeScanner,
     private toastCtrl:ToastController) 
   {
+    this.selectOptions = {
+      title: 'Filter'
+    };
     this.transactionsList = [
       { 'amount': 100,'terminal': 'q123444', 'transactions': 2},
       { 'amount': 100,  'terminal': 'q123445', 'transactions': 3},
@@ -119,7 +124,9 @@ export class TerminalPage {
           {'name': 'Month', 'amount': 4000, 'transaction': 20},
           {'name': 'All', 'amount': 8000, 'transaction': 50},
         ];
-        this.finishLoading(true);
+        setTimeout(() => {
+          this.finishLoading(true);
+        }, 3000);
       }else {
         this.showToast('Not a vaild QR code','toast-failure');
       }

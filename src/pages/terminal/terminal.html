@@ -37,14 +37,14 @@
   <div [ngSwitch]="segmentSelection" no-padding>
     <div *ngSwitchCase="'POS'" no-padding>
       <p padding-right>
-        <select  float-right [(ngModel)]="filerSelection" (change)="fetchNewData()">
-          <option value="today" selected>Today</option>
-          <option value="week" >Weekly</option>
-          <option value="month">Monthly</option>
-          <option value="all">All</option>
-        </select>
+        <ion-select float-right [selectOptions]="selectOptions" [(ngModel)]="filerSelection" (ionChange)="fetchNewData()">
+          <ion-option value="today" selected>Today</ion-option>
+          <ion-option value="week" >Weekly</ion-option>
+          <ion-option value="month">Monthly</ion-option>
+          <ion-option value="all">All</ion-option>
+        </ion-select>
       </p>
-      <div padding-top *ngIf="transactionsList.length > 0">
+      <div *ngIf="transactionsList.length > 0">
         <ion-card  class="background" *ngFor="let item of transactionsList">
           <ion-row>
             <ion-col text-center text-capitalize class="text headerlarge text-bold">
@@ -75,7 +75,7 @@
           </ion-infinite-scroll-content>
         </ion-infinite-scroll>
       </div>
-      <div padding *ngIf="transactionsList.length == 0">
+      <div padding-top *ngIf="transactionsList.length == 0">
         <ion-card class="background">
           <ion-row>
             <ion-col class="headerlarge text text-bold" text-center >
@@ -93,7 +93,7 @@
         </button>
       </p>
       <ion-card *ngIf="showQRData">
-          <ion-card-header class="text headerlarge" text-center>
+          <ion-card-header class="text headerlarge text-bold" text-center>
             {{this.qrData}}
           </ion-card-header>
       </ion-card>
