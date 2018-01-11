@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, Nav } from 'ionic-angular';
+import { IonicPage, NavController, Nav, AlertController } from 'ionic-angular';
 
+import {  LoginPage } from '../login/login';
 export interface PageInterface {
   title: string;
   pageName: string;
@@ -31,7 +32,7 @@ export class MenuPage {
     { title: 'Reports', pageName: 'TabPage', tabComponent: 'ReportsPage', index: 1, icon: 'document' },
     { title: 'QR/POS', pageName: 'TabPage', tabComponent: 'TerminalPage', index: 2, icon: 'barcode' },
   ];
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
   }
 
   openPage(page: PageInterface) {
@@ -74,5 +75,33 @@ export class MenuPage {
     //   return 'phonepe';
     // }
     // return;
+  }
+
+  logout(){
+    this.navCtrl.setRoot(LoginPage);
+  }
+
+  logoutChecker(){
+    let alert = this.alertCtrl.create({
+      title: 'Logout',
+      subTitle: 'Are you sure to end the current session?',
+      buttons: [
+        {
+          text: 'No',
+          handler: data => {
+          }
+        },
+        {
+          text: 'Yes',
+          handler: (data) => {
+            alert.dismiss().then(() => {
+              this.logout();
+            });
+            return false;
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }

@@ -42,7 +42,7 @@ export class DocumentsPage {
     private toastCtrl:ToastController
   ) {
       this.cameraOptions = {
-        quality: 100,
+        quality: 70,
         destinationType: this.camera.DestinationType.NATIVE_URI,
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE,

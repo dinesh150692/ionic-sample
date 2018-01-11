@@ -48,7 +48,7 @@
     
     <ion-item class="padding">
       <ion-label stacked>PAN</ion-label>
-      <ion-input type="text" formControlName="pan" [(ngModel)]="panfile"></ion-input>
+      <ion-input type="text" formControlName="pan" [(ngModel)]="panfile" readonly></ion-input>
       <ion-icon *ngIf="!panNativePath" name="document" item-left></ion-icon>
       <!-- <ion-thumbnail *ngIf="panNativePath" item-start>
         <img [src]="panNativePath" alt="No Image Available">
@@ -77,7 +77,7 @@
 
     <ion-item class="padding">
       <ion-label stacked>Old Cheque</ion-label>
-      <ion-input type="text" formControlName="cheque" [(ngModel)]="chequefile"></ion-input>
+      <ion-input type="text" formControlName="cheque" [(ngModel)]="chequefile" readonly></ion-input>
       <ion-icon *ngIf="!chequeNativePath" name="document" item-left></ion-icon>
       <ion-avatar *ngIf="chequeNativePath" item-start>
         <img [src]="chequeNativePath" alt="N/A">
@@ -103,7 +103,7 @@
 
     <ion-item class="padding">
       <ion-label stacked>ITR Statements</ion-label>
-      <ion-input type="text" formControlName="itr" [(ngModel)]="itrfile"></ion-input>
+      <ion-input type="text" formControlName="itr" [(ngModel)]="itrfile" readonly></ion-input>
       <ion-icon *ngIf="!itrNativePath" name="document" item-left></ion-icon>
       <ion-avatar *ngIf="itrNativePath" item-start>
         <img [src]="itrNativePath" alt="N/A">
