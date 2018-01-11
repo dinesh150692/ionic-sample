@@ -8,7 +8,7 @@
   </span>
   <ion-item padding-bottom *ngIf="chart" text-center>
     <canvas #barCanvas (click)="chartClicked($event)"></canvas>
-    <span class="text textDanger" float-right padding-left><sup>*</sup>Click on bar for individual reports</span>
+    <span class="textDanger" float-right padding-left><sup>*</sup>Click on bar for individual reports</span>
   </ion-item>
   <span text-left padding class="textDesign text-bold">Stores {{ activeLabel }}</span>
   <div class="padding" *ngIf="storeLists.length > 0">

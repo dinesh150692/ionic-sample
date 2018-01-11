@@ -1,11 +1,11 @@
-<ion-menu type="reveal" side="left" [content]="content">
-    <ion-header no-padding>
-      <ion-toolbar text-left>
-        <ion-item id="noLine">
+<ion-menu type="overlay" side="left" [content]="content">
+    <ion-header no-padding >
+      <ion-toolbar text-left class="menu-top">
+        <ion-item id="noLine" class="menu-top padding">
             <img float-right src="assets/phonepe_icon.png" class="backgroundImage" alt="PhonePe">
             <div class="divider"></div>
-            <h2>{{ 'sample' || '--'}}</h2>
-            <p>{{ 'sample@gmail.com' || '--'}}</p>
+            <h2 class="text headerlarge" Text-Capitalize>{{ 'sample' || '--'}}</h2>
+            <h5 class="text">{{ 'sample@gmail.com' || '--'}}</h5>
         </ion-item>
       </ion-toolbar>
     </ion-header>

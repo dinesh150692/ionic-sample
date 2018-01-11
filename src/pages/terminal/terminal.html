@@ -88,19 +88,14 @@
       </div>
     </div>
     <div *ngSwitchCase="'Scan'" no-padding>
-      <p padding text-center>
-        <ion-label class=" text headerlarge">Scan QR</ion-label>
-        <button ion-button large icon-only (click)="scanQR()" color="phonepe">
-          <ion-icon name="camera"></ion-icon>
+      <ion-item id="noLine" *ngIf="showQRData" text-center>
+        <span text-capitalize class="headerlarge text-bold">{{ this.qrData[0].terminal }}</span>
+        <span class="headerlarge"> -{{ this.qrData[0].terminalName }},</span>
+        <span class="small">{{ this.qrData[0].storeName }}</span>
+        <button item-end ion-button outline small class="small" (click)="scanQR()" color="phonepe">
+          Scan Again
         </button>
-      </p>
-      <ion-card *ngIf="showQRData">
-          <ion-card-header padding text-center class="text headerlarge text-bold">
-              <span text-capitalize class="headerlarge text-bold">{{ this.qrData[0].terminal }}</span>
-              <span class="headerlarge"> -{{ this.qrData[0].terminalName }},</span>
-              <span class="small">{{ this.qrData[0].storeName }}</span>
-          </ion-card-header>
-      </ion-card>
+      </ion-item>
       <div *ngIf="qrDataList.length > 0">
         <ion-card  class="background" *ngFor="let item of qrDataList">
           <ion-row class="padding">

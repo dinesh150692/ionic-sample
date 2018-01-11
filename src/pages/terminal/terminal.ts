@@ -53,10 +53,7 @@ export class TerminalPage {
       this.fetchNewData();
     }else {
       this.enableRefresher = false;
-      this.fetchLoader();
-      setTimeout(() => {
-        this.finishLoading(true);
-      }, 1000);
+      this.scanQR();
     }
   }
   fetchLoader(){

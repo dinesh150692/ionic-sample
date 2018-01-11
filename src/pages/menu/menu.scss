@@ -5,10 +5,27 @@ page-menu {
         height: 50px;
     }
     .menu-top{
-        background-color: rgba(103, 58, 183, 0.09);
+        background-color: rgba(103, 58, 183, 0.07);
     }
     .toolbar-md, .toolbar-ios{
         padding: 0px;
+    }
+    .padding{
         padding-bottom: 4px;
+    }
+    .header-md::after{
+        background-position: left 0 top 0;
+        height: 0px;
+        background-color: color($colors, phonepe);
+    }
+    .text {
+        padding-bottom: 2px;
+        font-size: 12px;
+        color: #46228a;
+        padding-left: 5px;
+        padding-right: 10px;
+    }
+    .headerlarge{
+        font-size: 17px;
     }
 }
