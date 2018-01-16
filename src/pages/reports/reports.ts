@@ -327,6 +327,7 @@ export class ReportsPage {
     
     let alert = this.alertCtrl.create({
       title: 'Report Filter',
+      mode: 'ios',
       message: "Select the start and end date for filtering",
       inputs: [
         {

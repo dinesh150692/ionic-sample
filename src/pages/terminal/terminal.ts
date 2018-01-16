@@ -33,7 +33,8 @@ export class TerminalPage {
     private toastCtrl:ToastController) 
   {
     this.selectOptions = {
-      title: 'Filter'
+      title: 'Filter',
+      mode: 'ios'
     };
     this.transactionsList = [
       { 'amount': 100,'terminal': 'q123444', 'transactions': 2, 'terminalName': 'Terminal 1', 'storeName': 'Koramangala'},
@@ -48,6 +49,7 @@ export class TerminalPage {
   ionViewDidLoad() { 
     this.fetchNewData();
   }
+  
   segmentChange(){
     if(this.segmentSelection == 'POS'){
       this.fetchNewData();
@@ -56,6 +58,7 @@ export class TerminalPage {
       this.scanQR();
     }
   }
+
   fetchLoader(){
     this.loadingPage = true;
     this.loader = this.loadingCtrl.create({

@@ -84,6 +84,7 @@ export class MenuPage {
   logoutChecker(){
     let alert = this.alertCtrl.create({
       title: 'Logout',
+      mode: 'ios',
       subTitle: 'Are you sure to end the current session?',
       buttons: [
         {

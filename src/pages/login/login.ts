@@ -46,6 +46,7 @@ export class LoginPage {
   forgotPassword(){
     let alert = this.alertCtrl.create({
       title: 'Forgot Password',
+      mode: 'ios',
       inputs: [
         {
           name: 'email',
@@ -80,6 +81,7 @@ export class LoginPage {
   resetPassword(data){
     let alert = this.alertCtrl.create({
       title: 'Reset Password',
+      mode: 'ios',
       message: "Verification code sent to: " + data.email,
       inputs: [
         {
