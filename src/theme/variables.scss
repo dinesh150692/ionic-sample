@@ -35,7 +35,7 @@ $app-direction: ltr;
 $colors: (
   primary:    #488aff,
   secondary:  #32db64,
-  danger:     #f53d3d,
+  danger:     rgba(245, 61, 61, 0.88),
   light:      #f4f4f4,
   dark:       #222,
   phonepe:    rgb(103, 58, 183),
@@ -109,3 +109,8 @@ $segment-button-md-text-color-activated: color($colors, phonepe);
 
 $segment-button-wp-background-color: color($colors, phonepe);
 $segment-button-wp-text-color-activated: white;
+
+//$searchbar-ios-border-color: color($colors, phonepe);
+$searchbar-ios-toolbar-input-background: white;
+$searchbar-ios-input-search-icon-color: rgb(108, 58, 183);
+$searchbar-ios-background-color: color($colors, phonepe);

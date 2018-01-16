@@ -1,0 +1,39 @@
+page-refund {
+
+    .background{
+        background-color: rgba(104, 58, 183, 0.0001);
+        margin-bottom: 10px;
+        padding: 6px 4px 6px 4px;
+        border-radius: 10px;
+    }
+
+    .card-ios,
+    .card-md,
+    .card-wp {
+        box-shadow: rgba(104, 58, 183, 0.24) 0px 2px 2px 0px, rgba(104, 58, 183, 0.2) 0px 3px 1px -2px, rgba(104, 58, 183, 0.12) 0px 1px 5px 0px;
+    }
+
+    .text-padding{
+        padding: 20px 0px 10px
+    }
+
+    .toolbar-md{
+        min-height: 10px;
+    }
+    
+    .border{
+        border-right: 0.055px solid lightgrey;
+    }
+
+    .button-small-md,.button-small-ios{
+        padding: 2px 3px 0px;
+        margin-right: 10px;
+        font-size: 9px;
+    }
+
+    .small{
+        font-size: 8px;
+        color: rgba(104, 58, 183, 0.99);
+    }
+
+}

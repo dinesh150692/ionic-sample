@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ToastController} from 'ionic-angular';
+import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { FileChooser } from '@ionic-native/file-chooser';
