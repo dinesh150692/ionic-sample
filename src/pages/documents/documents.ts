@@ -35,11 +35,11 @@ export class DocumentsPage {
     itr: new FormControl(null, Validators.required),
   });
   constructor(
-    private navCtrl: NavController,
-    private fileChooser: FileChooser, 
-    private camera: Camera,
-    private filePath: FilePath,
-    private toastCtrl:ToastController
+    public navCtrl: NavController,
+    public fileChooser: FileChooser, 
+    public camera: Camera,
+    public filePath: FilePath,
+    public toastCtrl:ToastController
   ) {
       this.cameraOptions = {
         quality: 70,
@@ -59,7 +59,7 @@ export class DocumentsPage {
         .then(filePath => {
           let fileNativePath = filePath;
           this.showToast("File is sucessfully selected", "toast-success");
-          this.assignfileValue(fileNativePath, file, chooser);
+          this.assignFileName(fileNativePath, file, chooser);
         })
         .catch(err => {
           this.showToast("Error in file selection", "toast-failure");  
@@ -75,7 +75,7 @@ export class DocumentsPage {
       let fileNativePath = imageData;
       let file = imageData.substr(imageData.lastIndexOf('/') + 1);
       this.showToast('Image captured sucessfully', "toast-success");
-      this.assignfileValue(fileNativePath, file, chooser);
+      this.assignFileName(fileNativePath, file, chooser);
       //var fileExtension = filename.substr(filename.lastIndexOf('/') + 1);
     }, (err) => {
       this.showToast("Error Capturing,Try Again", "toast-failure");
@@ -94,7 +94,7 @@ export class DocumentsPage {
     toast.present();
   }
 
-  assignfileValue(fileNativePath, file, chooser){
+  assignFileName(fileNativePath, file, chooser){
 
     switch(chooser){
       case 'PAN':
