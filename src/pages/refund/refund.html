@@ -6,11 +6,11 @@
 -->
 <ion-header>
 
-  <ion-navbar color="phonepe">
+  <ion-navbar color="phonepe" class="padding">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button> 
-    <ion-title text-uppercase>{{title}}</ion-title>
+    <ion-title>{{title}}</ion-title>
     <ion-buttons color="snowwhite" right  *ngIf="!refundHistoryLoaded">
       <button ion-button icon-only (click)="fetchRefundHistory()">
         <ion-icon name="stats" ></ion-icon>
@@ -32,7 +32,7 @@
       (ionCancel)="onCancel($event)">
     </ion-searchbar>
   </ion-toolbar>
-  
+
 </ion-header>
 
 <ion-content [hidden]="loadingPage" *ngIf="!refundHistoryLoaded">
@@ -108,7 +108,7 @@
     </div>
 </ion-content>
 
-<ion-content padding-bottom margin-top *ngIf="refundHistoryLoaded" [hidden]="loadingPage">
+<ion-content padding-vertical margin-top *ngIf="refundHistoryLoaded" [hidden]="loadingPage">
   <div *ngIf="transactionsList.length > 0">
     <transaction-card [transactionsList]="transactionsList"></transaction-card>
   </div>

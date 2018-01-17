@@ -22,7 +22,7 @@ export class RefundPage {
   loader: any;
   partialRefundAmount: number = 0;
   refundHistoryLoaded: boolean = false;
-  title ="Refund";
+  title ="Refunds";
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     public loadingCtrl: LoadingController,
@@ -66,9 +66,9 @@ export class RefundPage {
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-12T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-10T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false,  'refund': false },
       { 'mobileNumber':'9999999999','amount': 23000, 'date': '2017-11-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
-      { 'mobileNumber':'9999999999','amount': 500, 'date': '2017-10-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': true, 'refund': false},
+      { 'mobileNumber':'9999999999','amount': 500, 'date': '2017-10-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
       { 'mobileNumber':'9999999999','amount': 500, 'date': '2014-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
-      { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': true, 'refund': false},
+      { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
@@ -168,6 +168,7 @@ export class RefundPage {
   }
 
   fetchRefundHistory(){
+    this.fetchLoader();
     this.refundHistoryLoaded = true;
     this.title = "Refund History";
     this.enableRefresher = false;
@@ -182,6 +183,9 @@ export class RefundPage {
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444' },
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444' },
     ];
-    console.log(this.transactionsList);
+    setTimeout(() => {
+      this.loader.dismiss();
+      this.loadingPage = false;
+    }, 1000);
   } 
 }
