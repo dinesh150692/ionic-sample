@@ -28,10 +28,10 @@ export class MenuPage {
   @ViewChild(Nav) nav: Nav;
   
   pages: PageInterface[] = [
-    { title: 'Transaction', pageName: 'TabPage', tabComponent: 'TransactionPage', index: 0, icon: 'swap' },
+    { title: 'Transactions', pageName: 'TabPage', tabComponent: 'TransactionPage', index: 0, icon: 'swap' },
     { title: 'Reports', pageName: 'TabPage', tabComponent: 'ReportsPage', index: 1, icon: 'document' },
     { title: 'QR/POS', pageName: 'TabPage', tabComponent: 'TerminalPage', index: 2, icon: 'barcode' },
-    { title: 'Refund', pageName: 'TabPage', tabComponent: 'RefundPage', index: 3, icon: 'refresh' },
+    { title: 'Refunds', pageName: 'TabPage', tabComponent: 'RefundPage', index: 3, icon: 'refresh' },
   ];
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
   }

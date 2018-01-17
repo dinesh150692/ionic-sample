@@ -29,19 +29,12 @@ export class RefundPage {
     public toastCtrl: ToastController,
     public alertCtrl: AlertController
   ) {
-    this.transactionsList = [
-      { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-12T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
-      { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-10T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false,  'refund': false },
-      { 'mobileNumber':'9999999999','amount': 23000, 'date': '2017-11-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
-      { 'mobileNumber':'9999999999','amount': 500, 'date': '2017-10-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
-      { 'mobileNumber':'9999999999','amount': 500, 'date': '2014-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
-      { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
-      { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
-      { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
-      { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
-    ];
+    this.fetchLoader();
+    this.fetchTransactionsList(); 
   }
-
+  init(){
+    this.navCtrl.setRoot(RefundPage);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad RefundPage');
   }
@@ -69,13 +62,25 @@ export class RefundPage {
 
   
   fetchTransactionsList() {
-    this.loader.dismiss();
-    this.loadingPage = false;
+    this.transactionsList = [
+      { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-12T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
+      { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-10T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false,  'refund': false },
+      { 'mobileNumber':'9999999999','amount': 23000, 'date': '2017-11-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
+      { 'mobileNumber':'9999999999','amount': 500, 'date': '2017-10-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': true, 'refund': false},
+      { 'mobileNumber':'9999999999','amount': 500, 'date': '2014-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
+      { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': true, 'refund': false},
+      { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
+      { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
+      { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
+    ];
+    setTimeout(() => {
+      this.loader.dismiss();
+      this.loadingPage = false;
+    }, 1000);
   }
 
   doRefresh(refresher) {
     this.enableInfiniteScroll = true;
-    this.fetchLoader();
     setTimeout(() => {
       this.transactionsList = [
         { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-12T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
@@ -88,7 +93,6 @@ export class RefundPage {
         { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
         { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
       ];
-      this.fetchTransactionsList();
       refresher.complete();
     }, 2000);
   }

@@ -10,10 +10,15 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button> 
-    <ion-title>{{title}}</ion-title>
-    <ion-buttons color="snowwhite" right>
+    <ion-title text-uppercase>{{title}}</ion-title>
+    <ion-buttons color="snowwhite" right  *ngIf="!refundHistoryLoaded">
       <button ion-button icon-only (click)="fetchRefundHistory()">
         <ion-icon name="stats" ></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons color="snowwhite" right  *ngIf="refundHistoryLoaded">
+      <button ion-button icon-only (click)="init()">
+        <ion-icon name="return-left"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -27,9 +32,10 @@
       (ionCancel)="onCancel($event)">
     </ion-searchbar>
   </ion-toolbar>
+  
 </ion-header>
 
-<ion-content [hidden]="loadingPage" no-padding *ngIf="!refundHistoryLoaded">
+<ion-content [hidden]="loadingPage" *ngIf="!refundHistoryLoaded">
     <ion-refresher (ionRefresh)="doRefresh($event)" [enabled]="enableRefresher">
       <ion-refresher-content
         pullingIcon="arrow-dropdown"
@@ -62,8 +68,7 @@
               <button ion-button small *ngIf="item.refunded" color="secondary">Refunded</button>
               <button ion-button small (click)="item.refund = false;partialRefundAmount=0;" *ngIf="item.refund" color="danger">x</button>  
           </ion-col>
-        </ion-row>
-        
+        </ion-row> 
         <ion-row *ngIf="item.refund">
           <ion-col col-6 class="border">
             <h5 class="text medium" text-center>Full Refund</h5>
@@ -84,8 +89,6 @@
             </ion-item>
           </ion-col>
         </ion-row>
-
-
       </ion-card>
       <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [enabled]="enableInfiniteScroll">
         <ion-infinite-scroll-content
@@ -105,38 +108,19 @@
     </div>
 </ion-content>
 
-<ion-content padding-top margin-top *ngIf="refundHistoryLoaded" [hidden]="loadingPage">
-     <div *ngIf="transactionsList.length > 0">
-      <ion-card class="background" *ngFor="let item of transactionsList">
-        <ion-row>
-          <ion-col class="text medium text-bold" col-8>
-            {{ item.amount | currency:'INR':'true':'1.0' }}
-          </ion-col>
-          <ion-col class="text" text-right float-right col-4>
-            {{ item.mobileNumber| mask }}
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-8 no-padding>
-            <ion-row class="text" text-left>
-              {{ item.terminal }}
-            </ion-row>      
-            <ion-row  class="text small" text-left>
-                {{ item.date }}
-            </ion-row>
-          </ion-col>
-        </ion-row>
-      </ion-card>
-    </div>
-    <div *ngIf="transactionsList.length == 0">
-      <ion-card class="background">
-        <ion-row>
-          <ion-col class="headerlarge text text-bold" text-center >
-            No Transactions Found
-          </ion-col>   
-        </ion-row>
-      </ion-card>
-    </div>
+<ion-content padding-bottom margin-top *ngIf="refundHistoryLoaded" [hidden]="loadingPage">
+  <div *ngIf="transactionsList.length > 0">
+    <transaction-card [transactionsList]="transactionsList"></transaction-card>
+  </div>
+  <div *ngIf="transactionsList.length == 0">
+    <ion-card class="background">
+      <ion-row>
+        <ion-col class="headerlarge text text-bold" text-center >
+          No Transactions Found
+        </ion-col>   
+      </ion-row>
+    </ion-card>
+  </div>
 </ion-content>
 
 <ion-content [hidden]="!loadingPage"></ion-content>

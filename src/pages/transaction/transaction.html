@@ -46,29 +46,7 @@
     </ion-refresher-content>
   </ion-refresher>
   <div *ngIf="transactionsList.length > 0">
-    <ion-card class="background" *ngFor="let item of transactionsList">
-      <ion-row>
-        <ion-col class="text medium text-bold" col-8>
-          {{ item.amount | currency:'INR':'true':'1.0' }}
-        </ion-col>
-        <ion-col class="text" text-right float-right col-4>
-          {{ item.mobileNumber| mask }}
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="text" text-left col-8>
-          {{ item.terminal }}
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col  class="text small" text-left col-8>
-          {{ item.date }}
-        </ion-col>
-        <!-- <ion-col class="text text-right text-right-float" col-4>
-          {{ item.terminal }}
-        </ion-col> -->
-      </ion-row>
-    </ion-card>
+    <transaction-card [transactionsList]="transactionsList"></transaction-card>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [enabled]="enableInfiniteScroll">
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
