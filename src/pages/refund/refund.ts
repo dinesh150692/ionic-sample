@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 
 /**
@@ -27,14 +27,18 @@ export class RefundPage {
     public navParams: NavParams, 
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private cdRef: ChangeDetectorRef,
+    private zone: NgZone
   ) {
     this.fetchLoader();
     this.fetchTransactionsList(); 
   }
+
   init(){
     this.navCtrl.setRoot(RefundPage);
   }
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad RefundPage');
   }
@@ -188,17 +192,17 @@ export class RefundPage {
     }, 1000);
   } 
 
-  checkPartialRefundAmount(item){
-    if(this.partialRefundAmount >= item.amount ){
-      console.log(item.amount);
-      console.log(this.partialRefundAmount);
-      console.log('');
-      this.partialRefundAmount = item.amount - 1;
-      console.log(this.partialRefundAmount);
-      console.log('');
+  checkPartialRefundAmount(item, event){
+    this.zone.run(()=> {
+      this.cdRef.markForCheck();
+      this.cdRef.detectChanges();
+      this.partialRefundAmount = event._value;
+      if( this.partialRefundAmount >= item.amount ){
+        this.partialRefundAmount = item.amount - 1;
+      }else if( this.partialRefundAmount <= 0 ){
+        this.partialRefundAmount = 0;
+      }
       
-    } else if(this.partialRefundAmount <= 0 ){
-      this.partialRefundAmount = 0;
-    }
+    });
   }
 }

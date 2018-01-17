@@ -82,7 +82,7 @@
         <ion-col col-6>
           <h5 class="text medium" text-center>Partial Refund</h5>
           <ion-item no-padding>
-            <ion-input type="number" (ionChange)="checkPartialRefundAmount(item)"  [ngModel]="partialRefundAmount"></ion-input>
+            <ion-input type="number" min="0" [max]="item.amount -1" (ionChange)="checkPartialRefundAmount(item, $event)" [value]="partialRefundAmount" [(ngModel)]="partialRefundAmount"></ion-input>
             <button ion-button small icon-only item-end color="secondary" (click)="partialRefund(item)">
               <ion-icon name="checkmark"></ion-icon>
             </button> 
