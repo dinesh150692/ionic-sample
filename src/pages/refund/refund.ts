@@ -22,6 +22,7 @@ export class RefundPage {
   loader: any;
   partialRefundAmount: number = 0;
   refundHistoryLoaded: boolean = false;
+  enableRefund: any;
   title ="Refunds";
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -68,7 +69,7 @@ export class RefundPage {
     this.transactionsList = [
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-12T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-10T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false,  'refund': false },
-      { 'mobileNumber':'9999999999','amount': 23000, 'date': '2017-11-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
+      { 'mobileNumber':'9999999999','amount': 2300000, 'date': '2017-11-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
       { 'mobileNumber':'9999999999','amount': 500, 'date': '2017-10-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
       { 'mobileNumber':'9999999999','amount': 500, 'date': '2014-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
@@ -199,10 +200,31 @@ export class RefundPage {
       this.partialRefundAmount = event._value;
       if( this.partialRefundAmount >= item.amount ){
         this.partialRefundAmount = item.amount - 1;
-      }else if( this.partialRefundAmount <= 0 ){
+      }else if( item.partialRefundAmount < 0 ){
         this.partialRefundAmount = 0;
       }
       
     });
+  }
+
+  openRefund(item){
+    if(item.refund){
+      item.refund = true;
+      this.enableRefund = item;
+    }else if(this.enableRefund && this.enableRefund.refund){
+      this.enableRefund.refund = false;
+      this.partialRefundAmount=0
+      item.refund = true;
+      this.enableRefund = item;
+    }else{
+      item.refund = true;
+      this.enableRefund = item;
+    }
+  }
+  
+  closeRefund(item){
+    item.refund = false;
+    this.partialRefundAmount=0;
+    this.enableRefund = null;
   }
 }
