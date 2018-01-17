@@ -1,4 +1,4 @@
-<ion-menu type="overlay" side="left" [content]="content">
+<ion-menu  type="overlay" side="left" [content]="content">
     <ion-header no-padding >
       <ion-toolbar text-left class="menu-top">
         <ion-item id="noLine" class="menu-top padding">
@@ -11,23 +11,23 @@
     </ion-header>
    
     <ion-content>
-      <ion-list>
+      <ion-list mode="md">
         <button ion-item id="noLine" menuToggle *ngFor="let p of pages" (click)="openPage(p)" [color]="isActive(p)">
             <ion-icon item-start small [name]="p.icon"></ion-icon>
             <ion-label item-end>{{ p.title }}</ion-label>
-          </button>
+        </button>
       </ion-list>
     </ion-content>
 
-    <ion-footer>
-        <ion-list>
+    <ion-footer mode="md">
+        <ion-list mode="md">
             <button ion-item id="noLine" menuToggle  (click)="logoutChecker()" >
                 <ion-icon item-start small name="log-out"></ion-icon>
                 <ion-label item-end>Logout</ion-label>
-              </button>
+            </button>
           </ion-list>
-      </ion-footer>
-  </ion-menu>
+    </ion-footer>
+</ion-menu>
    
-  <!-- main navigation -->
-  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<!-- main navigation -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

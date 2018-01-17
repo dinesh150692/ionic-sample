@@ -60,7 +60,6 @@ export class RefundPage {
     this.loader.present();
   }
 
-  
   fetchTransactionsList() {
     this.transactionsList = [
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-12T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
