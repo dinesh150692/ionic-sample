@@ -187,4 +187,18 @@ export class RefundPage {
       this.loadingPage = false;
     }, 1000);
   } 
+
+  checkPartialRefundAmount(item){
+    if(this.partialRefundAmount >= item.amount ){
+      console.log(item.amount);
+      console.log(this.partialRefundAmount);
+      console.log('');
+      this.partialRefundAmount = item.amount - 1;
+      console.log(this.partialRefundAmount);
+      console.log('');
+      
+    } else if(this.partialRefundAmount <= 0 ){
+      this.partialRefundAmount = 0;
+    }
+  }
 }
