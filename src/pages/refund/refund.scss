@@ -53,5 +53,11 @@ page-refund {
     .item-block{
         min-height: 0px;
     }
-
+    .bar-button-outline-ios{
+        color: white;
+        border-color: white;
+    }
+    .bar-button-outline-ios.activated{
+        background-color: color($colors, phonepe);
+    }
 }
