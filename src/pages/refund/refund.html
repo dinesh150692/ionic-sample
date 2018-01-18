@@ -58,7 +58,7 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-8 no-padding>
+        <ion-col col-6 no-padding>
           <ion-row class="text" text-left>
             {{ item.terminal }}
           </ion-row>      
@@ -66,25 +66,31 @@
             {{ item.date }}
           </ion-row>
         </ion-col>
-        <ion-col class="text" text-right col-4 no-padding>
-          <button ion-button small (click)="openRefund(item)" *ngIf="!item.refunded" [disabled]="item. refund" color="danger">Refund</button>  
+        <ion-col class="text" text-right col-6 no-padding>
           <button ion-button small *ngIf="item.refunded" color="secondary">Refunded</button>
-          <button ion-button small (click)="closeRefund(item)" *ngIf="item.refund" color="danger">x</button>   
+          <button ion-button small *ngIf="!item.refunded" (click)="openRefund(item)" [hidden]="item.refund" color="danger">Refund</button>  
+          <button ion-button small (click)="closeRefund(item)" *ngIf="item.refund" color="danger">Cancel</button>   
         </ion-col>
       </ion-row> 
       <ion-row *ngIf="item.refund">
-        <ion-col col-6 class="border">
-          <h5 class="text medium" text-center>Full Refund</h5>
-          <ion-item no-padding>
-            <ion-label padding-left text-left class="text-input">{{item.amount}}</ion-label>
+        <ion-segment [(ngModel)]="refundSegment"  color="phonepe">
+          <ion-segment-button value="full" text-capitalize>
+            Full Refund
+          </ion-segment-button>
+          <ion-segment-button value="partial" text-capitalize>
+            Partial Refund
+          </ion-segment-button>
+        </ion-segment>
+        <ion-col col-12 *ngIf="refundSegment == 'full'">
+          <ion-item padding-top padding-horizontal>
+            <ion-label text-left class="text-input">{{item.amount}}</ion-label>
             <button ion-button small no-padding icon-only item-end color="secondary" (click)="fullRefund(item)">
               <ion-icon name="checkmark"></ion-icon>
             </button> 
           </ion-item> 
         </ion-col>
-        <ion-col col-6>
-          <h5 class="text medium" text-center>Partial Refund</h5>
-          <ion-item>
+        <ion-col col-12 *ngIf="refundSegment == 'partial'">
+          <ion-item padding-top padding-horizontal>
             <ion-input type="number" min="0" [max]="item.amount -1" [value]="partialRefundAmount" (ionChange)="checkPartialRefundAmount(item, $event)"  [(ngModel)]="partialRefundAmount"></ion-input>
             <button ion-button small icon-only item-end color="secondary" (click)="partialRefund(item)">
               <ion-icon name="checkmark"></ion-icon>

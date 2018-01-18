@@ -23,6 +23,8 @@ export class RefundPage {
   partialRefundAmount: number = 0;
   refundHistoryLoaded: boolean = false;
   enableRefund: any;
+  refundSegment: any = 'full';
+  originalAmount: any = 0;
   title ="Refunds";
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -69,7 +71,7 @@ export class RefundPage {
     this.transactionsList = [
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-12T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2017-12-10T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false,  'refund': false },
-      { 'mobileNumber':'9999999999','amount': 2300000, 'date': '2017-11-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
+      { 'mobileNumber':'9999999999','amount': 23000, 'date': '2017-11-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false },
       { 'mobileNumber':'9999999999','amount': 500, 'date': '2017-10-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
       { 'mobileNumber':'9999999999','amount': 500, 'date': '2014-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
       { 'mobileNumber':'9999999999','amount': 100, 'date': '2016-09-13T23:30:52.123Z', 'terminal': 'q123444', 'refunded': false, 'refund': false},
@@ -145,7 +147,7 @@ export class RefundPage {
     let alert = this.alertCtrl.create({
       title: 'Refund',
       mode: 'ios',
-      message: "You have intiated a refund of amount  ₹" + amount,
+      message: "You have intiated a " + this.refundSegment + " refund of amount  ₹" + amount,
       buttons: [
         {
           text: 'Cancel',
@@ -162,12 +164,21 @@ export class RefundPage {
         }
       ]
     });
-    alert.present();
+    if(amount > 0){
+        alert.present();
+    }else{
+      this.showToast('Enter a valid amount', 'toast-failure');
+    }
   }
 
   intiateRefund(amount, item){
     item.refunded= true;
     item.refund=false;
+    item.amount = this.originalAmount - this.partialRefundAmount;
+    this.refundSegment = 'full';
+    this.originalAmount = 0;
+    this.partialRefundAmount=0;
+    this.enableRefund = null;
     this.showToast('Refunded the amount  ₹' + amount + ' successfuly.' ,'toast-success');
   }
 
@@ -194,26 +205,28 @@ export class RefundPage {
   } 
 
   checkPartialRefundAmount(item, event){
+    if(!this.originalAmount){
+      this.originalAmount = item.amount;
+    }
     this.zone.run(()=> {
       this.cdRef.markForCheck();
       this.cdRef.detectChanges();
-      this.partialRefundAmount = event._value;
-      if( this.partialRefundAmount >= item.amount ){
-        this.partialRefundAmount = item.amount - 1;
-      }else if( item.partialRefundAmount < 0 ){
+      if( event._value >= this.originalAmount ){
+        this.partialRefundAmount = this.originalAmount - 1;
+      }else if(event._value < 0 ){
         this.partialRefundAmount = 0;
+      }else {
+        this.partialRefundAmount = event._value;
       }
-      
+      //item.amount = this.originalAmount - this.partialRefundAmount;
     });
   }
 
   openRefund(item){
-    if(item.refund){
-      item.refund = true;
-      this.enableRefund = item;
-    }else if(this.enableRefund && this.enableRefund.refund){
+    if(this.enableRefund && this.enableRefund.refund){
+      this.refundSegment = 'full';
       this.enableRefund.refund = false;
-      this.partialRefundAmount=0
+      this.partialRefundAmount = 0;
       item.refund = true;
       this.enableRefund = item;
     }else{
@@ -223,8 +236,18 @@ export class RefundPage {
   }
   
   closeRefund(item){
+    this.refundSegment = 'full';
+    this.originalAmount = 0;
     item.refund = false;
     this.partialRefundAmount=0;
     this.enableRefund = null;
   }
+
+  // segmentChange(item){
+  //   if(this.refundSegment == 'full' && this.originalAmount){
+  //     item.amount = this.originalAmount;
+  //     this.originalAmount = 0;
+  //     this.partialRefundAmount = 0;
+  //   }
+  // }
 }
