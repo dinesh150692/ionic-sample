@@ -1,5 +1,7 @@
 # ionic-sample
 
+## This is a sample project has no resemblance to any app or the images are for sample purpose.
+
 ## CLI Commands
 
 ``` bash
