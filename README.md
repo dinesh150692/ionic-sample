@@ -9,6 +9,9 @@ npm install
 #run in browser 
 ionic serve 
 
+#run in mobile view in browser 
+ionic serve --lab
+
 #run in andorid
 ionic cordova run android
 
